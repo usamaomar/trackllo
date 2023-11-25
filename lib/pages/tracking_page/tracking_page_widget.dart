@@ -106,173 +106,156 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                   centerMapOnMarkerTap: true,
                 ),
               ),
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  if (animationsMap[
-                          'sideMenuComponentOnActionTriggerAnimation'] !=
-                      null) {
-                    await animationsMap[
-                            'sideMenuComponentOnActionTriggerAnimation']!
-                        .controller
-                        .reverse();
-                  }
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFF347CE2),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (animationsMap[
-                                            'sideMenuComponentOnActionTriggerAnimation'] !=
-                                        null) {
-                                      animationsMap[
-                                              'sideMenuComponentOnActionTriggerAnimation']!
-                                          .controller
-                                          .forward(from: 0.0);
-                                    }
-                                  },
-                                  child: Icon(
-                                    Icons.reorder_sharp,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 30.0,
-                                  ),
-                                ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 45.0,
+                              height: 45.0,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFF347CE2),
+                                shape: BoxShape.circle,
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 15.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  shape: BoxShape.circle,
-                                ),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  if (animationsMap[
+                                          'sideMenuComponentOnActionTriggerAnimation'] !=
+                                      null) {
+                                    animationsMap[
+                                            'sideMenuComponentOnActionTriggerAnimation']!
+                                        .controller
+                                        .forward(from: 0.0);
+                                  }
+                                },
                                 child: Icon(
-                                  Icons.power_settings_new,
+                                  Icons.reorder_sharp,
                                   color: FlutterFlowTheme.of(context).info,
                                   size: 30.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Color(0xAE2F19FC),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 15.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'tdr2806z' /* You Have To Select Trip */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                            ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'vp2rc41u' /* Trip */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    34.0, 0.0, 34.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: const Color(0xAE2F19FC),
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            10.0, 15.0, 10.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 45.0,
+                              height: 45.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).error,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.power_settings_new,
+                                color: FlutterFlowTheme.of(context).info,
+                                size: 30.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Color(0xAE2F19FC),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'tdr2806z' /* You Have To Select Trip */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                          ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'vp2rc41u' /* Trip */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  34.0, 0.0, 34.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: const Color(0xAE2F19FC),
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
               ),
               wrapWithModel(
                 model: _model.sideMenuComponentModel,
