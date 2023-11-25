@@ -194,8 +194,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يحفظ',
     },
     'o86y0yu0': {
-      'en': 'Oil Change Records',
-      'ar': 'سجلات تغيير الزيت',
+      'en': 'Oil Change',
+      'ar': 'تغيير زيت',
     },
     '6yzldoto': {
       'en': 'Meter reading while filling',
@@ -225,8 +225,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يحفظ',
     },
     'oqicxa0j': {
-      'en': 'Gas Change Records',
-      'ar': 'سجلات تغيير الوقود',
+      'en': 'Gas Change',
+      'ar': 'تغيير الغاز',
     },
     '52se8dtd': {
       'en': 'Meter reading while filling',

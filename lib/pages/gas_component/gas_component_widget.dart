@@ -112,7 +112,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'oqicxa0j' /* Gas Change Records */,
+                              'oqicxa0j' /* Gas Change */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium

@@ -115,7 +115,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'o86y0yu0' /* Oil Change Records */,
+                              'o86y0yu0' /* Oil Change */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
