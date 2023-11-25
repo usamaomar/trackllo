@@ -129,7 +129,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LoginPage
   {
-    'rbedz1ve': {
+    'mmpx0r3k': {
       'en': 'Home',
       'ar': '',
     },
