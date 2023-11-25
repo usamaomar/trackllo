@@ -1,0 +1,343 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+const _kLocaleStorageKey = '__locale_key__';
+
+class FFLocalizations {
+  FFLocalizations(this.locale);
+
+  final Locale locale;
+
+  static FFLocalizations of(BuildContext context) =>
+      Localizations.of<FFLocalizations>(context, FFLocalizations)!;
+
+  static List<String> languages() => ['en', 'ar'];
+
+  static late SharedPreferences _prefs;
+  static Future initialize() async =>
+      _prefs = await SharedPreferences.getInstance();
+  static Future storeLocale(String locale) =>
+      _prefs.setString(_kLocaleStorageKey, locale);
+  static Locale? getStoredLocale() {
+    final locale = _prefs.getString(_kLocaleStorageKey);
+    return locale != null && locale.isNotEmpty ? createLocale(locale) : null;
+  }
+
+  String get languageCode => locale.toString();
+  String? get languageShortCode =>
+      _languagesWithShortCode.contains(locale.toString())
+          ? '${locale.toString()}_short'
+          : null;
+  int get languageIndex => languages().contains(languageCode)
+      ? languages().indexOf(languageCode)
+      : 0;
+
+  String getText(String key) =>
+      (kTranslationsMap[key] ?? {})[locale.toString()] ?? '';
+
+  String getVariableText({
+    String? enText = '',
+    String? arText = '',
+  }) =>
+      [enText, arText][languageIndex] ?? '';
+
+  static const Set<String> _languagesWithShortCode = {
+    'ar',
+    'az',
+    'ca',
+    'cs',
+    'da',
+    'de',
+    'dv',
+    'en',
+    'es',
+    'et',
+    'fi',
+    'fr',
+    'gr',
+    'he',
+    'hi',
+    'hu',
+    'it',
+    'km',
+    'ku',
+    'mn',
+    'ms',
+    'no',
+    'pt',
+    'ro',
+    'ru',
+    'rw',
+    'sv',
+    'th',
+    'uk',
+    'vi',
+  };
+}
+
+class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
+  const FFLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) {
+    final language = locale.toString();
+    return FFLocalizations.languages().contains(
+      language.endsWith('_')
+          ? language.substring(0, language.length - 1)
+          : language,
+    );
+  }
+
+  @override
+  Future<FFLocalizations> load(Locale locale) =>
+      SynchronousFuture<FFLocalizations>(FFLocalizations(locale));
+
+  @override
+  bool shouldReload(FFLocalizationsDelegate old) => false;
+}
+
+Locale createLocale(String language) => language.contains('_')
+    ? Locale.fromSubtags(
+        languageCode: language.split('_').first,
+        scriptCode: language.split('_').last,
+      )
+    : Locale(language);
+
+final kTranslationsMap = <Map<String, Map<String, String>>>[
+  // TrackingPage
+  {
+    'tdr2806z': {
+      'en': 'You Have To Select Trip',
+      'ar': 'عليك أن تختار الرحلة',
+    },
+    'vp2rc41u': {
+      'en': 'Trip',
+      'ar': 'رحلة',
+    },
+    'dmkb37id': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // SplashScreen
+  {
+    'qq8csgj8': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // LoginPage
+  {
+    'rbedz1ve': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // OilChangereCordsPage
+  {
+    '8946s229': {
+      'en': 'Oil Change Records',
+      'ar': 'سجلات تغيير الزيت',
+    },
+    'x75363b7': {
+      'en': 'Add',
+      'ar': 'يضيف',
+    },
+    '0jnd9olu': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // GasChangereCordsPage
+  {
+    '9rmi6ukr': {
+      'en': 'Gas Change Records',
+      'ar': 'سجلات تغيير الوقود',
+    },
+    '1py1ygsu': {
+      'en': 'Add',
+      'ar': 'يضيف',
+    },
+    'k1y0h0au': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // SideMenuComponent
+  {
+    'uv2v9446': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    'atmylffv': {
+      'en': 'Home',
+      'ar': 'الرئيسية',
+    },
+    'm7pzf71e': {
+      'en': 'Fuel filling records',
+      'ar': 'سجلات تعبئة الوقود',
+    },
+    'gce65n6v': {
+      'en': 'Oil change records',
+      'ar': 'سجلات تغيير الزيت',
+    },
+    '4vf6x3ie': {
+      'en': 'Log Out',
+      'ar': 'تسجيل خروج',
+    },
+  },
+  // OileComponent
+  {
+    '2klo8yzx': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+    'o86y0yu0': {
+      'en': 'Oil Change Records',
+      'ar': 'سجلات تغيير الزيت',
+    },
+    '6yzldoto': {
+      'en': 'Meter reading while filling',
+      'ar': 'قراءة العداد أثناء التعبئة',
+    },
+    'f8ophfab': {
+      'en': 'Quantity packed in litres',
+      'ar': 'الكمية معبأة باللتر',
+    },
+    'iiguwfzu': {
+      'en': 'Oil quality',
+      'ar': 'جودة الزيت',
+    },
+    'wcobc97m': {
+      'en': 'The cash value',
+      'ar': 'القيمة النقدية',
+    },
+    'xhqungmi': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
+  // GasComponent
+  {
+    'mm0vrt49': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+    'oqicxa0j': {
+      'en': 'Gas Change Records',
+      'ar': 'سجلات تغيير الوقود',
+    },
+    '52se8dtd': {
+      'en': 'Meter reading while filling',
+      'ar': 'قراءة العداد أثناء التعبئة',
+    },
+    'ne0cwiwk': {
+      'en': 'Quantity packed in litres',
+      'ar': 'الكمية معبأة باللتر',
+    },
+    '50cth9so': {
+      'en': 'The cash value',
+      'ar': 'القيمة النقدية',
+    },
+    '7stffzoo': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
+  // Miscellaneous
+  {
+    'e8g0aun2': {
+      'en': '',
+      'ar': '',
+    },
+    'r4k2ix86': {
+      'en': '',
+      'ar': '',
+    },
+    '9prr7tdk': {
+      'en': '',
+      'ar': '',
+    },
+    '4zkjjvir': {
+      'en': '',
+      'ar': '',
+    },
+    'n2apglyc': {
+      'en': '',
+      'ar': '',
+    },
+    'jzv0jxvg': {
+      'en': '',
+      'ar': '',
+    },
+    'lubanqfe': {
+      'en': '',
+      'ar': '',
+    },
+    'hychiw05': {
+      'en': '',
+      'ar': '',
+    },
+    'ap6qp03g': {
+      'en': '',
+      'ar': '',
+    },
+    'k3c2dxu3': {
+      'en': '',
+      'ar': '',
+    },
+    'a4xrlare': {
+      'en': '',
+      'ar': '',
+    },
+    'wmatesp6': {
+      'en': '',
+      'ar': '',
+    },
+    'e4whvqwn': {
+      'en': '',
+      'ar': '',
+    },
+    '6yydvuyf': {
+      'en': '',
+      'ar': '',
+    },
+    'h827hbww': {
+      'en': '',
+      'ar': '',
+    },
+    'ob9kjhps': {
+      'en': '',
+      'ar': '',
+    },
+    'q0w010s1': {
+      'en': '',
+      'ar': '',
+    },
+    'ctp6tc20': {
+      'en': '',
+      'ar': '',
+    },
+    'yx9za2yt': {
+      'en': '',
+      'ar': '',
+    },
+    '79ow3sd6': {
+      'en': '',
+      'ar': '',
+    },
+    'mow395w8': {
+      'en': '',
+      'ar': '',
+    },
+    'n2czjpq8': {
+      'en': '',
+      'ar': '',
+    },
+    'aanza29k': {
+      'en': '',
+      'ar': '',
+    },
+  },
+].reduce((a, b) => a..addAll(b));
