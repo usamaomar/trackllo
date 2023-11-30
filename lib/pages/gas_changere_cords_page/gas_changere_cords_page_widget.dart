@@ -1,11 +1,16 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/gas_component/gas_component_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'gas_changere_cords_page_model.dart';
 export 'gas_changere_cords_page_model.dart';
 
@@ -27,6 +32,24 @@ class _GasChangereCordsPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => GasChangereCordsPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultyty = await RecordsBusServicesApiCall.call(
+        token: FFAppState().UserModelAppState.token,
+      );
+      if ((_model.apiResultyty?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfGas = functions
+              .fromJsonToListRecords(getJsonField(
+                (_model.apiResultyty?.jsonBody ?? ''),
+                r'''$.data''',
+              ))
+              .toList()
+              .cast<BusServicesModelStruct>();
+        });
+      }
+    });
   }
 
   @override
@@ -46,6 +69,8 @@ class _GasChangereCordsPageWidgetState
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -143,11 +168,68 @@ class _GasChangereCordsPageWidgetState
           centerTitle: true,
           elevation: 2.0,
         ),
-        body: const SafeArea(
+        body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [],
+          child: Builder(
+            builder: (context) {
+              final listOfGasslocal = _model.listOfGas
+                  .map((e) => e)
+                  .toList()
+                  .where((e) => e.type == 'pertrol')
+                  .toList();
+              return ListView.builder(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                itemCount: listOfGasslocal.length,
+                itemBuilder: (context, listOfGasslocalIndex) {
+                  final listOfGasslocalItem =
+                      listOfGasslocal[listOfGasslocalIndex];
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              15.0, 10.0, 15.0, 10.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 15.0, 15.0, 15.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    listOfGasslocalItem.driverName,
+                                    textAlign: TextAlign.start,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Text(
+                                      listOfGasslocalItem.driverId,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
         ),
       ),

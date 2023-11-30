@@ -1,7 +1,9 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'gas_component_model.dart';
 export 'gas_component_model.dart';
 
@@ -45,16 +47,19 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
       child: Container(
+        height: 350.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).info,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -82,8 +87,46 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                _model.apiResultix89 =
+                                    await BusServicesApiCall.call(
+                                  token: FFAppState().UserModelAppState.token,
+                                  busNumber: FFAppState().UserModelAppState.ssi,
+                                  driverId: FFAppState().UserModelAppState.id,
+                                  driverName:
+                                      FFAppState().UserModelAppState.name,
+                                  type: 'oil',
+                                  date: getCurrentTimestamp.toString(),
+                                  petrolLitre: _model.textController2.text,
+                                  currentCounter: _model.textController1.text,
+                                  price: _model.textController3.text,
+                                );
+                                if ((_model.apiResultix89?.succeeded ?? true) ==
+                                    true) {
+                                  setState(() {});
+                                  Navigator.pop(context);
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: const Text('title'),
+                                        content: Text(
+                                            (_model.apiResultix89?.bodyText ??
+                                                '')),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
+
+                                setState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 'mm0vrt49' /* Save */,
@@ -303,34 +346,6 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                   ),
                 ),
               ],
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: FFLocalizations.of(context).getText(
-                  '7stffzoo' /* Save */,
-                ),
-                options: FFButtonOptions(
-                  height: 40.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 35.0, 0.0),
-                  iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                      ),
-                  elevation: 3.0,
-                  borderSide: const BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
             ),
           ],
         ),

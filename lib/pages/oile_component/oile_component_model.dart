@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'oile_component_widget.dart' show OileComponentWidget;
 import 'package:flutter/material.dart';
@@ -5,6 +6,8 @@ import 'package:flutter/material.dart';
 class OileComponentModel extends FlutterFlowModel<OileComponentWidget> {
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - API (BusServicesApi)] action in Button widget.
+  ApiCallResponse? apiResultix8;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;

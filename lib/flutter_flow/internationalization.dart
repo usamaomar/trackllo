@@ -129,6 +129,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LoginPage
   {
+    'tc6ropa3': {
+      'en': 'Phone Number',
+      'ar': 'رقم التليفون',
+    },
+    'xi1mw0mv': {
+      'en': 'Password',
+      'ar': 'كلمة المرور',
+    },
+    'ceu5evk3': {
+      'en': 'Login',
+      'ar': 'تسجيل الدخول',
+    },
+    'czfe1gfg': {
+      'en': 'Login ',
+      'ar': 'تسجيل الدخول',
+    },
     'dx1v36m0': {
       'en': 'Home',
       'ar': '',
@@ -143,6 +159,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'x75363b7': {
       'en': 'Add',
       'ar': 'يضيف',
+    },
+    'oldxzv2a': {
+      'en': 'Meter reading while filling : ',
+      'ar': 'قراءة العداد أثناء التعبئة :',
+    },
+    '0lpass12': {
+      'en': 'Quantity packed in litres : ',
+      'ar': 'الكمية المعبأة باللتر :',
+    },
+    'nnmt7vk8': {
+      'en': 'Oil quality : ',
+      'ar': 'جودة الزيت :',
+    },
+    '4cwg0hfg': {
+      'en': 'The cash value : ',
+      'ar': 'القيمة النقدية :',
     },
     '0jnd9olu': {
       'en': 'Home',
@@ -166,10 +198,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SideMenuComponent
   {
-    'uv2v9446': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'atmylffv': {
       'en': 'Home',
       'ar': 'الرئيسية',
@@ -213,10 +241,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'The cash value',
       'ar': 'القيمة النقدية',
     },
-    'xhqungmi': {
-      'en': 'Save',
-      'ar': 'يحفظ',
-    },
   },
   // GasComponent
   {
@@ -239,10 +263,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '50cth9so': {
       'en': 'The cash value',
       'ar': 'القيمة النقدية',
-    },
-    '7stffzoo': {
-      'en': 'Save',
-      'ar': 'يحفظ',
     },
   },
   // Miscellaneous
