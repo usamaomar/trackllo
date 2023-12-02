@@ -64,7 +64,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xAE2F19FC),
+        backgroundColor: const Color(0x0057636C),
         drawer: SizedBox(
           width: 300.0,
           child: Drawer(
