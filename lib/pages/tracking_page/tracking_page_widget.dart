@@ -131,29 +131,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 15.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.power_settings_new,
-                                  color: FlutterFlowTheme.of(context).info,
-                                  size: 30.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                       ],
                     ),
                   ),
