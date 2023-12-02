@@ -66,7 +66,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0x0057636C),
+        backgroundColor: FlutterFlowTheme.of(context).info,
         drawer: SizedBox(
           width: 300.0,
           child: Drawer(

@@ -29,12 +29,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().currentLanguge = FFAppState().currentLanguge != ''
+          ? FFAppState().currentLanguge
+          : 'ar';
+      setAppLanguage(context, FFAppState().currentLanguge);
       setState(() {
         _model.textController1?.text = '777882332';
       });
       setState(() {
         _model.textController2?.text = 'password';
       });
+      FFAppState().update(() {});
     });
 
     _model.textController1 ??= TextEditingController();
@@ -266,7 +271,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     'ceu5evk3' /* Login */,
                   ),
                   options: FFButtonOptions(
-                    width: 175.0,
+                    width: 220.0,
                     height: 40.0,
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 35.0, 0.0),

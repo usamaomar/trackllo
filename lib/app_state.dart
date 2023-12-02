@@ -37,6 +37,12 @@ class FFAppState extends ChangeNotifier {
   set locationAppState(LatLng? value) {
     _locationAppState = value;
   }
+
+  String _currentLanguge = '';
+  String get currentLanguge => _currentLanguge;
+  set currentLanguge(String value) {
+    _currentLanguge = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -61,6 +61,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'GasChangereCordsPage',
           path: '/gasChangereCordsPage',
           builder: (context, params) => const GasChangereCordsPageWidget(),
+        ),
+        FFRoute(
+          name: 'CounterInformationPage',
+          path: '/counterInformationPage',
+          builder: (context, params) => const CounterInformationPageWidget(),
+        ),
+        FFRoute(
+          name: 'SettingsPage',
+          path: '/settingsPage',
+          builder: (context, params) => const SettingsPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

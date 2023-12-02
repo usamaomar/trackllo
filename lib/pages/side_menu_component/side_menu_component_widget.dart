@@ -234,9 +234,87 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                         ),
                       ),
                     ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('CounterInformationPage');
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  18.0, 0.0, 18.0, 0.0),
+                              child: Icon(
+                                Icons.calculate,
+                                color: Color(0xFF032734),
+                                size: 30.0,
+                              ),
+                            ),
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'bjclm60c' /* Counter information */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     const Divider(
                       thickness: 1.0,
                       color: Color(0xFF797979),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('SettingsPage');
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  18.0, 0.0, 18.0, 0.0),
+                              child: Icon(
+                                Icons.settings,
+                                color: Color(0xFF032734),
+                                size: 30.0,
+                              ),
+                            ),
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                '4vf6x3ie' /* Settings */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     Padding(
                       padding:
@@ -255,7 +333,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '4vf6x3ie' /* Log Out */,
+                              'y0vxiwob' /* Log Out */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium

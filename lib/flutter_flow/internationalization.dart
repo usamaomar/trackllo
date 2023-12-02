@@ -158,7 +158,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'x75363b7': {
       'en': 'Add',
-      'ar': 'يضيف',
+      'ar': 'اضافة',
     },
     'oldxzv2a': {
       'en': 'Meter reading while filling : ',
@@ -183,15 +183,53 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // GasChangereCordsPage
   {
+    'obr19ayc': {
+      'en': 'Meter reading while filling : ',
+      'ar': 'قراءة العداد أثناء التعبئة :',
+    },
+    'z0ecb2ay': {
+      'en': 'Quantity packed in litres : ',
+      'ar': 'الكمية المعبأة باللتر :',
+    },
+    'mbmrh9g5': {
+      'en': 'The cash value : ',
+      'ar': 'القيمة النقدية :',
+    },
     '9rmi6ukr': {
       'en': 'Gas Change Records',
       'ar': 'سجلات تغيير الوقود',
     },
     '1py1ygsu': {
       'en': 'Add',
-      'ar': 'يضيف',
+      'ar': 'اضافة',
     },
     'k1y0h0au': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // CounterInformationPage
+  {
+    'ns2jmdtr': {
+      'en': 'Last Trips',
+      'ar': 'الرحلات الأخيرة',
+    },
+    'ehh563z5': {
+      'en': 'Add',
+      'ar': 'اضافة',
+    },
+    'wrn8qcff': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // SettingsPage
+  {
+    'r1p1ex1k': {
+      'en': 'Settings',
+      'ar': 'إعدادات',
+    },
+    'a5pjg41g': {
       'en': 'Home',
       'ar': '',
     },
@@ -210,7 +248,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Oil change records',
       'ar': 'سجلات تغيير الزيت',
     },
+    'bjclm60c': {
+      'en': 'Counter information',
+      'ar': 'معلومات العداد',
+    },
     '4vf6x3ie': {
+      'en': 'Settings',
+      'ar': 'إعدادات',
+    },
+    'y0vxiwob': {
       'en': 'Log Out',
       'ar': 'تسجيل خروج',
     },
@@ -263,6 +309,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '50cth9so': {
       'en': 'The cash value',
       'ar': 'القيمة النقدية',
+    },
+  },
+  // CounterInformationDialog
+  {
+    '1u7fvsxk': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+    'g0c3407i': {
+      'en': 'Counter Information',
+      'ar': 'معلومات العداد',
+    },
+    '2wwujjvs': {
+      'en': 'Current Counter Information Number',
+      'ar': 'رقم معلومات العداد الحالي',
+    },
+    'av4kc783': {
+      'en': 'Uploade Counter Image',
+      'ar': 'تحميل صورة العداد',
     },
   },
   // Miscellaneous
