@@ -258,8 +258,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           ),
                         },
                       );
-
-                      context.pop();
                     }
 
                     setState(() {});
@@ -291,7 +289,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
-                  'assets/images/bus.png',
+                  'assets/images/bus_5.png',
                   width: 0.0,
                   height: 0.0,
                   fit: BoxFit.cover,
