@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/side_menu_component/side_menu_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'tracking_page_model.dart';
@@ -20,11 +21,21 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
   late TrackingPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TrackingPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      currentUserLocationValue =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+      setState(() {
+        FFAppState().locationAppState = currentUserLocationValue;
+      });
+    });
   }
 
   @override
@@ -53,7 +64,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: const Color(0xAE2F19FC),
         drawer: SizedBox(
           width: 300.0,
           child: Drawer(
@@ -80,59 +91,54 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
           top: true,
           child: Stack(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: custom_widgets.MapCustomWidget(
                   width: double.infinity,
                   height: double.infinity,
-                  readButton: () async {},
                 ),
               ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFF347CE2),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    scaffoldKey.currentState!.openDrawer();
-                                  },
-                                  child: Icon(
-                                    Icons.reorder_sharp,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 30.0,
-                                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 45.0,
+                              height: 45.0,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFF347CE2),
+                                shape: BoxShape.circle,
+                              ),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  scaffoldKey.currentState!.openDrawer();
+                                },
+                                child: Icon(
+                                  Icons.reorder_sharp,
+                                  color: FlutterFlowTheme.of(context).info,
+                                  size: 30.0,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
