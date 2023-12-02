@@ -13,10 +13,12 @@ class MapCustomWidget extends StatefulWidget {
     Key? key,
     this.width,
     this.height,
+    required this.readButton,
   }) : super(key: key);
 
   final double? width;
   final double? height;
+  final Future<dynamic> Function() readButton;
 
   @override
   _MapCustomWidgetState createState() => _MapCustomWidgetState();

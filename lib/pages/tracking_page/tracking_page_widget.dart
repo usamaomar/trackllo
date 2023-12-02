@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -54,7 +53,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: SizedBox(
           width: 300.0,
@@ -80,23 +78,25 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-            child: Stack(
-              children: [
-                const SizedBox(
+          child: Stack(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: custom_widgets.MapCustomWidget(
                   width: double.infinity,
                   height: double.infinity,
-                  child: custom_widgets.MapCustomWidget(
-                    width: double.infinity,
-                    height: double.infinity,
-                  ),
+                  readButton: () async {},
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
@@ -156,107 +156,88 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                         ),
                       ],
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Color(0xAE2F19FC),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 15.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'tdr2806z' /* You Have To Select Trip */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                            ),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Color(0xAE2F19FC),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'tdr2806z' /* You Have To Select Trip */,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'vp2rc41u' /* Trip */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    34.0, 0.0, 34.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
                                                 .info,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: const Color(0xAE2F19FC),
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
                                           ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'vp2rc41u' /* Trip */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  34.0, 0.0, 34.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: const Color(0xAE2F19FC),
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                FlutterFlowGoogleMap(
-                  controller: _model.googleMapsController,
-                  onCameraIdle: (latLng) => _model.googleMapsCenter = latLng,
-                  initialLocation: _model.googleMapsCenter ??=
-                      const LatLng(13.106061, -59.613158),
-                  markerColor: GoogleMarkerColor.violet,
-                  mapType: MapType.normal,
-                  style: GoogleMapStyle.standard,
-                  initialZoom: 14.0,
-                  allowInteraction: true,
-                  allowZoom: true,
-                  showZoomControls: true,
-                  showLocation: true,
-                  showCompass: false,
-                  showMapToolbar: false,
-                  showTraffic: false,
-                  centerMapOnMarkerTap: true,
-                ),
-              ],
-            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

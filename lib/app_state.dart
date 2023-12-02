@@ -31,6 +31,12 @@ class FFAppState extends ChangeNotifier {
   void updateUserModelAppStateStruct(Function(UserModelStruct) updateFn) {
     updateFn(_UserModelAppState);
   }
+
+  LatLng? _locationAppState = const LatLng(0, 0);
+  LatLng? get locationAppState => _locationAppState;
+  set locationAppState(LatLng? value) {
+    _locationAppState = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
