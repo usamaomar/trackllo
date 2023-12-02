@@ -247,9 +247,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ).toString(),
                         );
                       });
-                      if (Navigator.of(context).canPop()) {
-                        context.pop();
-                      }
+
                       context.pushNamed(
                         'TrackingPage',
                         extra: <String, dynamic>{
@@ -288,6 +286,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
+                ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(
+                  'assets/images/bus.png',
+                  width: 0.0,
+                  height: 0.0,
+                  fit: BoxFit.cover,
                 ),
               ),
             ],
