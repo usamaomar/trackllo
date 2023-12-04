@@ -164,7 +164,7 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
                 latitude: 31.959345,
                 timestamp: DateTime.now(),
                 accuracy: 100,
-                altitudeAccuracy: 100,
+                altitudeAccuracy: 1,
                 altitude: 0,
                 heading: 0,
                 headingAccuracy: 100,
@@ -173,7 +173,7 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
         mapController.moveCamera(CameraUpdate.newLatLng(lats.LatLng(
             position?.latitude ?? 0.0, position?.longitude ?? 0.0)));
         FFAppState().locationAppState = LocationModelStruct(
-            position?.latitude ?? 0.0, position?.longitude ?? 0.0);
+            lat: position?.latitude ?? 0.0, lng: position?.longitude ?? 0.0);
         widget.locationRequstedAction.call();
       });
     });
