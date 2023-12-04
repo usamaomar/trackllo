@@ -96,35 +96,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                       lat: FFAppState().locationAppState.lat,
                       lng: FFAppState().locationAppState.lng,
                     );
-                    if ((_model.apiResult0b0?.succeeded ?? true)) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            (_model.apiResult0b0?.bodyText ?? ''),
-                            style: TextStyle(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                          duration: const Duration(milliseconds: 4000),
-                          backgroundColor:
-                              FlutterFlowTheme.of(context).secondary,
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            (_model.apiResult0b0?.bodyText ?? ''),
-                            style: TextStyle(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                          duration: const Duration(milliseconds: 4000),
-                          backgroundColor:
-                              FlutterFlowTheme.of(context).secondary,
-                        ),
-                      );
-                    }
 
                     setState(() {});
                   },
