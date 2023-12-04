@@ -80,6 +80,76 @@ class BusServicesApiCall {
   }
 }
 
+class LiveLocationApiCall {
+  static Future<ApiCallResponse> call({
+    String? busNumber = '',
+    String? userName = '',
+    String? token = '',
+    String? user = '',
+    double? lat,
+    double? lng,
+    String? status = '',
+    int? confidence,
+    int? batteryLevel,
+    bool? batteryCharging,
+    int? accuracy,
+    int? altitude,
+    int? altitudeAccuracy,
+    bool? isMoving,
+    int? time,
+    String? deviceId = '',
+    int? speed,
+    int? heading,
+    String? movingType = '',
+    String? event = '',
+    String? phonrModel = '',
+    String? platform = '',
+    String? university = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "user_name": "$userName",
+  "user": "$user",
+  "lat": $lat,
+  "lng": $lng,
+  "status": "$status",
+  "confidence": $confidence,
+  "battery_level": $batteryLevel,
+  "battery_charging": $batteryCharging,
+  "accuracy": $accuracy,
+  "altitude": $altitude,
+  "altitude_accuracy": $altitudeAccuracy,
+  "is_moving": $isMoving,
+  "time": $time,
+  "device_id": "$deviceId",
+  "speed": $speed,
+  "heading": $heading,
+  "moving_type": "$movingType",
+  "event": "$event",
+  "phone_model": "$phonrModel",
+  "platform": "$platform",
+  "university": "$university"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'LiveLocationApi',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/live-location',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class RecordsBusServicesApiCall {
   static Future<ApiCallResponse> call({
     String? busNumber = '',

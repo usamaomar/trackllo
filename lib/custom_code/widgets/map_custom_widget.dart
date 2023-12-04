@@ -25,10 +25,12 @@ class MapCustomWidget extends StatefulWidget {
     Key? key,
     this.width,
     this.height,
+    required this.locationRequstedAction,
   }) : super(key: key);
 
   final double? width;
   final double? height;
+  final Future<dynamic> Function() locationRequstedAction;
 
   @override
   _MapCustomWidgetState createState() => _MapCustomWidgetState();
@@ -43,9 +45,11 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
       longitude: 35.857670,
       latitude: 31.959345,
       timestamp: DateTime.now(),
+      altitudeAccuracy: 100,
       accuracy: 100,
       altitude: 0,
       heading: 0,
+      headingAccuracy: 100,
       speed: 100,
       speedAccuracy: 100);
 
@@ -160,14 +164,17 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
                 latitude: 31.959345,
                 timestamp: DateTime.now(),
                 accuracy: 100,
+                altitudeAccuracy: 100,
                 altitude: 0,
                 heading: 0,
+                headingAccuracy: 100,
                 speed: 100,
                 speedAccuracy: 100);
         mapController.moveCamera(CameraUpdate.newLatLng(lats.LatLng(
             position?.latitude ?? 0.0, position?.longitude ?? 0.0)));
-        FFAppState().locationAppState =
-            tras.LatLng(position?.latitude ?? 0.0, position?.longitude ?? 0.0);
+        FFAppState().locationAppState = LocationModelStruct(
+            position?.latitude ?? 0.0, position?.longitude ?? 0.0);
+        widget.locationRequstedAction.call();
       });
     });
   }

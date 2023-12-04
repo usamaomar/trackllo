@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/side_menu_component/side_menu_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'tracking_page_model.dart';
@@ -22,21 +22,11 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
   late TrackingPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TrackingPageModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
-      setState(() {
-        FFAppState().locationAppState = currentUserLocationValue;
-      });
-    });
   }
 
   @override
@@ -93,12 +83,51 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
           top: true,
           child: Stack(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: custom_widgets.MapCustomWidget(
                   width: double.infinity,
                   height: double.infinity,
+                  locationRequstedAction: () async {
+                    _model.apiResult0b0 = await LiveLocationApiCall.call(
+                      token: FFAppState().UserModelAppState.token,
+                      busNumber: FFAppState().UserModelAppState.ssi,
+                      lat: FFAppState().locationAppState.lat,
+                      lng: FFAppState().locationAppState.lng,
+                    );
+                    if ((_model.apiResult0b0?.succeeded ?? true)) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            (_model.apiResult0b0?.bodyText ?? ''),
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: const Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            (_model.apiResult0b0?.bodyText ?? ''),
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: const Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+                    }
+
+                    setState(() {});
+                  },
                 ),
               ),
               Column(
