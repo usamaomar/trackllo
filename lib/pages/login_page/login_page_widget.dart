@@ -93,214 +93,223 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           centerTitle: false,
           elevation: 2.0,
         ),
-        body: Container(
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).info,
+        body: Visibility(
+          visible: responsiveVisibility(
+            context: context,
+            tabletLandscape: false,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                decoration: const BoxDecoration(),
-                child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                  child: TextFormField(
-                    controller: _model.textController1,
-                    focusNode: _model.textFieldFocusNode1,
-                    autofocus: true,
-                    textInputAction: TextInputAction.next,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      labelText: FFLocalizations.of(context).getText(
-                        'tc6ropa3' /* Phone Number */,
-                      ),
-                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0xFF032734),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).primary,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    textAlign: TextAlign.start,
-                    keyboardType: TextInputType.phone,
-                    validator:
-                        _model.textController1Validator.asValidator(context),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(),
-                child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                  child: TextFormField(
-                    controller: _model.textController2,
-                    focusNode: _model.textFieldFocusNode2,
-                    autofocus: true,
-                    textInputAction: TextInputAction.done,
-                    obscureText: !_model.passwordVisibility,
-                    decoration: InputDecoration(
-                      labelText: FFLocalizations.of(context).getText(
-                        'xi1mw0mv' /* Password */,
-                      ),
-                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0xFF032734),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).primary,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      suffixIcon: InkWell(
-                        onTap: () => setState(
-                          () => _model.passwordVisibility =
-                              !_model.passwordVisibility,
-                        ),
-                        focusNode: FocusNode(skipTraversal: true),
-                        child: Icon(
-                          _model.passwordVisibility
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: const Color(0x63000000),
-                          size: 22.0,
-                        ),
-                      ),
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    textAlign: TextAlign.start,
-                    keyboardType: TextInputType.visiblePassword,
-                    validator:
-                        _model.textController2Validator.asValidator(context),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    _model.apiResult2xu = await LoginApiCall.call(
-                      password: _model.textController2.text,
-                      phone: '+962${_model.textController1.text}',
-                    );
-                    if ((_model.apiResult2xu?.succeeded ?? true)) {
-                      setState(() {
-                        FFAppState().UserModelAppState =
-                            UserModelStruct.fromMap(getJsonField(
-                          (_model.apiResult2xu?.jsonBody ?? ''),
-                          r'''$.data''',
-                        ));
-                      });
-                      setState(() {
-                        FFAppState().updateUserModelAppStateStruct(
-                          (e) => e
-                            ..id = getJsonField(
-                              (_model.apiResult2xu?.jsonBody ?? ''),
-                              r'''$.data._id''',
-                            ).toString()
-                            ..vvv = getJsonField(
-                              (_model.apiResult2xu?.jsonBody ?? ''),
-                              r'''$.data.__v''',
-                            ).toString(),
-                        );
-                      });
-
-                      context.pushNamed(
-                        'TrackingPage',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
-                      );
-                    }
-
-                    setState(() {});
-                  },
-                  text: FFLocalizations.of(context).getText(
-                    'ceu5evk3' /* Login */,
-                  ),
-                  options: FFButtonOptions(
-                    width: 220.0,
-                    height: 40.0,
+          child: Container(
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).info,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: const BoxDecoration(),
+                  child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 35.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
+                        const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    child: TextFormField(
+                      controller: _model.textController1,
+                      focusNode: _model.textFieldFocusNode1,
+                      autofocus: true,
+                      textInputAction: TextInputAction.next,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: FFLocalizations.of(context).getText(
+                          'tc6ropa3' /* Phone Number */,
                         ),
-                    elevation: 3.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
+                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xFF032734),
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).primary,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      textAlign: TextAlign.start,
+                      keyboardType: TextInputType.phone,
+                      validator:
+                          _model.textController1Validator.asValidator(context),
                     ),
-                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(
-                  'assets/images/bus_5.png',
-                  width: 0.0,
-                  height: 0.0,
-                  fit: BoxFit.cover,
+                Container(
+                  decoration: const BoxDecoration(),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    child: TextFormField(
+                      controller: _model.textController2,
+                      focusNode: _model.textFieldFocusNode2,
+                      autofocus: true,
+                      textInputAction: TextInputAction.done,
+                      obscureText: !_model.passwordVisibility,
+                      decoration: InputDecoration(
+                        labelText: FFLocalizations.of(context).getText(
+                          'xi1mw0mv' /* Password */,
+                        ),
+                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xFF032734),
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).primary,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        suffixIcon: InkWell(
+                          onTap: () => setState(
+                            () => _model.passwordVisibility =
+                                !_model.passwordVisibility,
+                          ),
+                          focusNode: FocusNode(skipTraversal: true),
+                          child: Icon(
+                            _model.passwordVisibility
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: const Color(0x63000000),
+                            size: 22.0,
+                          ),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      textAlign: TextAlign.start,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator:
+                          _model.textController2Validator.asValidator(context),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      _model.apiResult2xu = await LoginApiCall.call(
+                        password: _model.textController2.text,
+                        phone: '+962${_model.textController1.text}',
+                      );
+                      if ((_model.apiResult2xu?.succeeded ?? true)) {
+                        setState(() {
+                          FFAppState().UserModelAppState =
+                              UserModelStruct.fromMap(getJsonField(
+                            (_model.apiResult2xu?.jsonBody ?? ''),
+                            r'''$.data''',
+                          ));
+                        });
+                        setState(() {
+                          FFAppState().updateUserModelAppStateStruct(
+                            (e) => e
+                              ..id = getJsonField(
+                                (_model.apiResult2xu?.jsonBody ?? ''),
+                                r'''$.data._id''',
+                              ).toString()
+                              ..vvv = getJsonField(
+                                (_model.apiResult2xu?.jsonBody ?? ''),
+                                r'''$.data.__v''',
+                              ).toString(),
+                          );
+                        });
+                        if (Navigator.of(context).canPop()) {
+                          context.pop();
+                        }
+                        context.pushNamed(
+                          'TrackingPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: const TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      }
+
+                      setState(() {});
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'ceu5evk3' /* Login */,
+                    ),
+                    options: FFButtonOptions(
+                      width: 220.0,
+                      height: 40.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 35.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Readex Pro',
+                                color: Colors.white,
+                              ),
+                      elevation: 3.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/images/bus_5.png',
+                    width: 0.0,
+                    height: 0.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

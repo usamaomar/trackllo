@@ -86,77 +86,93 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 0.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.language_rounded,
-                              color: Color(0xFF032734),
-                              size: 30.0,
-                            ),
-                          ),
-                          Text(
-                            FFLocalizations.of(context).languageCode == 'en'
-                                ? FFLocalizations.of(context).getVariableText(
-                                    enText: 'التحويل للعربية',
-                                    arText: 'Change To English',
-                                  )
-                                : FFLocalizations.of(context).getVariableText(
-                                    enText: 'Change To English',
-                                    arText: 'التحويل للعربية',
-                                  ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w600,
+          child: Visibility(
+            visible: responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    5.0, 0.0, 5.0, 0.0),
+                                child: Icon(
+                                  Icons.language_rounded,
+                                  color: Color(0xFF032734),
+                                  size: 30.0,
                                 ),
+                              ),
+                              Text(
+                                FFLocalizations.of(context).languageCode == 'en'
+                                    ? FFLocalizations.of(context)
+                                        .getVariableText(
+                                        enText: 'التحويل للعربية',
+                                        arText: 'Change To English',
+                                      )
+                                    : FFLocalizations.of(context)
+                                        .getVariableText(
+                                        enText: 'Change To English',
+                                        arText: 'التحويل للعربية',
+                                      ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        setState(() {
-                          FFAppState().currentLanguge =
-                              FFAppState().currentLanguge == 'ar' ? 'en' : 'ar';
-                        });
-                        setAppLanguage(context, FFAppState().currentLanguge);
-                        FFAppState().update(() {});
-                      },
-                      child: const Icon(
-                        Icons.change_circle_sharp,
-                        color: Color(0xFF21BA33),
-                        size: 30.0,
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            18.0, 0.0, 18.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              FFAppState().currentLanguge =
+                                  FFAppState().currentLanguge == 'ar'
+                                      ? 'en'
+                                      : 'ar';
+                            });
+                            setAppLanguage(
+                                context, FFAppState().currentLanguge);
+                            FFAppState().update(() {});
+                          },
+                          child: const Icon(
+                            Icons.change_circle_sharp,
+                            color: Color(0xFF21BA33),
+                            size: 30.0,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

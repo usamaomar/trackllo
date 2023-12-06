@@ -330,6 +330,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تحميل صورة العداد',
     },
   },
+  // TravelListComponent
+  {
+    'a9et6heg': {
+      'en': 'Travel Selection',
+      'ar': 'اختيار الرحلة',
+    },
+  },
   // Miscellaneous
   {
     'ltkaq2x3': {

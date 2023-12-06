@@ -150,6 +150,41 @@ class LiveLocationApiCall {
   }
 }
 
+class StartTripApiCall {
+  static Future<ApiCallResponse> call({
+    String? travelId = '',
+    String? driverId = '',
+    String? token = '',
+    String? day = '',
+    bool? isFinished,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "travel_id": "$travelId",
+  "driver_id": "$driverId",
+  "day": "$day",
+  "isFinished": $isFinished
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'StartTripApi',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/start-trip',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class RecordsBusServicesApiCall {
   static Future<ApiCallResponse> call({
     String? busNumber = '',
@@ -173,6 +208,32 @@ class RecordsBusServicesApiCall {
         'Authorization': '$token',
       },
       params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetTravelsListApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? universityId = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetTravelsListApi',
+      apiUrl: 'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/travels',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token',
+        'university': '$universityId',
+      },
+      params: {
+        'token': token,
+        'universityId': universityId,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

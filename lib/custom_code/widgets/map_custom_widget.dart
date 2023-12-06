@@ -26,11 +26,17 @@ class MapCustomWidget extends StatefulWidget {
     this.width,
     this.height,
     required this.locationRequstedAction,
+    required this.startTrip,
+    required this.stopTrip,
+    required this.travilLise,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final Future<dynamic> Function() locationRequstedAction;
+  final Future<dynamic> Function() startTrip;
+  final Future<dynamic> Function() stopTrip;
+  final Future<dynamic> Function() travilLise;
 
   @override
   _MapCustomWidgetState createState() => _MapCustomWidgetState();
@@ -273,15 +279,21 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
                           size: 30.0,
                         ),
                         onTap: () {
-                          if (!isLocationEnabled) {
-                            clickAction();
-                            positionStream.resume();
-                            isLocationEnabled = true;
+                          if (FFAppState().travilLine != null) {
+                            if (!isLocationEnabled) {
+                              clickAction();
+                              positionStream.resume();
+                              isLocationEnabled = true;
+                              widget.startTrip.call();
+                            } else {
+                              positionStream.cancel();
+                              isLocationEnabled = false;
+                              widget.stopTrip.call();
+                            }
+                            setState(() {});
                           } else {
-                            positionStream.cancel();
-                            isLocationEnabled = false;
+                            widget.travilLise.call();
                           }
-                          setState(() {});
                         },
                       ),
                     ),

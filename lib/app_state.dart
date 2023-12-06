@@ -47,6 +47,12 @@ class FFAppState extends ChangeNotifier {
   void updateLocationAppStateStruct(Function(LocationModelStruct) updateFn) {
     updateFn(_locationAppState);
   }
+
+  dynamic _travilLine;
+  dynamic get travilLine => _travilLine;
+  set travilLine(dynamic value) {
+    _travilLine = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

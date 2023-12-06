@@ -146,11 +146,17 @@ class _CounterInformationPageWidgetState
           centerTitle: true,
           elevation: 2.0,
         ),
-        body: const SafeArea(
+        body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [],
+          child: Visibility(
+            visible: responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+            ),
+            child: const Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [],
+            ),
           ),
         ),
       ),
