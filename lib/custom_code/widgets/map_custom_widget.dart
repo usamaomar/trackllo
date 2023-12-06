@@ -26,16 +26,16 @@ class MapCustomWidget extends StatefulWidget {
     this.width,
     this.height,
     required this.locationRequstedAction,
-    required this.startTrip,
-    required this.stopTrip,
+    // required this.startTrip,
+    // required this.stopTrip,
     required this.travilLise,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final Future<dynamic> Function() locationRequstedAction;
-  final Future<dynamic> Function() startTrip;
-  final Future<dynamic> Function() stopTrip;
+  // final Future<dynamic> Function() startTrip;
+  // final Future<dynamic> Function() stopTrip;
   final Future<dynamic> Function() travilLise;
 
   @override
@@ -284,11 +284,11 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
                               clickAction();
                               positionStream.resume();
                               isLocationEnabled = true;
-                              widget.startTrip.call();
+                              // widget.startTrip.call();
                             } else {
                               positionStream.cancel();
                               isLocationEnabled = false;
-                              widget.stopTrip.call();
+                              // widget.stopTrip.call();
                             }
                             setState(() {});
                           } else {

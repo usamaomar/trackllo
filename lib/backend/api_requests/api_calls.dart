@@ -105,6 +105,7 @@ class LiveLocationApiCall {
     String? phonrModel = '',
     String? platform = '',
     String? university = '',
+    String? bus = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -128,7 +129,8 @@ class LiveLocationApiCall {
   "event": "$event",
   "phone_model": "$phonrModel",
   "platform": "$platform",
-  "university": "$university"
+  "university": "$university",
+  "bus": "$bus"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',
@@ -219,7 +221,6 @@ class RecordsBusServicesApiCall {
 class GetTravelsListApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
-    String? universityId = '',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetTravelsListApi',
@@ -228,11 +229,9 @@ class GetTravelsListApiCall {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': '$token',
-        'university': '$universityId',
       },
       params: {
         'token': token,
-        'universityId': universityId,
       },
       returnBody: true,
       encodeBodyUtf8: false,

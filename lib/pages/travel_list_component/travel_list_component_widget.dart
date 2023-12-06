@@ -33,7 +33,6 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResult3dp = await GetTravelsListApiCall.call(
         token: FFAppState().UserModelAppState.token,
-        universityId: FFAppState().UserModelAppState.university,
       );
       if ((_model.apiResult3dp?.succeeded ?? true)) {
         setState(() {
