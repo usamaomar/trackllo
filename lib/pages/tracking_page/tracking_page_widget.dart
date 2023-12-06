@@ -112,7 +112,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                         altitude: 0,
                         altitudeAccuracy: 0,
                         isMoving: true,
-                        time: getCurrentTimestamp.secondsSinceEpoch,
+                        time: getCurrentTimestamp.millisecondsSinceEpoch,
                         deviceId: '0',
                         speed: 90,
                         heading: 0,
