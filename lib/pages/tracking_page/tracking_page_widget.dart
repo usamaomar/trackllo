@@ -132,6 +132,28 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
 
                       setState(() {});
                     },
+                    startTrip: () async {
+                      _model.apiResultf61 = await StartTripApiCall.call(
+                        token: FFAppState().UserModelAppState.token,
+                        travelId: getJsonField(
+                          FFAppState().travilLine,
+                          r'''$.data._id''',
+                        ).toString(),
+                        driverId: FFAppState().UserModelAppState.id,
+                        day: dateTimeFormat(
+                          'yyyy-MM-dd',
+                          getCurrentTimestamp,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
+                        isFinished: false,
+                      );
+                      if ((_model.apiResultf61?.succeeded ?? true)) {
+                        setState(() {});
+                      }
+
+                      setState(() {});
+                    },
+                    stopTrip: () async {},
                     travilLise: () async {
                       await showDialog(
                         context: context,
