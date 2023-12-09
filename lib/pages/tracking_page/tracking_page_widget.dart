@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/side_menu_component/side_menu_component_widget.dart';
 import '/pages/travel_list_component/travel_list_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -140,11 +141,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           r'''$.data._id''',
                         ).toString(),
                         driverId: FFAppState().UserModelAppState.id,
-                        day: dateTimeFormat(
-                          'yyyy-MM-dd',
-                          getCurrentTimestamp,
-                          locale: FFLocalizations.of(context).languageCode,
-                        ),
+                        day: functions.dateFromat(),
                         isFinished: false,
                       );
                       if ((_model.apiResultf61?.succeeded ?? true)) {

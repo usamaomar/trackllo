@@ -18,3 +18,7 @@ List<BusServicesModelStruct> fromJsonToListRecords(dynamic jsonBody) {
       .toList()
       .cast<BusServicesModelStruct>();
 }
+
+String dateFromat() {
+  return DateFormat('yyyy-MM-dd', 'en').format(DateTime.timestamp());
+}

@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -165,12 +166,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
                                   r'''$._id''',
                                 ).toString(),
                                 driverId: FFAppState().UserModelAppState.id,
-                                day: dateTimeFormat(
-                                  'EEEE',
-                                  getCurrentTimestamp,
-                                  locale:
-                                      FFLocalizations.of(context).languageCode,
-                                ),
+                                day: functions.dateFromat(),
                                 isFinished: false,
                               );
                               if ((_model.apiResulth6x?.succeeded ?? true)) {
