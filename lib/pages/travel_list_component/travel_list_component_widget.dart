@@ -214,6 +214,9 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                     );
                                     if ((_model.apiResulth6x?.succeeded ??
                                         true)) {
+                                      FFAppState().update(() {
+                                        FFAppState().travilLine = null;
+                                      });
                                       setState(() {
                                         FFAppState().travilLine = listLocsItem;
                                       });
