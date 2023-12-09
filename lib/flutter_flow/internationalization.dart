@@ -120,13 +120,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // SplashScreen
-  {
-    'qq8csgj8': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // LoginPage
   {
     'tc6ropa3': {

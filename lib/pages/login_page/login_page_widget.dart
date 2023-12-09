@@ -33,13 +33,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           ? FFAppState().currentLanguge
           : 'ar';
       setAppLanguage(context, FFAppState().currentLanguge);
-      setState(() {
-        _model.textController1?.text = '777882332';
-      });
-      setState(() {
-        _model.textController2?.text = 'password';
-      });
-      FFAppState().update(() {});
+      if (FFAppState().UserModelAppState.token != ''
+          ? true
+          : false) {
+        if (Navigator.of(context).canPop()) {
+          context.pop();
+        }
+        context.pushNamed('TrackingPage');
+      } else {
+        setState(() {
+          _model.textController1?.text = '777882332';
+        });
+        setState(() {
+          _model.textController2?.text = 'password';
+        });
+        FFAppState().update(() {});
+      }
     });
 
     _model.textController1 ??= TextEditingController();

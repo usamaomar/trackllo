@@ -30,22 +30,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const LoginPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: Colors.transparent,
+                child: Image.asset(
+                  'assets/images/bus_5.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )
+          : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const LoginPageWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/bus_5.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'TrackingPage',
           path: '/trackingPage',
           builder: (context, params) => const TrackingPageWidget(),
-        ),
-        FFRoute(
-          name: 'SplashScreen',
-          path: '/splashScreen',
-          builder: (context, params) => const SplashScreenWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
