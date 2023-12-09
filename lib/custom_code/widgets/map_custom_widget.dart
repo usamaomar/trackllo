@@ -136,7 +136,8 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
             markerId: MarkerId(setting['label']),
             position: lats.LatLng(setting['lat'], setting['lng']),
             draggable: false,
-            icon: BitmapDescriptor.defaultMarker,
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+                BitmapDescriptor.hueGreen),
           ));
         }
       });
