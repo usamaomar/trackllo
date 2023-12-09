@@ -68,10 +68,15 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
         child: Container(
-          height: 350.0,
+          height: 360.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).info,
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(0.0),
+              bottomRight: Radius.circular(0.0),
+              topLeft: Radius.circular(8.0),
+              topRight: Radius.circular(8.0),
+            ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
