@@ -16,11 +16,13 @@ class TravelListComponentModel
   void updateJsonObjctAtIndex(int index, Function(dynamic) updateFn) =>
       jsonObjct[index] = updateFn(jsonObjct[index]);
 
+  bool isLoading = false;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (GetTravelsListApi)] action in TravelListComponent widget.
   ApiCallResponse? apiResult3dp;
-  // Stores action output result for [Backend Call - API (StartTripApi)] action in Container widget.
+  // Stores action output result for [Backend Call - API (StartTripApi)] action in Button widget.
   ApiCallResponse? apiResulth6x;
 
   /// Initialization and disposal methods.

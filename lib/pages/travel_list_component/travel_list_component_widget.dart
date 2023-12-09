@@ -1,9 +1,13 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'travel_list_component_model.dart';
 export 'travel_list_component_model.dart';
@@ -16,8 +20,24 @@ class TravelListComponentWidget extends StatefulWidget {
       _TravelListComponentWidgetState();
 }
 
-class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
+class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
+    with TickerProviderStateMixin {
   late TravelListComponentModel _model;
+
+  final animationsMap = {
+    'progressBarOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        RotateEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 300.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -32,10 +52,16 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.isLoading = true;
+      });
       _model.apiResult3dp = await GetTravelsListApiCall.call(
         token: FFAppState().UserModelAppState.token,
       );
       if ((_model.apiResult3dp?.succeeded ?? true)) {
+        setState(() {
+          _model.isLoading = false;
+        });
         setState(() {
           _model.jsonObjct = getJsonField(
             (_model.apiResult3dp?.jsonBody ?? ''),
@@ -44,6 +70,10 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
           )!
               .toList()
               .cast<dynamic>();
+        });
+      } else {
+        setState(() {
+          _model.isLoading = false;
         });
       }
     });
@@ -141,111 +171,141 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget> {
                   ),
                 ],
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Builder(
-                  builder: (context) {
-                    final listLocs = _model.jsonObjct.map((e) => e).toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listLocs.length,
-                      itemBuilder: (context, listLocsIndex) {
-                        final listLocsItem = listLocs[listLocsIndex];
-                        return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              15.0, 15.0, 15.0, 15.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.apiResulth6x = await StartTripApiCall.call(
-                                token: FFAppState().UserModelAppState.token,
-                                travelId: getJsonField(
-                                  listLocsItem,
-                                  r'''$._id''',
-                                ).toString(),
-                                driverId: FFAppState().UserModelAppState.id,
-                                day: functions.dateFromat(),
-                                isFinished: false,
-                              );
-                              if ((_model.apiResulth6x?.succeeded ?? true)) {
-                                setState(() {
-                                  FFAppState().travilLine = listLocsItem;
-                                });
-                                Navigator.pop(context);
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text(FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: 'Alert',
-                                        arText: 'تنبيه',
-                                      )),
-                                      content: Text(
-                                          (_model.apiResulth6x?.bodyText ??
-                                              '')),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                            enText: 'Ok',
-                                            arText: 'حسنا',
-                                          )),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-
-                              setState(() {});
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.0),
-                                border: Border.all(
-                                  color: const Color(0x63000000),
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Padding(
+              Stack(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Visibility(
+                      visible: responsiveVisibility(
+                        context: context,
+                        tabletLandscape: false,
+                      ),
+                      child: Builder(
+                        builder: (context) {
+                          final listLocs =
+                              _model.jsonObjct.map((e) => e).toList();
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: listLocs.length,
+                            itemBuilder: (context, listLocsIndex) {
+                              final listLocsItem = listLocs[listLocsIndex];
+                              return Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
-                                child: Text(
-                                  '${getJsonField(
+                                    15.0, 15.0, 15.0, 15.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    _model.apiResulth6x =
+                                        await StartTripApiCall.call(
+                                      token:
+                                          FFAppState().UserModelAppState.token,
+                                      travelId: getJsonField(
+                                        listLocsItem,
+                                        r'''$._id''',
+                                      ).toString(),
+                                      driverId:
+                                          FFAppState().UserModelAppState.id,
+                                      day: functions.dateFromat(),
+                                      isFinished: false,
+                                    );
+                                    if ((_model.apiResulth6x?.succeeded ??
+                                        true)) {
+                                      setState(() {
+                                        FFAppState().travilLine = listLocsItem;
+                                      });
+                                      Navigator.pop(context);
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text(
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              enText: 'Alert',
+                                              arText: 'تنبيه',
+                                            )),
+                                            content: Text((_model
+                                                    .apiResulth6x?.bodyText ??
+                                                '')),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText: 'Ok',
+                                                  arText: 'حسنا',
+                                                )),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+
+                                    setState(() {});
+                                  },
+                                  text: '${getJsonField(
                                     listLocsItem,
                                     r'''$.travel_start_name''',
                                   ).toString()}->${getJsonField(
                                     listLocsItem,
                                     r'''$.travel_end_name''',
                                   ).toString()}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(0.0),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  if (_model.isLoading == true)
+                    Align(
+                      alignment: const AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 20.0),
+                        child: CircularPercentIndicator(
+                          percent: 0.5,
+                          radius: 25.0,
+                          lineWidth: 5.0,
+                          animation: true,
+                          animateFromLastPercent: true,
+                          progressColor: FlutterFlowTheme.of(context).primary,
+                          backgroundColor: FlutterFlowTheme.of(context).accent4,
+                        ).animateOnPageLoad(
+                            animationsMap['progressBarOnPageLoadAnimation']!),
+                      ),
+                    ),
+                ],
               ),
             ],
           ),

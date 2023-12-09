@@ -46,6 +46,7 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
   late GoogleMapController mapController;
   bool isLocationEnabled = false;
   late StreamSubscription<Position> positionStream;
+  late Set<Marker> markers;
 
   late Position position = Position(
       longitude: 35.857670,
@@ -65,6 +66,7 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
   @override
   void initState() {
     super.initState();
+    markers = <Marker>{};
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _determinePosition();
     });
@@ -128,6 +130,15 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
         .then((icon) {
       setState(() {
         markerIcon = icon;
+        dynamic line = FFAppState().travilLine;
+        for (var setting in line['way_points']) {
+          markers.add(Marker(
+            markerId: MarkerId(setting['label']),
+            position: lats.LatLng(setting['lat'], setting['lng']),
+            draggable: false,
+            icon: BitmapDescriptor.defaultMarker,
+          ));
+        }
       });
     });
   }
@@ -180,6 +191,13 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
             position?.latitude ?? 0.0, position?.longitude ?? 0.0)));
         FFAppState().locationAppState = LocationModelStruct(
             lat: position?.latitude ?? 0.0, lng: position?.longitude ?? 0.0);
+        LocationModelStruct loc = FFAppState().locationAppState;
+        markers.add(Marker(
+          markerId: const MarkerId("marker1"),
+          position: lats.LatLng(loc.lat, loc.lng),
+          draggable: false,
+          icon: markerIcon,
+        ));
         widget.locationRequstedAction.call();
       });
     });
@@ -201,14 +219,7 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
         onMapCreated: (GoogleMapController controller) {
           mapController = controller;
         },
-        markers: {
-          Marker(
-            markerId: const MarkerId("marker1"),
-            position: lats.LatLng(position.latitude, position.longitude),
-            draggable: false,
-            icon: markerIcon,
-          ),
-        },
+        markers: markers,
         initialCameraPosition: CameraPosition(
           target: lats.LatLng(position.latitude, position.longitude),
           zoom: 14.4746,

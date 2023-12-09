@@ -315,7 +315,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '1u7fvsxk': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
     'g0c3407i': {
       'en': 'Counter Information',
