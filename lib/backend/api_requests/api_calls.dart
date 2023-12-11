@@ -130,7 +130,9 @@ class LiveLocationApiCall {
   "phone_model": "$phonrModel",
   "platform": "$platform",
   "university": "$university",
-  "bus": "$bus"
+  "bus": "$bus",
+  "busID": "$bus",
+  "driverID": "$user"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',
@@ -159,13 +161,15 @@ class StartTripApiCall {
     String? token = '',
     String? day = '',
     bool? isFinished,
+    String? busId = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "travel_id": "$travelId",
   "driver_id": "$driverId",
   "day": "$day",
-  "isFinished": $isFinished
+  "isFinished": $isFinished,
+  "busID": "$busId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'StartTripApi',

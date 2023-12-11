@@ -22,3 +22,18 @@ List<BusServicesModelStruct> fromJsonToListRecords(dynamic jsonBody) {
 String dateFromat() {
   return DateFormat('yyyy-MM-dd', 'en').format(DateTime.timestamp());
 }
+
+dynamic findBusByUserId(
+  List<dynamic> busArray,
+  String userId,
+) {
+  for (var bus in busArray) {
+    List<String> drivers = List<String>.from(bus['drivers']);
+    if (drivers.contains(userId)) {
+      // If the userId is found in the drivers list, return the bus object
+      return bus;
+    }
+  }
+  // If no match is found, return null or handle accordingly
+  return null;
+}

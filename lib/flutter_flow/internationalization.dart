@@ -243,7 +243,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bjclm60c': {
       'en': 'Counter information',
-      'ar': 'معلومات العداد',
+      'ar': 'عداد المبيت',
     },
     '4vf6x3ie': {
       'en': 'Settings',
@@ -312,7 +312,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'g0c3407i': {
       'en': 'Counter Information',
-      'ar': 'معلومات العداد',
+      'ar': 'عداد المبيت',
     },
     '2wwujjvs': {
       'en': 'Current Counter Information Number',
