@@ -106,7 +106,6 @@ class LiveLocationApiCall {
     String? platform = '',
     String? university = '',
     String? bus = '',
-    String? busId = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -132,7 +131,6 @@ class LiveLocationApiCall {
   "platform": "$platform",
   "university": "$university",
   "bus": "$bus",
-  "busID": "$busId",
   "driverID": "$user"
 }''';
     return ApiManager.instance.makeApiCall(
