@@ -126,6 +126,15 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           FFAppState().travilLine,
                           r'''$._id''',
                         ).toString(),
+                        busId: functions
+                            .findBusByUserId(
+                                getJsonField(
+                                  FFAppState().travilLine,
+                                  r'''$.data.bus''',
+                                  true,
+                                )!,
+                                FFAppState().UserModelAppState.id)
+                            .toString(),
                       );
                       if ((_model.apiResult0b0?.succeeded ?? true)) {
                         setState(() {});
