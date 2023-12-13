@@ -90,15 +90,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
               if (FFAppState().UserModelAppState.token != ''
                   ? true
                   : false) {
-                if (Navigator.of(context).canPop()) {
-                  context.pop();
-                }
-                context.pushNamed('TrackingPage');
+                context.goNamed('TrackingPage');
               } else {
-                if (Navigator.of(context).canPop()) {
-                  context.pop();
-                }
-                context.pushNamed('LoginPage');
+                context.goNamed('LoginPage');
               }
             },
             textAlign: TextAlign.start,

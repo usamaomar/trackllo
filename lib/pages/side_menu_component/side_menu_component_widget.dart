@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -119,19 +120,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            if (Navigator.of(context).canPop()) {
-                              context.pop();
-                            }
-                            context.pushNamed(
-                              'TrackingPage',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
+                            Navigator.pop(context);
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -329,31 +318,94 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  18.0, 0.0, 18.0, 0.0),
-                              child: Icon(
-                                Icons.logout_sharp,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 30.0,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            var confirmDialogResponse = await showDialog<bool>(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText: 'Aleart',
+                                        arText: 'تنبيه',
+                                      )),
+                                      content: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            'Are you sure you want to logout',
+                                        arText: 'هل انت متأكد من تسجيل الخروج',
+                                      )),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, false),
+                                          child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Cancel',
+                                            arText: 'الغاء',
+                                          )),
+                                        ),
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, true),
+                                          child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Logout',
+                                            arText: 'تسجيل الخروج',
+                                          )),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ) ??
+                                false;
+                            if (confirmDialogResponse) {
+                              setState(() {
+                                FFAppState().UserModelAppState =
+                                    UserModelStruct();
+                                FFAppState().locationAppState =
+                                    LocationModelStruct();
+                                FFAppState().travilLine = null;
+                              });
+
+                              context.goNamed('SplashPage');
+                            } else {
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    18.0, 0.0, 18.0, 0.0),
+                                child: Icon(
+                                  Icons.logout_sharp,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 30.0,
+                                ),
                               ),
-                            ),
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'y0vxiwob' /* Log Out */,
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'y0vxiwob' /* Log Out */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],

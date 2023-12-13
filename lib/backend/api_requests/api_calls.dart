@@ -190,6 +190,76 @@ class StartTripApiCall {
   }
 }
 
+class AddBusTrackToBeginLiveLocationApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? busId = '',
+    String? lat = '',
+    String? lng = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "busId": "$busId",
+  "lat": "$lat",
+  "lng": "$lng"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'AddBusTrackToBeginLiveLocationApi',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/bus/trackToBeginLiveLocation',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class DriverDailyImageSummaryApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? speedometer,
+    String? speedometerImg = '',
+    String? lat = '',
+    String? lng = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "speedometer": $speedometer,
+  "speedometerImg": "$speedometerImg",
+  "location": {
+    "lat": "$lat",
+    "lng": "$lng"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'DriverDailyImageSummaryApi',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/driverdailysummary',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class RecordsBusServicesApiCall {
   static Future<ApiCallResponse> call({
     String? busNumber = '',

@@ -224,25 +224,30 @@ class _CounterInformationDialogWidgetState
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           if (_model.isUploaded == false) {
-                            final selectedFiles = await selectFiles(
-                              multiFile: false,
+                            final selectedMedia = await selectMedia(
+                              multiImage: false,
                             );
-                            if (selectedFiles != null) {
+                            if (selectedMedia != null &&
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
                               setState(() => _model.isDataUploading = true);
                               var selectedUploadedFiles = <FFUploadedFile>[];
 
                               try {
-                                selectedUploadedFiles = selectedFiles
+                                selectedUploadedFiles = selectedMedia
                                     .map((m) => FFUploadedFile(
                                           name: m.storagePath.split('/').last,
                                           bytes: m.bytes,
+                                          height: m.dimensions?.height,
+                                          width: m.dimensions?.width,
+                                          blurHash: m.blurHash,
                                         ))
                                     .toList();
                               } finally {
                                 _model.isDataUploading = false;
                               }
                               if (selectedUploadedFiles.length ==
-                                  selectedFiles.length) {
+                                  selectedMedia.length) {
                                 setState(() {
                                   _model.uploadedLocalFile =
                                       selectedUploadedFiles.first;

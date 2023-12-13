@@ -337,6 +337,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'اختيار الرحلة',
     },
   },
+  // EmptyListComponent
+  {
+    'vdgyq8vj': {
+      'en': 'No items In List',
+      'ar': 'لا توجد عناصر في القائمة',
+    },
+  },
   // Miscellaneous
   {
     'ltkaq2x3': {

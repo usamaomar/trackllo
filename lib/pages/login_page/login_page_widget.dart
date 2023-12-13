@@ -253,10 +253,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               ).toString(),
                           );
                         });
-                        if (Navigator.of(context).canPop()) {
-                          context.pop();
-                        }
-                        context.pushNamed(
+
+                        context.goNamed(
                           'TrackingPage',
                           extra: <String, dynamic>{
                             kTransitionInfoKey: const TransitionInfo(
