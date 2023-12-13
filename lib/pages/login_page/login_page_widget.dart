@@ -42,10 +42,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
         context.pushNamed('TrackingPage');
       } else {
         setState(() {
-          _model.textController1?.text = '777882332';
+          _model.textController1?.text = '111111111';
         });
         setState(() {
-          _model.textController2?.text = 'password';
+          _model.textController2?.text = 'Abcd!234';
         });
         FFAppState().update(() {});
       }
