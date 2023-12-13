@@ -8,9 +8,9 @@ class SplashPageModel extends FlutterFlowModel<SplashPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Timer widget.
-  int timerMilliseconds = 60000;
+  int timerMilliseconds = 3000;
   String timerValue = StopWatchTimer.getDisplayTime(
-    60000,
+    3000,
     hours: false,
     milliSecond: false,
   );
