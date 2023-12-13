@@ -227,6 +227,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // SplashPage
+  {
+    '5mp6c57d': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // SideMenuComponent
   {
     'atmylffv': {

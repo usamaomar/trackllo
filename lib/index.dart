@@ -8,3 +8,4 @@ export '/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart'
 export '/pages/counter_information_page/counter_information_page_widget.dart'
     show CounterInformationPageWidget;
 export '/pages/settings_page/settings_page_widget.dart' show SettingsPageWidget;
+export '/pages/splash_page/splash_page_widget.dart' show SplashPageWidget;

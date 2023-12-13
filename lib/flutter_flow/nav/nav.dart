@@ -40,7 +40,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const LoginPageWidget(),
+          : const SplashPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -55,7 +55,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const LoginPageWidget(),
+              : const SplashPageWidget(),
         ),
         FFRoute(
           name: 'TrackingPage',
@@ -86,6 +86,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SettingsPage',
           path: '/settingsPage',
           builder: (context, params) => const SettingsPageWidget(),
+        ),
+        FFRoute(
+          name: 'SplashPage',
+          path: '/splashPage',
+          builder: (context, params) => const SplashPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

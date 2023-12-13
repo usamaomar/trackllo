@@ -29,26 +29,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().currentLanguge = FFAppState().currentLanguge != ''
-          ? FFAppState().currentLanguge
-          : 'ar';
-      setAppLanguage(context, FFAppState().currentLanguge);
-      if (FFAppState().UserModelAppState.token != ''
-          ? true
-          : false) {
-        if (Navigator.of(context).canPop()) {
-          context.pop();
-        }
-        context.pushNamed('TrackingPage');
-      } else {
-        setState(() {
-          _model.textController1?.text = '111111111';
-        });
-        setState(() {
-          _model.textController2?.text = 'Abcd!234';
-        });
-        FFAppState().update(() {});
-      }
+      setState(() {
+        _model.textController1?.text = '111111111';
+      });
+      setState(() {
+        _model.textController2?.text = 'Abcd!234';
+      });
+      FFAppState().update(() {});
     });
 
     _model.textController1 ??= TextEditingController();
