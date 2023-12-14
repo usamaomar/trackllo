@@ -59,6 +59,17 @@ class FFAppState extends ChangeNotifier {
   set UseTrackToBiginApiAppState(bool value) {
     _UseTrackToBiginApiAppState = value;
   }
+
+  LocationModelStruct _houseLocation = LocationModelStruct.fromSerializableMap(
+      jsonDecode('{"lat":"0","lng":"0"}'));
+  LocationModelStruct get houseLocation => _houseLocation;
+  set houseLocation(LocationModelStruct value) {
+    _houseLocation = value;
+  }
+
+  void updateHouseLocationStruct(Function(LocationModelStruct) updateFn) {
+    updateFn(_houseLocation);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
