@@ -38,6 +38,6 @@ dynamic findBusByUserId(
   return null;
 }
 
-String convertFromImagePathToString(String imageFile) {
+String convertFromImagePathToString(FFUploadedFile imageFile) {
   return "imgBase64";
 }
