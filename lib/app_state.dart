@@ -53,6 +53,12 @@ class FFAppState extends ChangeNotifier {
   set travilLine(dynamic value) {
     _travilLine = value;
   }
+
+  bool _UseTrackToBiginApiAppState = false;
+  bool get UseTrackToBiginApiAppState => _UseTrackToBiginApiAppState;
+  set UseTrackToBiginApiAppState(bool value) {
+    _UseTrackToBiginApiAppState = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

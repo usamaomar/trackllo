@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -51,7 +52,7 @@ class _CounterInformationDialogWidgetState
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           height: 400.0,
           decoration: BoxDecoration(
@@ -88,8 +89,17 @@ class _CounterInformationDialogWidgetState
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  _model.apiResultdxj =
+                                      await DriverDailyImageSummaryApiCall.call(
+                                    token: FFAppState().UserModelAppState.token,
+                                  );
+                                  if ((_model.apiResultdxj?.succeeded ??
+                                      true)) {
+                                    setState(() {});
+                                  }
+
+                                  setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   '1u7fvsxk' /* Save */,
@@ -161,8 +171,7 @@ class _CounterInformationDialogWidgetState
                         Container(
                           decoration: const BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 15.0, 15.0),
+                            padding: const EdgeInsets.all(15.0),
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
@@ -207,6 +216,7 @@ class _CounterInformationDialogWidgetState
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
                               textAlign: TextAlign.start,
+                              keyboardType: TextInputType.number,
                               validator: _model.textControllerValidator
                                   .asValidator(context),
                             ),
@@ -263,6 +273,9 @@ class _CounterInformationDialogWidgetState
                                   _model.uploadedLocalFile;
                               _model.isUploaded = true;
                             });
+                            setState(() {
+                              _model.localImageBase46 = '';
+                            });
                           }
                         },
                         child: Container(
@@ -276,8 +289,7 @@ class _CounterInformationDialogWidgetState
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [

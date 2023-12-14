@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'counter_information_dialog_widget.dart'
     show CounterInformationDialogWidget;
@@ -11,8 +12,12 @@ class CounterInformationDialogModel
 
   bool isUploaded = false;
 
+  String localImageBase46 = '';
+
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - API (DriverDailyImageSummaryApi)] action in Button widget.
+  ApiCallResponse? apiResultdxj;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

@@ -45,6 +45,7 @@ class MapCustomWidget extends StatefulWidget {
 class _MapCustomWidgetState extends State<MapCustomWidget> {
   late GoogleMapController mapController;
   bool isLocationEnabled = false;
+  bool isTrackToBeginEnabled = false;
   late StreamSubscription<Position> positionStream;
   late Set<Marker> markers;
 

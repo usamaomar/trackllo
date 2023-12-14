@@ -37,3 +37,7 @@ dynamic findBusByUserId(
   // If no match is found, return null or handle accordingly
   return null;
 }
+
+String convertFromImagePathToString(String imageFile) {
+  return "imgBase64";
+}

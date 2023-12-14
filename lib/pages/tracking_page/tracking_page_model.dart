@@ -9,10 +9,12 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (LiveLocationApi)] action in MapCustomWidget widget.
-  ApiCallResponse? apiResult0b0;
   // Stores action output result for [Backend Call - API (StartTripApi)] action in MapCustomWidget widget.
   ApiCallResponse? apiResultf61;
+  // Stores action output result for [Backend Call - API (AddBusTrackToBeginLiveLocationApi)] action in MapCustomWidget widget.
+  ApiCallResponse? apiResultr6q;
+  // Stores action output result for [Backend Call - API (LiveLocationApi)] action in MapCustomWidget widget.
+  ApiCallResponse? apiResult0b0;
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();

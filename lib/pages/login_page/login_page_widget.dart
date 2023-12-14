@@ -105,8 +105,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 Container(
                   decoration: const BoxDecoration(),
                   child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       controller: _model.textController1,
                       focusNode: _model.textFieldFocusNode1,
@@ -159,8 +158,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 Container(
                   decoration: const BoxDecoration(),
                   child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       controller: _model.textController2,
                       focusNode: _model.textFieldFocusNode2,

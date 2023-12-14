@@ -58,7 +58,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           height: 400.0,
           decoration: BoxDecoration(
@@ -202,8 +202,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                   Container(
                     decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
@@ -254,8 +253,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                   Container(
                     decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
@@ -306,8 +304,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                   Container(
                     decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController3,
                         focusNode: _model.textFieldFocusNode3,
@@ -358,8 +355,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                   Container(
                     decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController4,
                         focusNode: _model.textFieldFocusNode4,

@@ -31,6 +31,7 @@ class LoginApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -76,6 +77,7 @@ class BusServicesApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -131,7 +133,8 @@ class LiveLocationApiCall {
   "platform": "$platform",
   "university": "$university",
   "bus": "$bus",
-  "driverID": "$user"
+  "driverID": "$user",
+  "bus_identity": "$bus"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',
@@ -149,6 +152,7 @@ class LiveLocationApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -186,6 +190,7 @@ class StartTripApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -219,6 +224,7 @@ class AddBusTrackToBeginLiveLocationApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -256,6 +262,7 @@ class DriverDailyImageSummaryApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -287,6 +294,7 @@ class RecordsBusServicesApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -310,6 +318,32 @@ class GetTravelsListApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetExpectedSpeedometerReadingApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getExpectedSpeedometerReadingApi',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/bus/expectedSpeedometerReading',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
     );
   }
 }

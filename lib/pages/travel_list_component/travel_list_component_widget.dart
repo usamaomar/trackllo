@@ -96,7 +96,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           height: 360.0,
           decoration: BoxDecoration(
@@ -195,8 +195,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                             itemBuilder: (context, listLocsIndex) {
                               final listLocsItem = listLocs[listLocsIndex];
                               return Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 15.0, 15.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     _model.apiResulth6x =
@@ -292,7 +291,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                   ),
                   if (_model.isLoading == true)
                     Align(
-                      alignment: const AlignmentDirectional(0.00, 0.00),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 0.0, 20.0),

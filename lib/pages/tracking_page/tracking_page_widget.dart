@@ -98,37 +98,53 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                     width: double.infinity,
                     height: double.infinity,
                     locationRequstedAction: () async {
-                      _model.apiResult0b0 = await LiveLocationApiCall.call(
-                        token: FFAppState().UserModelAppState.token,
-                        busNumber: FFAppState().UserModelAppState.ssi,
-                        lat: FFAppState().locationAppState.lat,
-                        lng: FFAppState().locationAppState.lng,
-                        userName: FFAppState().UserModelAppState.name,
-                        user: FFAppState().UserModelAppState.id,
-                        status: 'e',
-                        confidence: 0,
-                        batteryLevel: 0,
-                        batteryCharging: true,
-                        accuracy: 0,
-                        altitude: 0,
-                        altitudeAccuracy: 0,
-                        isMoving: true,
-                        time: getCurrentTimestamp.millisecondsSinceEpoch,
-                        deviceId: '0',
-                        speed: 90,
-                        heading: 0,
-                        movingType: 'e',
-                        event: 'e',
-                        phonrModel: 'x7',
-                        platform: 'android',
-                        university: FFAppState().UserModelAppState.university,
-                        bus: getJsonField(
-                          FFAppState().travilLine,
-                          r'''$._id''',
-                        ).toString(),
-                      );
-                      if ((_model.apiResult0b0?.succeeded ?? true)) {
-                        setState(() {});
+                      if (FFAppState().UseTrackToBiginApiAppState == true) {
+                        _model.apiResultr6q =
+                            await AddBusTrackToBeginLiveLocationApiCall.call(
+                          token: FFAppState().UserModelAppState.token,
+                          lat: FFAppState().locationAppState.lat.toString(),
+                          lng: FFAppState().locationAppState.lng.toString(),
+                          busId: getJsonField(
+                            FFAppState().travilLine,
+                            r'''$._id''',
+                          ).toString(),
+                        );
+                        if ((_model.apiResultr6q?.succeeded ?? true)) {
+                          setState(() {});
+                        }
+                      } else {
+                        _model.apiResult0b0 = await LiveLocationApiCall.call(
+                          token: FFAppState().UserModelAppState.token,
+                          busNumber: FFAppState().UserModelAppState.ssi,
+                          lat: FFAppState().locationAppState.lat,
+                          lng: FFAppState().locationAppState.lng,
+                          userName: FFAppState().UserModelAppState.name,
+                          user: FFAppState().UserModelAppState.id,
+                          status: 'e',
+                          confidence: 0,
+                          batteryLevel: 0,
+                          batteryCharging: true,
+                          accuracy: 0,
+                          altitude: 0,
+                          altitudeAccuracy: 0,
+                          isMoving: true,
+                          time: getCurrentTimestamp.millisecondsSinceEpoch,
+                          deviceId: '0',
+                          speed: 90,
+                          heading: 0,
+                          movingType: 'e',
+                          event: 'e',
+                          phonrModel: 'x7',
+                          platform: 'android',
+                          university: FFAppState().UserModelAppState.university,
+                          bus: getJsonField(
+                            FFAppState().travilLine,
+                            r'''$._id''',
+                          ).toString(),
+                        );
+                        if ((_model.apiResult0b0?.succeeded ?? true)) {
+                          setState(() {});
+                        }
                       }
 
                       setState(() {});
