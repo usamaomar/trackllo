@@ -109,7 +109,28 @@ class _CounterInformationDialogWidgetState
                                   if ((_model.apiResultdxj?.succeeded ??
                                       true)) {
                                     setState(() {});
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: const Text('title'),
+                                          content: Text(
+                                              (_model.apiResultdxj?.bodyText ??
+                                                  '')),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                   }
+
+                                  Navigator.pop(context);
 
                                   setState(() {});
                                 },
