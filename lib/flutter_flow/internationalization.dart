@@ -203,6 +203,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CounterInformationPage
   {
+    'zcqdktyc': {
+      'en': 'The traveled distance :',
+      'ar': 'المسافة المقطوعه :',
+    },
     'ns2jmdtr': {
       'en': 'Last Trips',
       'ar': 'الرحلات الأخيرة',
