@@ -128,6 +128,8 @@ class _CounterInformationPageWidgetState
                           );
                         },
                       ).then((value) => setState(() {}));
+
+                      Navigator.pop(context);
                     },
                     text: FFLocalizations.of(context).getText(
                       'ehh563z5' /* Add */,
