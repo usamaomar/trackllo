@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_dialog_model.dart';
@@ -93,6 +94,17 @@ class _CounterInformationDialogWidgetState
                                   _model.apiResultdxj =
                                       await DriverDailyImageSummaryApiCall.call(
                                     token: FFAppState().UserModelAppState.token,
+                                    speedometer: int.tryParse(
+                                        _model.textController.text),
+                                    speedometerImg: _model.localImageBase46,
+                                    lat: FFAppState()
+                                        .locationAppState
+                                        .lat
+                                        .toString(),
+                                    lng: FFAppState()
+                                        .locationAppState
+                                        .lng
+                                        .toString(),
                                   );
                                   if ((_model.apiResultdxj?.succeeded ??
                                       true)) {
@@ -274,7 +286,9 @@ class _CounterInformationDialogWidgetState
                               _model.isUploaded = true;
                             });
                             setState(() {
-                              _model.localImageBase46 = '';
+                              _model.localImageBase46 =
+                                  functions.convertFromImagePathToString(
+                                      _model.uploadedLocalFile);
                             });
                           }
                         },

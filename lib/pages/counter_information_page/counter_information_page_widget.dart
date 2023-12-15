@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/counter_information_dialog/counter_information_dialog_widget.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_page_model.dart';
@@ -28,6 +30,18 @@ class _CounterInformationPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CounterInformationPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult4qr = await GetExpectedSpeedometerReadingApiCall.call(
+        token: FFAppState().UserModelAppState.token,
+      );
+      if ((_model.apiResult4qr?.succeeded ?? true)) {
+        setState(() {
+          _model.jsonObject = (_model.apiResult4qr?.jsonBody ?? '');
+        });
+      }
+    });
   }
 
   @override
