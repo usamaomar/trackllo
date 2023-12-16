@@ -319,11 +319,28 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                               ),
                                             ],
                                           ),
-                                          Icon(
-                                            Icons.double_arrow,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
+                                          Stack(
+                                            children: [
+                                              if (FFAppState().currentLanguge ==
+                                                  'en')
+                                                Icon(
+                                                  Icons.double_arrow,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                              if (FFAppState().currentLanguge ==
+                                                  'ar')
+                                                Icon(
+                                                  Icons
+                                                      .keyboard_double_arrow_left_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                            ],
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
