@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -195,10 +194,15 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                             itemBuilder: (context, listLocsIndex) {
                               final listLocsItem = listLocs[listLocsIndex];
                               return Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    _model.apiResulth6x =
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 10.0, 24.0, 10.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    _model.apiResulth6xCopy =
                                         await StartTripApiCall.call(
                                       token:
                                           FFAppState().UserModelAppState.token,
@@ -211,7 +215,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                       day: functions.dateFromat(),
                                       isFinished: false,
                                     );
-                                    if ((_model.apiResulth6x?.succeeded ??
+                                    if ((_model.apiResulth6xCopy?.succeeded ??
                                         true)) {
                                       FFAppState().update(() {
                                         FFAppState().travilLine = null;
@@ -232,7 +236,8 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                               arText: 'تنبيه',
                                             )),
                                             content: Text((_model
-                                                    .apiResulth6x?.bodyText ??
+                                                    .apiResulth6xCopy
+                                                    ?.bodyText ??
                                                 '')),
                                             actions: [
                                               TextButton(
@@ -253,33 +258,102 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
 
                                     setState(() {});
                                   },
-                                  text: '${getJsonField(
-                                    listLocsItem,
-                                    r'''$.travel_start_name''',
-                                  ).toString()}->${getJsonField(
-                                    listLocsItem,
-                                    r'''$.travel_end_name''',
-                                  ).toString()}',
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 2.0,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(5.0),
+                                        bottomRight: Radius.circular(5.0),
+                                        topLeft: Radius.circular(5.0),
+                                        topRight: Radius.circular(5.0),
+                                      ),
                                     ),
-                                    borderRadius: BorderRadius.circular(0.0),
+                                    child: Container(
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(0.0, 2.0),
+                                          )
+                                        ],
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(5.0),
+                                          bottomRight: Radius.circular(5.0),
+                                          topLeft: Radius.circular(5.0),
+                                          topRight: Radius.circular(5.0),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Icon(
+                                                Icons.house_sharp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                                size: 30.0,
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    listLocsItem,
+                                                    r'''$.travel_start_name''',
+                                                  ).toString(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Icon(
+                                            Icons.double_arrow,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Icon(
+                                                Icons.location_on,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                size: 30.0,
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    listLocsItem,
+                                                    r'''$.travel_end_name''',
+                                                  ).toString(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );

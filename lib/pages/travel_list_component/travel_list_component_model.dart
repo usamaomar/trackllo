@@ -22,8 +22,8 @@ class TravelListComponentModel
 
   // Stores action output result for [Backend Call - API (GetTravelsListApi)] action in TravelListComponent widget.
   ApiCallResponse? apiResult3dp;
-  // Stores action output result for [Backend Call - API (StartTripApi)] action in Button widget.
-  ApiCallResponse? apiResulth6x;
+  // Stores action output result for [Backend Call - API (StartTripApi)] action in Container widget.
+  ApiCallResponse? apiResulth6xCopy;
 
   /// Initialization and disposal methods.
 

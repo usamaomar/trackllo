@@ -266,52 +266,50 @@ class _CounterInformationDialogWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          if (_model.isUploaded == false) {
-                            final selectedMedia = await selectMedia(
-                              multiImage: false,
-                            );
-                            if (selectedMedia != null &&
-                                selectedMedia.every((m) => validateFileFormat(
-                                    m.storagePath, context))) {
-                              setState(() => _model.isDataUploading = true);
-                              var selectedUploadedFiles = <FFUploadedFile>[];
+                          final selectedMedia = await selectMedia(
+                            multiImage: false,
+                          );
+                          if (selectedMedia != null &&
+                              selectedMedia.every((m) =>
+                                  validateFileFormat(m.storagePath, context))) {
+                            setState(() => _model.isDataUploading = true);
+                            var selectedUploadedFiles = <FFUploadedFile>[];
 
-                              try {
-                                selectedUploadedFiles = selectedMedia
-                                    .map((m) => FFUploadedFile(
-                                          name: m.storagePath.split('/').last,
-                                          bytes: m.bytes,
-                                          height: m.dimensions?.height,
-                                          width: m.dimensions?.width,
-                                          blurHash: m.blurHash,
-                                        ))
-                                    .toList();
-                              } finally {
-                                _model.isDataUploading = false;
-                              }
-                              if (selectedUploadedFiles.length ==
-                                  selectedMedia.length) {
-                                setState(() {
-                                  _model.uploadedLocalFile =
-                                      selectedUploadedFiles.first;
-                                });
-                              } else {
-                                setState(() {});
-                                return;
-                              }
+                            try {
+                              selectedUploadedFiles = selectedMedia
+                                  .map((m) => FFUploadedFile(
+                                        name: m.storagePath.split('/').last,
+                                        bytes: m.bytes,
+                                        height: m.dimensions?.height,
+                                        width: m.dimensions?.width,
+                                        blurHash: m.blurHash,
+                                      ))
+                                  .toList();
+                            } finally {
+                              _model.isDataUploading = false;
                             }
-
-                            setState(() {
-                              _model.localUploadedImage =
-                                  _model.uploadedLocalFile;
-                              _model.isUploaded = true;
-                            });
-                            setState(() {
-                              _model.localImageBase46 =
-                                  functions.convertFromImagePathToString(
-                                      _model.uploadedLocalFile);
-                            });
+                            if (selectedUploadedFiles.length ==
+                                selectedMedia.length) {
+                              setState(() {
+                                _model.uploadedLocalFile =
+                                    selectedUploadedFiles.first;
+                              });
+                            } else {
+                              setState(() {});
+                              return;
+                            }
                           }
+
+                          setState(() {
+                            _model.localUploadedImage =
+                                _model.uploadedLocalFile;
+                            _model.isUploaded = true;
+                          });
+                          setState(() {
+                            _model.localImageBase46 =
+                                functions.convertFromImagePathToString(
+                                    _model.uploadedLocalFile);
+                          });
                         },
                         child: Container(
                           decoration: BoxDecoration(
