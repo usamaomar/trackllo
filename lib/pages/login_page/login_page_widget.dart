@@ -262,6 +262,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                           },
                         );
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: const Text('title'),
+                              content:
+                                  Text((_model.apiResult2xu?.bodyText ?? '')),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       }
 
                       setState(() {});
