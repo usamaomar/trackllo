@@ -119,7 +119,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                 ),
                               ),
                               Text(
-                                FFLocalizations.of(context).languageCode == 'en'
+                                FFAppState().currentLanguge == 'en'
                                     ? FFLocalizations.of(context)
                                         .getVariableText(
                                         enText: 'التحويل للعربية',
