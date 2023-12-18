@@ -203,7 +203,6 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -242,6 +241,8 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                         validator: _model.textController1Validator
                             .asValidator(context),
                       ),
@@ -254,7 +255,6 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -293,6 +293,8 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                         validator: _model.textController2Validator
                             .asValidator(context),
                       ),
@@ -305,7 +307,6 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController3,
                         focusNode: _model.textFieldFocusNode3,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -344,6 +345,8 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                         validator: _model.textController3Validator
                             .asValidator(context),
                       ),

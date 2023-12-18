@@ -206,7 +206,6 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -245,6 +244,8 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                         validator: _model.textController1Validator
                             .asValidator(context),
                       ),
@@ -257,7 +258,6 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -296,6 +296,8 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                         validator: _model.textController2Validator
                             .asValidator(context),
                       ),
@@ -308,7 +310,6 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController3,
                         focusNode: _model.textFieldFocusNode3,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -359,7 +360,6 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController4,
                         focusNode: _model.textFieldFocusNode4,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -398,6 +398,8 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                         validator: _model.textController4Validator
                             .asValidator(context),
                       ),
