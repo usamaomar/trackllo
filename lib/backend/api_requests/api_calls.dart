@@ -51,11 +51,7 @@ class BusServicesApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "bus_number": "$busNumber",
-  "driver_id": "$driverId",
-  "driver_name": "$driverName",
   "type": "$type",
-  "date": "$date",
   "added_liters": "$petrolLitre",
   "current_counter": "$currentCounter",
   "price": "$price",

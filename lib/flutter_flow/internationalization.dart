@@ -350,6 +350,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Miscellaneous
   {
+    '7psyh9gs': {
+      'en': '',
+      'ar': '',
+    },
+    '2ac1evk3': {
+      'en': '',
+      'ar': '',
+    },
     'ltkaq2x3': {
       'en': 'We would like to get your location',
       'ar': '',
@@ -395,6 +403,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'ap6qp03g': {
+      'en': '',
+      'ar': '',
+    },
+    'd6qphmxw': {
       'en': '',
       'ar': '',
     },
