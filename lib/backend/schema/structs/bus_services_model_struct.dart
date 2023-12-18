@@ -12,29 +12,29 @@ class BusServicesModelStruct extends BaseStruct {
     String? driverName,
     String? type,
     String? date,
-    int? currentCounter,
     String? notes,
     String? oilType,
     String? university,
     bool? disabled,
     String? id,
     int? vv,
-    int? price,
     int? addedLiters,
+    double? price,
+    double? currentCounter,
   })  : _busNumber = busNumber,
         _driverId = driverId,
         _driverName = driverName,
         _type = type,
         _date = date,
-        _currentCounter = currentCounter,
         _notes = notes,
         _oilType = oilType,
         _university = university,
         _disabled = disabled,
         _id = id,
         _vv = vv,
+        _addedLiters = addedLiters,
         _price = price,
-        _addedLiters = addedLiters;
+        _currentCounter = currentCounter;
 
   // "bus_number" field.
   String? _busNumber;
@@ -65,14 +65,6 @@ class BusServicesModelStruct extends BaseStruct {
   String get date => _date ?? '';
   set date(String? val) => _date = val;
   bool hasDate() => _date != null;
-
-  // "current_counter" field.
-  int? _currentCounter;
-  int get currentCounter => _currentCounter ?? 0;
-  set currentCounter(int? val) => _currentCounter = val;
-  void incrementCurrentCounter(int amount) =>
-      _currentCounter = currentCounter + amount;
-  bool hasCurrentCounter() => _currentCounter != null;
 
   // "notes" field.
   String? _notes;
@@ -111,19 +103,27 @@ class BusServicesModelStruct extends BaseStruct {
   void incrementVv(int amount) => _vv = vv + amount;
   bool hasVv() => _vv != null;
 
-  // "price" field.
-  int? _price;
-  int get price => _price ?? 0;
-  set price(int? val) => _price = val;
-  void incrementPrice(int amount) => _price = price + amount;
-  bool hasPrice() => _price != null;
-
   // "added_liters" field.
   int? _addedLiters;
   int get addedLiters => _addedLiters ?? 0;
   set addedLiters(int? val) => _addedLiters = val;
   void incrementAddedLiters(int amount) => _addedLiters = addedLiters + amount;
   bool hasAddedLiters() => _addedLiters != null;
+
+  // "price" field.
+  double? _price;
+  double get price => _price ?? 0.0;
+  set price(double? val) => _price = val;
+  void incrementPrice(double amount) => _price = price + amount;
+  bool hasPrice() => _price != null;
+
+  // "current_counter" field.
+  double? _currentCounter;
+  double get currentCounter => _currentCounter ?? 0.0;
+  set currentCounter(double? val) => _currentCounter = val;
+  void incrementCurrentCounter(double amount) =>
+      _currentCounter = currentCounter + amount;
+  bool hasCurrentCounter() => _currentCounter != null;
 
   static BusServicesModelStruct fromMap(Map<String, dynamic> data) =>
       BusServicesModelStruct(
@@ -132,15 +132,15 @@ class BusServicesModelStruct extends BaseStruct {
         driverName: data['driver_name'] as String?,
         type: data['type'] as String?,
         date: data['date'] as String?,
-        currentCounter: castToType<int>(data['current_counter']),
         notes: data['notes'] as String?,
         oilType: data['oil_type'] as String?,
         university: data['university'] as String?,
         disabled: data['disabled'] as bool?,
         id: data['id'] as String?,
         vv: castToType<int>(data['vv']),
-        price: castToType<int>(data['price']),
         addedLiters: castToType<int>(data['added_liters']),
+        price: castToType<double>(data['price']),
+        currentCounter: castToType<double>(data['current_counter']),
       );
 
   static BusServicesModelStruct? maybeFromMap(dynamic data) =>
@@ -154,15 +154,15 @@ class BusServicesModelStruct extends BaseStruct {
         'driver_name': _driverName,
         'type': _type,
         'date': _date,
-        'current_counter': _currentCounter,
         'notes': _notes,
         'oil_type': _oilType,
         'university': _university,
         'disabled': _disabled,
         'id': _id,
         'vv': _vv,
-        'price': _price,
         'added_liters': _addedLiters,
+        'price': _price,
+        'current_counter': _currentCounter,
       }.withoutNulls;
 
   @override
@@ -186,10 +186,6 @@ class BusServicesModelStruct extends BaseStruct {
         'date': serializeParam(
           _date,
           ParamType.String,
-        ),
-        'current_counter': serializeParam(
-          _currentCounter,
-          ParamType.int,
         ),
         'notes': serializeParam(
           _notes,
@@ -215,13 +211,17 @@ class BusServicesModelStruct extends BaseStruct {
           _vv,
           ParamType.int,
         ),
-        'price': serializeParam(
-          _price,
-          ParamType.int,
-        ),
         'added_liters': serializeParam(
           _addedLiters,
           ParamType.int,
+        ),
+        'price': serializeParam(
+          _price,
+          ParamType.double,
+        ),
+        'current_counter': serializeParam(
+          _currentCounter,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -251,11 +251,6 @@ class BusServicesModelStruct extends BaseStruct {
         date: deserializeParam(
           data['date'],
           ParamType.String,
-          false,
-        ),
-        currentCounter: deserializeParam(
-          data['current_counter'],
-          ParamType.int,
           false,
         ),
         notes: deserializeParam(
@@ -288,14 +283,19 @@ class BusServicesModelStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        price: deserializeParam(
-          data['price'],
-          ParamType.int,
-          false,
-        ),
         addedLiters: deserializeParam(
           data['added_liters'],
           ParamType.int,
+          false,
+        ),
+        price: deserializeParam(
+          data['price'],
+          ParamType.double,
+          false,
+        ),
+        currentCounter: deserializeParam(
+          data['current_counter'],
+          ParamType.double,
           false,
         ),
       );
@@ -311,15 +311,15 @@ class BusServicesModelStruct extends BaseStruct {
         driverName == other.driverName &&
         type == other.type &&
         date == other.date &&
-        currentCounter == other.currentCounter &&
         notes == other.notes &&
         oilType == other.oilType &&
         university == other.university &&
         disabled == other.disabled &&
         id == other.id &&
         vv == other.vv &&
+        addedLiters == other.addedLiters &&
         price == other.price &&
-        addedLiters == other.addedLiters;
+        currentCounter == other.currentCounter;
   }
 
   @override
@@ -329,15 +329,15 @@ class BusServicesModelStruct extends BaseStruct {
         driverName,
         type,
         date,
-        currentCounter,
         notes,
         oilType,
         university,
         disabled,
         id,
         vv,
+        addedLiters,
         price,
-        addedLiters
+        currentCounter
       ]);
 }
 
@@ -347,15 +347,15 @@ BusServicesModelStruct createBusServicesModelStruct({
   String? driverName,
   String? type,
   String? date,
-  int? currentCounter,
   String? notes,
   String? oilType,
   String? university,
   bool? disabled,
   String? id,
   int? vv,
-  int? price,
   int? addedLiters,
+  double? price,
+  double? currentCounter,
 }) =>
     BusServicesModelStruct(
       busNumber: busNumber,
@@ -363,13 +363,13 @@ BusServicesModelStruct createBusServicesModelStruct({
       driverName: driverName,
       type: type,
       date: date,
-      currentCounter: currentCounter,
       notes: notes,
       oilType: oilType,
       university: university,
       disabled: disabled,
       id: id,
       vv: vv,
-      price: price,
       addedLiters: addedLiters,
+      price: price,
+      currentCounter: currentCounter,
     );
