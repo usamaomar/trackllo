@@ -269,7 +269,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '2klo8yzx': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
     'o86y0yu0': {
       'en': 'Oil Change',
@@ -296,7 +296,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'mm0vrt49': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
     'oqicxa0j': {
       'en': 'Gas Change',

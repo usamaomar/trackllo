@@ -51,7 +51,6 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Visibility(
       visible: responsiveVisibility(
         context: context,
@@ -60,14 +59,11 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
       child: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Container(
-          height: 400.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).info,
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: Wrap(
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -205,6 +201,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                       padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController1,
+                        textInputAction: TextInputAction.next,
                         focusNode: _model.textFieldFocusNode1,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -257,6 +254,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                       padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController2,
+                        textInputAction: TextInputAction.next,
                         focusNode: _model.textFieldFocusNode2,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -311,6 +309,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                         controller: _model.textController3,
                         focusNode: _model.textFieldFocusNode3,
                         obscureText: false,
+                        textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
                             'iiguwfzu' /* Oil quality */,
@@ -358,6 +357,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
+                        textInputAction: TextInputAction.done,
                         controller: _model.textController4,
                         focusNode: _model.textFieldFocusNode4,
                         obscureText: false,

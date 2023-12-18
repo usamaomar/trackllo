@@ -203,6 +203,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
+                        textInputAction: TextInputAction.next,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -255,6 +256,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
+                        textInputAction: TextInputAction.next,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -306,6 +308,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                       padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController3,
+                        textInputAction: TextInputAction.done,
                         focusNode: _model.textFieldFocusNode3,
                         obscureText: false,
                         decoration: InputDecoration(

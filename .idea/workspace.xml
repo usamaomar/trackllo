@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="" />
+    <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/gas_component/gas_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/gas_component/gas_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/oile_component/oile_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/oile_component/oile_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

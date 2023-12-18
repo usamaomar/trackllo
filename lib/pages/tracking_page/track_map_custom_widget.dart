@@ -278,24 +278,24 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
           zoom: 14.4746,
         ),
       ),
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Visibility(
-            visible: FFAppState().travilLine != null,
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              child: Text(
-                FFAppState().UseTrackToBiginApiAppState == true
-                    ? 'خارج نطاق سير الرحلة'
-                    : 'داخل نطاق سير الرحلة',
-                style: const TextStyle(color: Colors.black87),
-              ),
-            ),
-          ),
-        ],
-      ),
+      // Row(
+      //   crossAxisAlignment: CrossAxisAlignment.center,
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
+      //     Visibility(
+      //       visible: FFAppState().travilLine != null,
+      //       child: Container(
+      //         margin: const EdgeInsets.all(10),
+      //         child: Text(
+      //           FFAppState().UseTrackToBiginApiAppState == true
+      //               ? 'خارج نطاق سير الرحلة'
+      //               : 'داخل نطاق سير الرحلة',
+      //           style: const TextStyle(color: Colors.black87),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
       Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
