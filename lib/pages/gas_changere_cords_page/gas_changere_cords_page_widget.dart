@@ -112,7 +112,8 @@ class _GasChangereCordsPageWidgetState
               ),
               Builder(
                 builder: (context) => Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      10.0, 0.0, 10.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showAlignedDialog(
@@ -135,17 +136,33 @@ class _GasChangereCordsPageWidgetState
                             ),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) async {
+                        _model.apiResultyty =
+                            await RecordsBusServicesApiCall.call(
+                          token: FFAppState().UserModelAppState.token,
+                        );
+                        if ((_model.apiResultyty?.succeeded ?? true)) {
+                          setState(() {
+                            _model.listOfGas = functions
+                                .fromJsonToListRecords(getJsonField(
+                                  (_model.apiResultyty?.jsonBody ?? ''),
+                                  r'''$.data''',
+                                ))
+                                .toList()
+                                .cast<BusServicesModelStruct>();
+                          });
+                        }
+                      });
                     },
                     text: FFLocalizations.of(context).getText(
                       '1py1ygsu' /* Add */,
                     ),
                     options: FFButtonOptions(
                       height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          24.0, 0.0, 24.0, 0.0),
+                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).info,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -222,9 +239,8 @@ class _GasChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 5.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 5.0, 0.0, 5.0),
                                           child: Text(
                                             listOfGasslocalItem.currentCounter
                                                 .toString(),
@@ -253,9 +269,8 @@ class _GasChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 5.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 5.0, 0.0, 5.0),
                                           child: Text(
                                             listOfGasslocalItem.addedLiters
                                                 .toString(),
@@ -284,9 +299,8 @@ class _GasChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 5.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 5.0, 0.0, 5.0),
                                           child: Text(
                                             listOfGasslocalItem.price
                                                 .toString(),

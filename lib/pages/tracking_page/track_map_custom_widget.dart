@@ -171,7 +171,8 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
         for (var setting in line['way_points']) {
           markers.add(Marker(
             markerId: MarkerId(setting['label']),
-            position: lats.LatLng(setting['lat'], setting['lng']),
+            position: lats.LatLng(
+                setting['lat'].toDouble(), setting['lng'].toDouble()),
             draggable: false,
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 BitmapDescriptor.hueGreen),
@@ -360,7 +361,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                               : FlutterFlowTheme.of(context).primaryText,
                           size: 30.0,
                         ),
-                        onTap: () {
+                        onTap: () async {
                           if (!FFAppState().UseTrackToBiginApiAppState) {
                             if (FFAppState().travilLine != null) {
                               trackLocation();
@@ -383,16 +384,116 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
     ]));
   }
 
-  void trackLocation() {
+  void trackLocation() async {
     if (!isLocationEnabled) {
-      clickAction();
-      positionStream.resume();
-      isLocationEnabled = true;
-      widget.startTrip.call();
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text(FFLocalizations.of(context).getVariableText(
+              enText: 'Alert',
+              arText: 'تنبيه',
+            )),
+            content: Text(FFLocalizations.of(context).getVariableText(
+              enText: 'Are you sure you want to start the traking',
+              arText: 'هل انت متأكد من بدء التتبع',
+            )),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(alertDialogContext);
+                  clickAction();
+                  positionStream.resume();
+                  isLocationEnabled = true;
+                  widget.startTrip.call();
+                },
+                child: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Ok',
+                  arText: 'حسنا',
+                )),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(alertDialogContext);
+                },
+                child: Text(
+                  FFLocalizations.of(context).getVariableText(
+                    enText: 'Cancel',
+                    arText: 'الغاء',
+                  ),
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          );
+        },
+      );
     } else {
-      positionStream.cancel();
-      isLocationEnabled = false;
-      widget.stopTrip.call();
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text(FFLocalizations.of(context).getVariableText(
+              enText: 'Alert',
+              arText: 'تنبيه',
+            )),
+            content: RichText(
+              text: TextSpan(
+                // Note: Styles for TextSpans must be explicitly defined.
+                // Child text spans will inherit styles from parent
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: FFLocalizations.of(context).getVariableText(
+                    enText: 'Are you sure you want to ',
+                    arText: 'هل انت متأكد من ',
+                  )),
+                  TextSpan(
+                      text: FFLocalizations.of(context).getVariableText(
+                        enText: 'Stop',
+                        arText: 'ايقاف',
+                      ),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(
+                      text: FFLocalizations.of(context).getVariableText(
+                    enText: ' the traking',
+                    arText: ' التتبع',
+                  )),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(alertDialogContext);
+                  positionStream.cancel();
+                  isLocationEnabled = false;
+                  widget.stopTrip.call();
+                },
+                child: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Ok',
+                  arText: 'حسنا',
+                )),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(alertDialogContext);
+                },
+                child: Text(
+                  FFLocalizations.of(context).getVariableText(
+                    enText: 'Cancel',
+                    arText: 'الغاء',
+                  ),
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          );
+        },
+      );
     }
     setState(() {});
   }

@@ -170,35 +170,10 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           setState(() {});
                         }
                       }
-//bus_identity
                       setState(() {});
                     },
                     startTrip: () async {
-                      // _model.apiResultf61 = await StartTripApiCall.call(
-                      //   token: FFAppState().UserModelAppState.token,
-                      //   travelId: getJsonField(
-                      //     FFAppState().travilLine,
-                      //     r'''$.data._id''',
-                      //   ).toString(),
-                      //   driverId: FFAppState().UserModelAppState.id,
-                      //   day: functions.dateFromat(),
-                      //   isFinished: false,
-                      //   busId: getJsonField(
-                      //     functions.findBusByUserId(
-                      //         getJsonField(
-                      //           FFAppState().travilLine,
-                      //           r'''$.bus''',
-                      //           true,
-                      //         )!,
-                      //         FFAppState().UserModelAppState.id),
-                      //     r'''$._id''',
-                      //   ).toString(),
-                      // );
-                      // if ((_model.apiResultf61?.succeeded ?? true)) {
-                      //   setState(() {});
-                      // }
-                      //
-                      // setState(() {});
+
                     },
                     stopTrip: () async {},
                     travilLise: () async {

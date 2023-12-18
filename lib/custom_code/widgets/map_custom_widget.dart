@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
+
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
@@ -120,8 +121,8 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
         .asUint8List();
   }
 
-  Future<BitmapDescriptor> getBitmapDescriptorFromAssetBytes(
-      String path, int width) async {
+  Future<BitmapDescriptor> getBitmapDescriptorFromAssetBytes(String path,
+      int width) async {
     final Uint8List? imageData = await getBytesFromAsset(path, width);
     return BitmapDescriptor.fromBytes(imageData!);
   }
@@ -176,33 +177,34 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
     positionStream =
         Geolocator.getPositionStream(locationSettings: locationSettings)
             .listen((Position? position) {
-      setState(() {
-        this.position = position ??
-            Position(
-                longitude: 35.857670,
-                latitude: 31.959345,
-                timestamp: DateTime.now(),
-                accuracy: 100,
-                altitudeAccuracy: 1,
-                altitude: 0,
-                heading: 0,
-                headingAccuracy: 100,
-                speed: 100,
-                speedAccuracy: 100);
-        mapController.moveCamera(CameraUpdate.newLatLng(lats.LatLng(
-            position?.latitude ?? 0.0, position?.longitude ?? 0.0)));
-        FFAppState().locationAppState = LocationModelStruct(
-            lat: position?.latitude ?? 0.0, lng: position?.longitude ?? 0.0);
-        LocationModelStruct loc = FFAppState().locationAppState;
-        markers.add(Marker(
-          markerId: const MarkerId("marker1"),
-          position: lats.LatLng(loc.lat, loc.lng),
-          draggable: false,
-          icon: markerIcon,
-        ));
-        widget.locationRequstedAction.call();
-      });
-    });
+          setState(() {
+            this.position = position ??
+                Position(
+                    longitude: 35.857670,
+                    latitude: 31.959345,
+                    timestamp: DateTime.now(),
+                    accuracy: 100,
+                    altitudeAccuracy: 1,
+                    altitude: 0,
+                    heading: 0,
+                    headingAccuracy: 100,
+                    speed: 100,
+                    speedAccuracy: 100);
+            mapController.moveCamera(CameraUpdate.newLatLng(lats.LatLng(
+                position?.latitude ?? 0.0, position?.longitude ?? 0.0)));
+            FFAppState().locationAppState = LocationModelStruct(
+                lat: position?.latitude ?? 0.0,
+                lng: position?.longitude ?? 0.0);
+            LocationModelStruct loc = FFAppState().locationAppState;
+            markers.add(Marker(
+              markerId: const MarkerId("marker1"),
+              position: lats.LatLng(loc.lat, loc.lng),
+              draggable: false,
+              icon: markerIcon,
+            ));
+            widget.locationRequstedAction.call();
+          });
+        });
   }
 
   void clickAction() {
@@ -214,109 +216,181 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
   Widget build(BuildContext context) {
     return Container(
         child: Stack(children: [
-      GoogleMap(
-        zoomControlsEnabled: false,
-        myLocationEnabled: false,
-        myLocationButtonEnabled: false,
-        onMapCreated: (GoogleMapController controller) {
-          mapController = controller;
-        },
-        markers: markers,
-        initialCameraPosition: CameraPosition(
-          target: lats.LatLng(position.latitude, position.longitude),
-          zoom: 14.4746,
-        ),
-      ),
-      Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+          GoogleMap(
+            zoomControlsEnabled: false,
+            myLocationEnabled: false,
+            myLocationButtonEnabled: false,
+            onMapCreated: (GoogleMapController controller) {
+              mapController = controller;
+            },
+            markers: markers,
+            initialCameraPosition: CameraPosition(
+              target: lats.LatLng(position.latitude, position.longitude),
+              zoom: 14.4746,
+            ),
+          ),
           Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding:
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
                     const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 45.0,
-                      height: 45.0,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffffffff),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        child: Icon(
-                          Icons.reorder_sharp,
-                          color: Colors.transparent,
-                          size: 30.0,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 45.0,
+                          height: 45.0,
+                          decoration: const BoxDecoration(
+                            color: Color(0xffffffff),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: Icon(
+                              Icons.reorder_sharp,
+                              color: Colors.transparent,
+                              size: 30.0,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
+                  ),
+                  Padding(
+                    padding:
                     const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 45.0,
-                      height: 45.0,
-                      decoration: BoxDecoration(
-                        color: isLocationEnabled
-                            ? FlutterFlowTheme.of(context).error
-                            : FlutterFlowTheme.of(context).alternate,
-                        shape: BoxShape.circle,
-                      ),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        child: Icon(
-                          Icons.power_settings_new,
-                          color: isLocationEnabled
-                              ? FlutterFlowTheme.of(context).info
-                              : FlutterFlowTheme.of(context).primaryText,
-                          size: 30.0,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 45.0,
+                          height: 45.0,
+                          decoration: BoxDecoration(
+                            color: isLocationEnabled
+                                ? FlutterFlowTheme
+                                .of(context)
+                                .error
+                                : FlutterFlowTheme
+                                .of(context)
+                                .alternate,
+                            shape: BoxShape.circle,
+                          ),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: Icon(
+                              Icons.power_settings_new,
+                              color: isLocationEnabled
+                                  ? FlutterFlowTheme
+                                  .of(context)
+                                  .info
+                                  : FlutterFlowTheme
+                                  .of(context)
+                                  .primaryText,
+                              size: 30.0,
+                            ),
+                            onTap: () async{
+                              if (FFAppState().travilLine != null) {
+                                if (!isLocationEnabled) {
+                                  await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'Alert',
+                                            arText: 'تنبيه',
+                                          )),
+                                      content: Text(
+                                          FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'Are you sure you want to start the traking',
+                                            arText: 'هل انت متأكد من انك تود بدأ التتبع',
+                                          )),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(alertDialogContext);
+                                            clickAction();
+                                            positionStream.resume();
+                                            isLocationEnabled = true;
+                                            widget.startTrip.call();
+                                          },
+                                          child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  );
+                                } else {
+                                  await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'Alert',
+                                            arText: 'تنبيه',
+                                          )),
+                                      content: Text(
+                                          FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'Are you sure you want to stop the traking',
+                                            arText: 'هل انت متأكد من انك تود ايقاف التتبع',
+                                          )),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(alertDialogContext);
+                                            positionStream.cancel();
+                                            isLocationEnabled = false;
+                                            widget.stopTrip.call();
+                                          },
+                                          child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  );
+                                }
+                                setState(() {});
+                              } else {
+                                widget.travilLise.call();
+                              }
+                            },
+                          ),
                         ),
-                        onTap: () {
-                          if (FFAppState().travilLine != null) {
-                            if (!isLocationEnabled) {
-                              clickAction();
-                              positionStream.resume();
-                              isLocationEnabled = true;
-                              widget.startTrip.call();
-                            } else {
-                              positionStream.cancel();
-                              isLocationEnabled = false;
-                              widget.stopTrip.call();
-                            }
-                            setState(() {});
-                          } else {
-                            widget.travilLise.call();
-                          }
-                        },
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
-    ]));
+        ]));
   }
 }
