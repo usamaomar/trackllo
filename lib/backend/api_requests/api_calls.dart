@@ -108,6 +108,7 @@ class LiveLocationApiCall {
     String? platform = '',
     String? university = '',
     String? bus = '',
+    String? busIdentity = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -134,7 +135,7 @@ class LiveLocationApiCall {
   "university": "$university",
   "bus": "$bus",
   "driverID": "$user",
-  "bus_identity": "$bus"
+  "bus_identity": "$busIdentity"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',
@@ -171,8 +172,7 @@ class StartTripApiCall {
   "travel_id": "$travelId",
   "driver_id": "$driverId",
   "day": "$day",
-  "isFinished": $isFinished,
-  "busID": "$busId"
+  "bus": "$busId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'StartTripApi',

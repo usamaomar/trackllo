@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -59,8 +61,8 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 20.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        10.0, 20.0, 10.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -81,15 +83,19 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                                   width: 2.0,
                                 ),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(150.0),
-                                child: Image.network(
-                                  FFAppState().UserModelAppState.profilePhoto,
-                                  width: 300.0,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                              // child: Visibility(
+                              //   visible: FFAppState()
+                              //           .UserModelAppState
+                              //           .profilePhoto
+                              //           .isEmpty
+                              //       ? false
+                              //       : true,
+                              //   child: ClipRRect(
+                              //       borderRadius: BorderRadius.circular(150.0),
+                              //       child: imageFromBase64String(FFAppState()
+                              //           .UserModelAppState
+                              //           .profilePhoto)),
+                              // ),
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
@@ -416,6 +422,16 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
           ],
         ),
       ),
+    );
+  }
+
+  Image imageFromBase64String(String base64String) {
+    Uint8List bytes = base64Decode(base64String);
+    return Image.memory(
+      bytes,
+      width: 300.0,
+      height: 200.0,
+      fit: BoxFit.cover,
     );
   }
 }

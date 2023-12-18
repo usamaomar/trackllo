@@ -1,3 +1,5 @@
+import 'package:tracllo_driver_system/pages/tracking_page/track_map_custom_widget.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -94,7 +96,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                 SizedBox(
                   width: double.infinity,
                   height: double.infinity,
-                  child: custom_widgets.MapCustomWidget(
+                  child: TrackMapCustomWidget(
                     width: double.infinity,
                     height: double.infinity,
                     locationRequstedAction: () async {
@@ -105,7 +107,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           lat: FFAppState().locationAppState.lat.toString(),
                           lng: FFAppState().locationAppState.lng.toString(),
                           busId: getJsonField(
-                            FFAppState().travilLine,
+                            functions.findBusByUserId(
+                                getJsonField(
+                                  FFAppState().travilLine,
+                                  r'''$.bus''',
+                                  true,
+                                )!,
+                                FFAppState().UserModelAppState.id),
                             r'''$._id''',
                           ).toString(),
                         );
@@ -138,43 +146,59 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           platform: 'android',
                           university: FFAppState().UserModelAppState.university,
                           bus: getJsonField(
-                            FFAppState().travilLine,
+                            functions.findBusByUserId(
+                                getJsonField(
+                                  FFAppState().travilLine,
+                                  r'''$.bus''',
+                                  true,
+                                )!,
+                                FFAppState().UserModelAppState.id),
                             r'''$._id''',
+                          ).toString(),
+                          busIdentity: getJsonField(
+                            functions.findBusByUserId(
+                                getJsonField(
+                                  FFAppState().travilLine,
+                                  r'''$.bus''',
+                                  true,
+                                )!,
+                                FFAppState().UserModelAppState.id),
+                            r'''$.bus_identity''',
                           ).toString(),
                         );
                         if ((_model.apiResult0b0?.succeeded ?? true)) {
                           setState(() {});
                         }
                       }
-
+//bus_identity
                       setState(() {});
                     },
                     startTrip: () async {
-                      _model.apiResultf61 = await StartTripApiCall.call(
-                        token: FFAppState().UserModelAppState.token,
-                        travelId: getJsonField(
-                          FFAppState().travilLine,
-                          r'''$.data._id''',
-                        ).toString(),
-                        driverId: FFAppState().UserModelAppState.id,
-                        day: functions.dateFromat(),
-                        isFinished: false,
-                        busId: getJsonField(
-                          functions.findBusByUserId(
-                              getJsonField(
-                                FFAppState().travilLine,
-                                r'''$.bus''',
-                                true,
-                              )!,
-                              FFAppState().UserModelAppState.id),
-                          r'''$._id''',
-                        ).toString(),
-                      );
-                      if ((_model.apiResultf61?.succeeded ?? true)) {
-                        setState(() {});
-                      }
-
-                      setState(() {});
+                      // _model.apiResultf61 = await StartTripApiCall.call(
+                      //   token: FFAppState().UserModelAppState.token,
+                      //   travelId: getJsonField(
+                      //     FFAppState().travilLine,
+                      //     r'''$.data._id''',
+                      //   ).toString(),
+                      //   driverId: FFAppState().UserModelAppState.id,
+                      //   day: functions.dateFromat(),
+                      //   isFinished: false,
+                      //   busId: getJsonField(
+                      //     functions.findBusByUserId(
+                      //         getJsonField(
+                      //           FFAppState().travilLine,
+                      //           r'''$.bus''',
+                      //           true,
+                      //         )!,
+                      //         FFAppState().UserModelAppState.id),
+                      //     r'''$._id''',
+                      //   ).toString(),
+                      // );
+                      // if ((_model.apiResultf61?.succeeded ?? true)) {
+                      //   setState(() {});
+                      // }
+                      //
+                      // setState(() {});
                     },
                     stopTrip: () async {},
                     travilLise: () async {

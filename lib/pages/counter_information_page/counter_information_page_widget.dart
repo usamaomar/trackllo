@@ -127,7 +127,17 @@ class _CounterInformationPageWidgetState
                             ),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) async{
+                        _model.apiResult4qr = await GetExpectedSpeedometerReadingApiCall.call(
+                          token: FFAppState().UserModelAppState.token,
+                        );
+                        if ((_model.apiResult4qr?.succeeded ?? true)) {
+                          setState(() {
+                            _model.jsonObject = (_model.apiResult4qr?.jsonBody ?? '');
+                          });
+                        }
+                      });
+                      Navigator.pop(context);
                     },
                     text: FFLocalizations.of(context).getText(
                       'ehh563z5' /* Add */,

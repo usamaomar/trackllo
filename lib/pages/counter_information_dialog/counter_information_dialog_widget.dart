@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -141,8 +143,9 @@ class _CounterInformationDialogWidgetState
                                   height: 40.0,
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       34.0, 0.0, 34.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).info,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
@@ -258,8 +261,8 @@ class _CounterInformationDialogWidgetState
                       ],
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          15.0, 0.0, 15.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -307,7 +310,7 @@ class _CounterInformationDialogWidgetState
                           });
                           setState(() {
                             _model.localImageBase46 =
-                                functions.convertFromImagePathToString(
+                                convertFromImagePathToString(
                                     _model.uploadedLocalFile);
                           });
                         },
@@ -348,8 +351,8 @@ class _CounterInformationDialogWidgetState
                                   children: [
                                     if (_model.isUploaded == false)
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 20.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 20.0, 0.0, 0.0),
                                         child: Icon(
                                           Icons.upload_file_sharp,
                                           color: FlutterFlowTheme.of(context)
@@ -387,5 +390,15 @@ class _CounterInformationDialogWidgetState
         ),
       ),
     );
+  }
+
+  String convertFromImagePathToString(FFUploadedFile imageFile) {
+    /// MODIFY CODE ONLY BELOW THIS LINE
+
+    String base64String = base64Encode(imageFile.bytes ?? []);
+    String header = "data:image/png;base64,";
+    return header + base64String;
+
+    /// MODIFY CODE ONLY ABOVE THIS LINE
   }
 }

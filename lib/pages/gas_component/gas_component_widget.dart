@@ -101,7 +101,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                                     driverId: FFAppState().UserModelAppState.id,
                                     driverName:
                                         FFAppState().UserModelAppState.name,
-                                    type: 'oil',
+                                    type: 'petrol',
                                     date: getCurrentTimestamp.toString(),
                                     petrolLitre: _model.textController2.text,
                                     currentCounter: _model.textController1.text,

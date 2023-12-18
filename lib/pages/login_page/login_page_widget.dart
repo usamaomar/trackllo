@@ -30,10 +30,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.textController1?.text = '111111111';
+        _model.textController1?.text = '9999999999';
       });
       setState(() {
-        _model.textController2?.text = 'Abcd!234';
+        _model.textController2?.text = 'Password';
       });
       FFAppState().update(() {});
     });

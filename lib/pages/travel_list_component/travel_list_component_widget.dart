@@ -204,17 +204,30 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                   onTap: () async {
                                     _model.apiResulth6xCopy =
                                         await StartTripApiCall.call(
-                                      token:
-                                          FFAppState().UserModelAppState.token,
-                                      travelId: getJsonField(
-                                        listLocsItem,
-                                        r'''$._id''',
-                                      ).toString(),
-                                      driverId:
-                                          FFAppState().UserModelAppState.id,
-                                      day: functions.dateFromat(),
-                                      isFinished: false,
-                                    );
+                                            token: FFAppState()
+                                                .UserModelAppState
+                                                .token,
+                                            travelId: getJsonField(
+                                              listLocsItem,
+                                              r'''$._id''',
+                                            ).toString(),
+                                            driverId: FFAppState()
+                                                .UserModelAppState
+                                                .id,
+                                            day: functions.dateFromat(),
+                                            isFinished: false,
+                                            busId: getJsonField(
+                                              functions.findBusByUserId(
+                                                  getJsonField(
+                                                    listLocsItem,
+                                                    r'''$.bus''',
+                                                    true,
+                                                  )!,
+                                                  FFAppState()
+                                                      .UserModelAppState
+                                                      .id),
+                                              r'''$._id''',
+                                            ).toString());
                                     if ((_model.apiResulth6xCopy?.succeeded ??
                                         true)) {
                                       FFAppState().update(() {
@@ -304,8 +317,9 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                                 size: 30.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         5.0, 0.0, 5.0, 0.0),
                                                 child: Text(
                                                   getJsonField(
@@ -353,8 +367,9 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                                 size: 30.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         5.0, 0.0, 5.0, 0.0),
                                                 child: Text(
                                                   getJsonField(
