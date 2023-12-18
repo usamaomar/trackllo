@@ -18,9 +18,9 @@ class BusServicesModelStruct extends BaseStruct {
     bool? disabled,
     String? id,
     int? vv,
-    int? addedLiters,
     double? price,
     double? currentCounter,
+    double? addedLiters,
   })  : _busNumber = busNumber,
         _driverId = driverId,
         _driverName = driverName,
@@ -32,9 +32,9 @@ class BusServicesModelStruct extends BaseStruct {
         _disabled = disabled,
         _id = id,
         _vv = vv,
-        _addedLiters = addedLiters,
         _price = price,
-        _currentCounter = currentCounter;
+        _currentCounter = currentCounter,
+        _addedLiters = addedLiters;
 
   // "bus_number" field.
   String? _busNumber;
@@ -103,13 +103,6 @@ class BusServicesModelStruct extends BaseStruct {
   void incrementVv(int amount) => _vv = vv + amount;
   bool hasVv() => _vv != null;
 
-  // "added_liters" field.
-  int? _addedLiters;
-  int get addedLiters => _addedLiters ?? 0;
-  set addedLiters(int? val) => _addedLiters = val;
-  void incrementAddedLiters(int amount) => _addedLiters = addedLiters + amount;
-  bool hasAddedLiters() => _addedLiters != null;
-
   // "price" field.
   double? _price;
   double get price => _price ?? 0.0;
@@ -125,6 +118,14 @@ class BusServicesModelStruct extends BaseStruct {
       _currentCounter = currentCounter + amount;
   bool hasCurrentCounter() => _currentCounter != null;
 
+  // "added_liters" field.
+  double? _addedLiters;
+  double get addedLiters => _addedLiters ?? 0.0;
+  set addedLiters(double? val) => _addedLiters = val;
+  void incrementAddedLiters(double amount) =>
+      _addedLiters = addedLiters + amount;
+  bool hasAddedLiters() => _addedLiters != null;
+
   static BusServicesModelStruct fromMap(Map<String, dynamic> data) =>
       BusServicesModelStruct(
         busNumber: data['bus_number'] as String?,
@@ -138,9 +139,9 @@ class BusServicesModelStruct extends BaseStruct {
         disabled: data['disabled'] as bool?,
         id: data['id'] as String?,
         vv: castToType<int>(data['vv']),
-        addedLiters: castToType<int>(data['added_liters']),
         price: castToType<double>(data['price']),
         currentCounter: castToType<double>(data['current_counter']),
+        addedLiters: castToType<double>(data['added_liters']),
       );
 
   static BusServicesModelStruct? maybeFromMap(dynamic data) =>
@@ -160,9 +161,9 @@ class BusServicesModelStruct extends BaseStruct {
         'disabled': _disabled,
         'id': _id,
         'vv': _vv,
-        'added_liters': _addedLiters,
         'price': _price,
         'current_counter': _currentCounter,
+        'added_liters': _addedLiters,
       }.withoutNulls;
 
   @override
@@ -211,16 +212,16 @@ class BusServicesModelStruct extends BaseStruct {
           _vv,
           ParamType.int,
         ),
-        'added_liters': serializeParam(
-          _addedLiters,
-          ParamType.int,
-        ),
         'price': serializeParam(
           _price,
           ParamType.double,
         ),
         'current_counter': serializeParam(
           _currentCounter,
+          ParamType.double,
+        ),
+        'added_liters': serializeParam(
+          _addedLiters,
           ParamType.double,
         ),
       }.withoutNulls;
@@ -283,11 +284,6 @@ class BusServicesModelStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        addedLiters: deserializeParam(
-          data['added_liters'],
-          ParamType.int,
-          false,
-        ),
         price: deserializeParam(
           data['price'],
           ParamType.double,
@@ -295,6 +291,11 @@ class BusServicesModelStruct extends BaseStruct {
         ),
         currentCounter: deserializeParam(
           data['current_counter'],
+          ParamType.double,
+          false,
+        ),
+        addedLiters: deserializeParam(
+          data['added_liters'],
           ParamType.double,
           false,
         ),
@@ -317,9 +318,9 @@ class BusServicesModelStruct extends BaseStruct {
         disabled == other.disabled &&
         id == other.id &&
         vv == other.vv &&
-        addedLiters == other.addedLiters &&
         price == other.price &&
-        currentCounter == other.currentCounter;
+        currentCounter == other.currentCounter &&
+        addedLiters == other.addedLiters;
   }
 
   @override
@@ -335,9 +336,9 @@ class BusServicesModelStruct extends BaseStruct {
         disabled,
         id,
         vv,
-        addedLiters,
         price,
-        currentCounter
+        currentCounter,
+        addedLiters
       ]);
 }
 
@@ -353,9 +354,9 @@ BusServicesModelStruct createBusServicesModelStruct({
   bool? disabled,
   String? id,
   int? vv,
-  int? addedLiters,
   double? price,
   double? currentCounter,
+  double? addedLiters,
 }) =>
     BusServicesModelStruct(
       busNumber: busNumber,
@@ -369,7 +370,7 @@ BusServicesModelStruct createBusServicesModelStruct({
       disabled: disabled,
       id: id,
       vv: vv,
-      addedLiters: addedLiters,
       price: price,
       currentCounter: currentCounter,
+      addedLiters: addedLiters,
     );
