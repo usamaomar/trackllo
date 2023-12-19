@@ -8,12 +8,13 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_page_model.dart';
 export 'counter_information_page_model.dart';
 
 class CounterInformationPageWidget extends StatefulWidget {
-  const CounterInformationPageWidget({super.key});
+  const CounterInformationPageWidget({Key? key}) : super(key: key);
 
   @override
   _CounterInformationPageWidgetState createState() =>
@@ -83,7 +84,7 @@ class _CounterInformationPageWidgetState
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
                   color: Colors.white,
                   size: 30.0,
@@ -104,16 +105,16 @@ class _CounterInformationPageWidgetState
               ),
               Builder(
                 builder: (context) => Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showAlignedDialog(
                         context: context,
                         isGlobal: true,
                         avoidOverflow: false,
-                        targetAnchor: const AlignmentDirectional(0.0, 0.0)
+                        targetAnchor: AlignmentDirectional(0.0, 0.0)
                             .resolve(Directionality.of(context)),
-                        followerAnchor: const AlignmentDirectional(0.0, 0.0)
+                        followerAnchor: AlignmentDirectional(0.0, 0.0)
                             .resolve(Directionality.of(context)),
                         builder: (dialogContext) {
                           return Material(
@@ -123,7 +124,7 @@ class _CounterInformationPageWidgetState
                                   ? FocusScope.of(context)
                                       .requestFocus(_model.unfocusNode)
                                   : FocusScope.of(context).unfocus(),
-                              child: const CounterInformationDialogWidget(),
+                              child: CounterInformationDialogWidget(),
                             ),
                           );
                         },
@@ -145,17 +146,17 @@ class _CounterInformationPageWidgetState
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).info,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
-                                color: const Color(0xAE2F19FC),
+                                color: Color(0xAE2F19FC),
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -166,7 +167,7 @@ class _CounterInformationPageWidgetState
               ),
             ],
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -188,7 +189,7 @@ class _CounterInformationPageWidgetState
                     Material(
                       color: Colors.transparent,
                       elevation: 4.0,
-                      shape: const RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(25.0),
                           bottomRight: Radius.circular(25.0),
@@ -202,7 +203,7 @@ class _CounterInformationPageWidgetState
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(25.0),
                             bottomRight: Radius.circular(25.0),
                             topLeft: Radius.circular(25.0),
@@ -210,7 +211,7 @@ class _CounterInformationPageWidgetState
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(5.0),
+                          padding: EdgeInsets.all(5.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,

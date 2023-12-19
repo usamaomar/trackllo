@@ -1,11 +1,19 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
 
 import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -40,7 +48,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const SplashPageWidget(),
+          : SplashPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -55,42 +63,42 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const SplashPageWidget(),
+              : SplashPageWidget(),
         ),
         FFRoute(
           name: 'TrackingPage',
           path: '/trackingPage',
-          builder: (context, params) => const TrackingPageWidget(),
+          builder: (context, params) => TrackingPageWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
           path: '/loginPage',
-          builder: (context, params) => const LoginPageWidget(),
+          builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
           name: 'OilChangereCordsPage',
           path: '/oilChangereCordsPage',
-          builder: (context, params) => const OilChangereCordsPageWidget(),
+          builder: (context, params) => OilChangereCordsPageWidget(),
         ),
         FFRoute(
           name: 'GasChangereCordsPage',
           path: '/gasChangereCordsPage',
-          builder: (context, params) => const GasChangereCordsPageWidget(),
+          builder: (context, params) => GasChangereCordsPageWidget(),
         ),
         FFRoute(
           name: 'CounterInformationPage',
           path: '/counterInformationPage',
-          builder: (context, params) => const CounterInformationPageWidget(),
+          builder: (context, params) => CounterInformationPageWidget(),
         ),
         FFRoute(
           name: 'SettingsPage',
           path: '/settingsPage',
-          builder: (context, params) => const SettingsPageWidget(),
+          builder: (context, params) => SettingsPageWidget(),
         ),
         FFRoute(
           name: 'SplashPage',
           path: '/splashPage',
-          builder: (context, params) => const SplashPageWidget(),
+          builder: (context, params) => SplashPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -253,7 +261,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

@@ -41,3 +41,7 @@ dynamic findBusByUserId(
 String convertFromImagePathToString(FFUploadedFile imageFile) {
   return "imgBase64";
 }
+
+LocationModelStruct convertLocation(LatLng location) {
+  return LocationModelStruct(lat: location.latitude, lng: location.longitude);
+}
