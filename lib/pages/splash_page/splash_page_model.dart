@@ -1,8 +1,14 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'splash_page_widget.dart' show SplashPageWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SplashPageModel extends FlutterFlowModel<SplashPageWidget> {
   ///  State fields for stateful widgets in this page.
@@ -19,10 +25,8 @@ class SplashPageModel extends FlutterFlowModel<SplashPageWidget> {
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {}
 
-  @override
   void dispose() {
     timerController.dispose();
   }

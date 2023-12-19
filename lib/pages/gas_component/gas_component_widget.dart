@@ -3,12 +3,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'gas_component_model.dart';
 export 'gas_component_model.dart';
 
 class GasComponentWidget extends StatefulWidget {
-  const GasComponentWidget({super.key});
+  const GasComponentWidget({Key? key}) : super(key: key);
 
   @override
   _GasComponentWidgetState createState() => _GasComponentWidgetState();
@@ -55,7 +57,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(30.0),
         child: Container(
           height: 350.0,
           decoration: BoxDecoration(
@@ -72,7 +74,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                 children: [
                   Expanded(
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Color(0xAE2F19FC),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -82,14 +84,14 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -117,7 +119,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: const Text('title'),
+                                          title: Text('title'),
                                           content: Text(
                                               (_model.apiResultix89?.bodyText ??
                                                   '')),
@@ -125,7 +127,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         );
@@ -140,19 +142,19 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       34.0, 0.0, 34.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).info,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xAE2F19FC),
+                                        color: Color(0xAE2F19FC),
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -197,9 +199,9 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
@@ -211,7 +213,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),
@@ -249,9 +251,9 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                     ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
@@ -263,7 +265,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),
@@ -301,9 +303,9 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                     ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController3,
                         focusNode: _model.textFieldFocusNode3,
@@ -315,7 +317,7 @@ class _GasComponentWidgetState extends State<GasComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),

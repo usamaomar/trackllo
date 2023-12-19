@@ -2,12 +2,14 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'side_menu_component_model.dart';
 export 'side_menu_component_model.dart';
 
 class SideMenuComponentWidget extends StatefulWidget {
-  const SideMenuComponentWidget({super.key});
+  const SideMenuComponentWidget({Key? key}) : super(key: key);
 
   @override
   _SideMenuComponentWidgetState createState() =>
@@ -60,7 +62,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 20.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +79,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                                     .secondaryBackground,
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: const Color(0xAE2F19FC),
+                                  color: Color(0xAE2F19FC),
                                   width: 2.0,
                                 ),
                               ),
@@ -92,7 +94,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Text(
                                 FFAppState().UserModelAppState.name,
@@ -107,12 +109,12 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const Divider(
+                      Divider(
                         thickness: 1.0,
                         color: Color(0xFF797979),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -126,7 +128,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Icon(
                                   Icons.home,
@@ -152,7 +154,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -166,7 +168,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 18.0, 0.0),
                                 child: Icon(
                                   Icons.gas_meter_rounded,
@@ -192,7 +194,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -206,7 +208,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 18.0, 0.0),
                                 child: Icon(
                                   Icons.oil_barrel,
@@ -232,7 +234,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -246,7 +248,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 18.0, 0.0),
                                 child: Icon(
                                   Icons.calculate,
@@ -271,12 +273,12 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                           ),
                         ),
                       ),
-                      const Divider(
+                      Divider(
                         thickness: 1.0,
                         color: Color(0xFF797979),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -290,7 +292,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 18.0, 0.0),
                                 child: Icon(
                                   Icons.settings,
@@ -316,7 +318,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 0.0, 10.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -383,7 +385,7 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 18.0, 0.0),
                                 child: Icon(
                                   Icons.logout_sharp,

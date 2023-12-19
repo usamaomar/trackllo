@@ -3,12 +3,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'oile_component_model.dart';
 export 'oile_component_model.dart';
 
 class OileComponentWidget extends StatefulWidget {
-  const OileComponentWidget({super.key});
+  const OileComponentWidget({Key? key}) : super(key: key);
 
   @override
   _OileComponentWidgetState createState() => _OileComponentWidgetState();
@@ -58,7 +60,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(30.0),
         child: Container(
           height: 400.0,
           decoration: BoxDecoration(
@@ -75,7 +77,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                 children: [
                   Expanded(
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Color(0xAE2F19FC),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -85,14 +87,14 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -120,7 +122,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: const Text('title'),
+                                          title: Text('title'),
                                           content: Text(
                                               (_model.apiResultix8?.bodyText ??
                                                   '')),
@@ -128,7 +130,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         );
@@ -143,19 +145,19 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       34.0, 0.0, 34.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).info,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xAE2F19FC),
+                                        color: Color(0xAE2F19FC),
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -200,9 +202,9 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
@@ -214,7 +216,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),
@@ -252,9 +254,9 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                     ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
@@ -266,7 +268,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),
@@ -304,9 +306,9 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                     ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController3,
                         focusNode: _model.textFieldFocusNode3,
@@ -318,7 +320,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),
@@ -354,9 +356,9 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                     ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: TextFormField(
                         controller: _model.textController4,
                         focusNode: _model.textFieldFocusNode4,
@@ -368,7 +370,7 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xFF032734),
                               width: 1.0,
                             ),

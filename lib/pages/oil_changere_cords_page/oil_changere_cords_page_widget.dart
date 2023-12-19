@@ -10,12 +10,13 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'oil_changere_cords_page_model.dart';
 export 'oil_changere_cords_page_model.dart';
 
 class OilChangereCordsPageWidget extends StatefulWidget {
-  const OilChangereCordsPageWidget({super.key});
+  const OilChangereCordsPageWidget({Key? key}) : super(key: key);
 
   @override
   _OilChangereCordsPageWidgetState createState() =>
@@ -96,7 +97,7 @@ class _OilChangereCordsPageWidgetState
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.white,
                     size: 30.0,
@@ -122,9 +123,9 @@ class _OilChangereCordsPageWidgetState
                         context: context,
                         isGlobal: true,
                         avoidOverflow: false,
-                        targetAnchor: const AlignmentDirectional(0.0, 0.0)
+                        targetAnchor: AlignmentDirectional(0.0, 0.0)
                             .resolve(Directionality.of(context)),
-                        followerAnchor: const AlignmentDirectional(0.0, 0.0)
+                        followerAnchor: AlignmentDirectional(0.0, 0.0)
                             .resolve(Directionality.of(context)),
                         builder: (dialogContext) {
                           return Material(
@@ -134,7 +135,7 @@ class _OilChangereCordsPageWidgetState
                                   ? FocusScope.of(context)
                                       .requestFocus(_model.unfocusNode)
                                   : FocusScope.of(context).unfocus(),
-                              child: const OileComponentWidget(),
+                              child: OileComponentWidget(),
                             ),
                           );
                         },
@@ -146,17 +147,17 @@ class _OilChangereCordsPageWidgetState
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).info,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
-                                color: const Color(0xAE2F19FC),
+                                color: Color(0xAE2F19FC),
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -167,7 +168,7 @@ class _OilChangereCordsPageWidgetState
               ],
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -191,7 +192,7 @@ class _OilChangereCordsPageWidgetState
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 10.0, 15.0, 10.0),
                           child: Container(
                             decoration: BoxDecoration(
@@ -200,7 +201,7 @@ class _OilChangereCordsPageWidgetState
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,7 +220,7 @@ class _OilChangereCordsPageWidgetState
                                             .bodyMedium,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 5.0),
                                         child: Text(
                                           listOfGassItem.currentCounter
@@ -229,7 +230,7 @@ class _OilChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                       ),
-                                      const Divider(
+                                      Divider(
                                         thickness: 1.0,
                                         color: Color(0x63000000),
                                       ),
@@ -249,7 +250,7 @@ class _OilChangereCordsPageWidgetState
                                             .bodyMedium,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 5.0),
                                         child: Text(
                                           listOfGassItem.addedLiters.toString(),
@@ -258,7 +259,7 @@ class _OilChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                       ),
-                                      const Divider(
+                                      Divider(
                                         thickness: 1.0,
                                         color: Color(0x63000000),
                                       ),
@@ -278,7 +279,7 @@ class _OilChangereCordsPageWidgetState
                                             .bodyMedium,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 5.0),
                                         child: Text(
                                           listOfGassItem.oilType,
@@ -287,7 +288,7 @@ class _OilChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                       ),
-                                      const Divider(
+                                      Divider(
                                         thickness: 1.0,
                                         color: Color(0x63000000),
                                       ),
@@ -307,7 +308,7 @@ class _OilChangereCordsPageWidgetState
                                             .bodyMedium,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 5.0),
                                         child: Text(
                                           listOfGassItem.price.toString(),

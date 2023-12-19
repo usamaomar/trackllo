@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -13,8 +15,8 @@ class LoginApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "phone": "$phone",
-  "password": "$password"
+  "phone": "${phone}",
+  "password": "${password}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LoginApi',
@@ -51,11 +53,11 @@ class BusServicesApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "type": "$type",
-  "added_liters": "$petrolLitre",
-  "current_counter": "$currentCounter",
-  "price": "$price",
-  "oil_type": "$oilType"
+  "type": "${type}",
+  "added_liters": "${petrolLitre}",
+  "current_counter": "${currentCounter}",
+  "price": "${price}",
+  "oil_type": "${oilType}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'BusServicesApi',
@@ -64,7 +66,7 @@ class BusServicesApiCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -107,30 +109,30 @@ class LiveLocationApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "user_name": "$userName",
-  "user": "$user",
-  "lat": $lat,
-  "lng": $lng,
-  "status": "$status",
-  "confidence": $confidence,
-  "battery_level": $batteryLevel,
-  "battery_charging": $batteryCharging,
-  "accuracy": $accuracy,
-  "altitude": $altitude,
-  "altitude_accuracy": $altitudeAccuracy,
-  "is_moving": $isMoving,
-  "time": $time,
-  "device_id": "$deviceId",
-  "speed": $speed,
-  "heading": $heading,
-  "moving_type": "$movingType",
-  "event": "$event",
-  "phone_model": "$phonrModel",
-  "platform": "$platform",
-  "university": "$university",
-  "bus": "$bus",
-  "driverID": "$user",
-  "bus_identity": "$bus"
+  "user_name": "${userName}",
+  "user": "${user}",
+  "lat": ${lat},
+  "lng": ${lng},
+  "status": "${status}",
+  "confidence": ${confidence},
+  "battery_level": ${batteryLevel},
+  "battery_charging": ${batteryCharging},
+  "accuracy": ${accuracy},
+  "altitude": ${altitude},
+  "altitude_accuracy": ${altitudeAccuracy},
+  "is_moving": ${isMoving},
+  "time": ${time},
+  "device_id": "${deviceId}",
+  "speed": ${speed},
+  "heading": ${heading},
+  "moving_type": "${movingType}",
+  "event": "${event}",
+  "phone_model": "${phonrModel}",
+  "platform": "${platform}",
+  "university": "${university}",
+  "bus": "${bus}",
+  "driverID": "${user}",
+  "bus_identity": "${bus}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',
@@ -139,7 +141,7 @@ class LiveLocationApiCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -164,11 +166,11 @@ class StartTripApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "travel_id": "$travelId",
-  "driver_id": "$driverId",
-  "day": "$day",
-  "isFinished": $isFinished,
-  "busID": "$busId"
+  "travel_id": "${travelId}",
+  "driver_id": "${driverId}",
+  "day": "${day}",
+  "isFinished": ${isFinished},
+  "busID": "${busId}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'StartTripApi',
@@ -177,7 +179,7 @@ class StartTripApiCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -200,9 +202,9 @@ class AddBusTrackToBeginLiveLocationApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "busId": "$busId",
-  "lat": "$lat",
-  "lng": "$lng"
+  "busId": "${busId}",
+  "lat": "${lat}",
+  "lng": "${lng}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'AddBusTrackToBeginLiveLocationApi',
@@ -211,7 +213,7 @@ class AddBusTrackToBeginLiveLocationApiCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -235,11 +237,11 @@ class DriverDailyImageSummaryApiCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "speedometer": $speedometer,
-  "speedometerImg": "$speedometerImg",
+  "speedometer": ${speedometer},
+  "speedometerImg": "${speedometerImg}",
   "location": {
-    "lat": "$lat",
-    "lng": "$lng"
+    "lat": "${lat}",
+    "lng": "${lng}"
   }
 }''';
     return ApiManager.instance.makeApiCall(
@@ -249,7 +251,7 @@ class DriverDailyImageSummaryApiCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -283,7 +285,7 @@ class RecordsBusServicesApiCall {
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {},
       returnBody: true,
@@ -305,7 +307,7 @@ class GetTravelsListApiCall {
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {
         'token': token,
@@ -330,7 +332,7 @@ class GetExpectedSpeedometerReadingApiCall {
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$token',
+        'Authorization': '${token}',
       },
       params: {
         'token': token,

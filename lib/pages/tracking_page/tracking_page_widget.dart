@@ -10,12 +10,13 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tracking_page_model.dart';
 export 'tracking_page_model.dart';
 
 class TrackingPageWidget extends StatefulWidget {
-  const TrackingPageWidget({super.key});
+  const TrackingPageWidget({Key? key}) : super(key: key);
 
   @override
   _TrackingPageWidgetState createState() => _TrackingPageWidgetState();
@@ -60,25 +61,25 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).info,
-        drawer: SizedBox(
+        drawer: Container(
           width: 300.0,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideMenuComponentModel1,
               updateCallback: () => setState(() {}),
-              child: const SideMenuComponentWidget(),
+              child: SideMenuComponentWidget(),
             ),
           ),
         ),
-        endDrawer: SizedBox(
+        endDrawer: Container(
           width: 300.0,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideMenuComponentModel2,
               updateCallback: () => setState(() {}),
-              child: const SideMenuComponentWidget(),
+              child: SideMenuComponentWidget(),
             ),
           ),
         ),
@@ -91,7 +92,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
             ),
             child: Stack(
               children: [
-                SizedBox(
+                Container(
                   width: double.infinity,
                   height: double.infinity,
                   child: custom_widgets.MapCustomWidget(
@@ -217,7 +218,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -226,7 +227,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                               Container(
                                 width: 45.0,
                                 height: 45.0,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0xFF347CE2),
                                   shape: BoxShape.circle,
                                 ),
@@ -258,11 +259,11 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           children: [
                             Expanded(
                               child: Container(
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0xAE2F19FC),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -285,7 +286,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                       Builder(
                                         builder: (context) => Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 10.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -294,13 +295,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                 isGlobal: true,
                                                 avoidOverflow: false,
                                                 targetAnchor:
-                                                    const AlignmentDirectional(
+                                                    AlignmentDirectional(
                                                             0.0, 0.0)
                                                         .resolve(
                                                             Directionality.of(
                                                                 context)),
                                                 followerAnchor:
-                                                    const AlignmentDirectional(
+                                                    AlignmentDirectional(
                                                             0.0, 0.0)
                                                         .resolve(
                                                             Directionality.of(
@@ -320,7 +321,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                   context)
                                                               .unfocus(),
                                                       child:
-                                                          const TravelListComponentWidget(),
+                                                          TravelListComponentWidget(),
                                                     ),
                                                   );
                                                 },
@@ -333,10 +334,10 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                             ),
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       34.0, 0.0, 34.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -346,10 +347,10 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xAE2F19FC),
+                                                    color: Color(0xAE2F19FC),
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -373,12 +374,12 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                 Container(
                   width: 0.0,
                   height: 0.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: FlutterFlowGoogleMap(
                     controller: _model.googleMapsController,
                     onCameraIdle: (latLng) => _model.googleMapsCenter = latLng,
                     initialLocation: _model.googleMapsCenter ??=
-                        const LatLng(13.106061, -59.613158),
+                        LatLng(13.106061, -59.613158),
                     markerColor: GoogleMarkerColor.violet,
                     mapType: MapType.normal,
                     style: GoogleMapStyle.standard,

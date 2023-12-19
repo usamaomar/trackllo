@@ -1,16 +1,19 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_dialog_model.dart';
 export 'counter_information_dialog_model.dart';
 
 class CounterInformationDialogWidget extends StatefulWidget {
-  const CounterInformationDialogWidget({super.key});
+  const CounterInformationDialogWidget({Key? key}) : super(key: key);
 
   @override
   _CounterInformationDialogWidgetState createState() =>
@@ -20,6 +23,8 @@ class CounterInformationDialogWidget extends StatefulWidget {
 class _CounterInformationDialogWidgetState
     extends State<CounterInformationDialogWidget> {
   late CounterInformationDialogModel _model;
+
+  LatLng? currentUserLocationValue;
 
   @override
   void setState(VoidCallback callback) {
@@ -53,7 +58,7 @@ class _CounterInformationDialogWidgetState
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(30.0),
         child: Container(
           height: 400.0,
           decoration: BoxDecoration(
@@ -70,7 +75,7 @@ class _CounterInformationDialogWidgetState
                 children: [
                   Expanded(
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Color(0xAE2F19FC),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -80,17 +85,20 @@ class _CounterInformationDialogWidgetState
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  currentUserLocationValue =
+                                      await getCurrentUserLocation(
+                                          defaultLocation: LatLng(0.0, 0.0));
                                   _model.apiResultdxj =
                                       await DriverDailyImageSummaryApiCall.call(
                                     token: FFAppState().UserModelAppState.token,
@@ -109,12 +117,17 @@ class _CounterInformationDialogWidgetState
                                   if ((_model.apiResultdxj?.succeeded ??
                                       true)) {
                                     setState(() {});
+                                    setState(() {
+                                      FFAppState().houseLocation =
+                                          functions.convertLocation(
+                                              currentUserLocationValue!);
+                                    });
                                   } else {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: const Text('title'),
+                                          title: Text('title'),
                                           content: Text(
                                               (_model.apiResultdxj?.bodyText ??
                                                   '')),
@@ -122,7 +135,7 @@ class _CounterInformationDialogWidgetState
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         );
@@ -139,19 +152,19 @@ class _CounterInformationDialogWidgetState
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       34.0, 0.0, 34.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).info,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xAE2F19FC),
+                                        color: Color(0xAE2F19FC),
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -202,9 +215,9 @@ class _CounterInformationDialogWidgetState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
@@ -219,7 +232,7 @@ class _CounterInformationDialogWidgetState
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFF032734),
                                     width: 1.0,
                                   ),
@@ -259,7 +272,7 @@ class _CounterInformationDialogWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -317,17 +330,17 @@ class _CounterInformationDialogWidgetState
                                 .secondaryBackground,
                             borderRadius: BorderRadius.circular(8.0),
                             border: Border.all(
-                              color: const Color(0xFF032734),
+                              color: Color(0xFF032734),
                               width: 1.0,
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -348,7 +361,7 @@ class _CounterInformationDialogWidgetState
                                   children: [
                                     if (_model.isUploaded == false)
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: Icon(
                                           Icons.upload_file_sharp,
@@ -358,7 +371,7 @@ class _CounterInformationDialogWidgetState
                                         ),
                                       ),
                                     if (_model.isUploaded == true)
-                                      const Padding(
+                                      Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: Icon(
@@ -375,7 +388,7 @@ class _CounterInformationDialogWidgetState
                         ),
                       ),
                     ),
-                    const Column(
+                    Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [],
                     ),
