@@ -213,22 +213,22 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
         Geolocator.getPositionStream(locationSettings: locationSettings)
             .listen((Position? position) {
       setState(() {
-        // if (isWithinRadius(
-        //     markers.last.position.latitude,
-        //     markers.last.position.longitude,
-        //     position?.latitude ?? 0.0,
-        //     position?.longitude ?? 0.0,
-        //     2.0)) {
-        //   FFAppState().UseTrackToBiginApiAppState = true;
-        // } else if (isWithinRadius(
-        //     markers.first.position.latitude,
-        //     markers.first.position.longitude,
-        //     position?.latitude ?? 0.0,
-        //     position?.longitude ?? 0.0,
-        //     2.0)) {
-        //   FFAppState().UseTrackToBiginApiAppState = false;
-        // }
-        FFAppState().UseTrackToBiginApiAppState = false;
+        if (isWithinRadius(
+            markers.last.position.latitude,
+            markers.last.position.longitude,
+            position?.latitude ?? 0.0,
+            position?.longitude ?? 0.0,
+            2.0)) {
+          FFAppState().UseTrackToBiginApiAppState = true;
+        } else if (isWithinRadius(
+            markers.first.position.latitude,
+            markers.first.position.longitude,
+            position?.latitude ?? 0.0,
+            position?.longitude ?? 0.0,
+            2.0)) {
+          FFAppState().UseTrackToBiginApiAppState = false;
+        }
+        // FFAppState().UseTrackToBiginApiAppState = false;
         this.position = position ??
             Position(
                 longitude: 35.857670,

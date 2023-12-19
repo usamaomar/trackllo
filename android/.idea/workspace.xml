@@ -10,22 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3477fbe7-113b-4a6d-acab-1fb04bf0bbb2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/arm64-v8a/app.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged-not-compiled-resources/release/layout/activity_maps.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/geolocator_android/intermediates/javac/release/classes/com/baseflow/geolocator/GeolocatorPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator_android/intermediates/javac/release/classes/com/baseflow/geolocator/GeolocatorPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/custom_code/widgets/map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/custom_code/widgets/map_custom_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/flutter_flow/internationalization.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/pages/oil_changere_cords_page/oil_changere_cords_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/oil_changere_cords_page/oil_changere_cords_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/pages/tracking_page/track_map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/tracking_page/track_map_custom_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/pages/tracking_page/tracking_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/tracking_page/tracking_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +68,12 @@
       </state>
     </system>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="EXPORT_PRIVATE_KEY" value="false" />
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../keyoftracllo" />
+    <option name="KEY_ALIAS" value="keyoftracllo" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -87,18 +82,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/usamaomar/Downloads/Programming/trackllo/android&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "BundleExportedModule": "android.app",
+    "ExportBundle.BundlePathForandroid.app": "/Users/usamaomar/Downloads/Programming/trackllo/android/app",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "/Users/usamaomar/Downloads/Programming/trackllo/android",
+    "settings.editor.selected.configurable": "experimental",
+    "show.migrate.to.gradle.popup": "false"
+  },
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="android.template.-2138891671">
       <recent name="com.afkar.tracllodriversystem" />
@@ -110,7 +112,7 @@
       <command value="gradle signingreport " />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.android [signingreport]">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />
       <option name="DEPLOY" value="true" />
