@@ -213,21 +213,6 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
         Geolocator.getPositionStream(locationSettings: locationSettings)
             .listen((Position? position) {
       setState(() {
-        if (isWithinRadius(
-            31.994780, 35.884102,
-            position?.latitude ?? 0.0,
-            position?.longitude ?? 0.0,
-            0.02)) {
-          FFAppState().UseTrackToBiginApiAppState = true;
-        } else if (isWithinRadius(
-            markers.first.position.latitude,
-            markers.first.position.longitude,
-            position?.latitude ?? 0.0,
-            position?.longitude ?? 0.0,
-            0.02)) {
-          FFAppState().UseTrackToBiginApiAppState = false;
-        }
-        // FFAppState().UseTrackToBiginApiAppState = false;
         this.position = position ??
             Position(
                 longitude: 35.857670,
@@ -278,24 +263,6 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
           zoom: 14.4746,
         ),
       ),
-      // Row(
-      //   crossAxisAlignment: CrossAxisAlignment.center,
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [
-      //     Visibility(
-      //       visible: FFAppState().travilLine != null,
-      //       child: Container(
-      //         margin: const EdgeInsets.all(10),
-      //         child: Text(
-      //           FFAppState().UseTrackToBiginApiAppState == true
-      //               ? 'خارج نطاق سير الرحلة'
-      //               : 'داخل نطاق سير الرحلة',
-      //           style: const TextStyle(color: Colors.black87),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
       Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

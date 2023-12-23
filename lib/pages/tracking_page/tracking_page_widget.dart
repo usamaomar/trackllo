@@ -148,16 +148,10 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                       );
                       if ((_model.apiResult0b0?.succeeded ?? true)) {
                         setState(() {});
-                      if ((_model.apiResultf61?.succeeded ?? true)) {
-                        setState(() {
-                          FFAppState().tripIdToBeCanceld = getJsonField(
-                            (_model.apiResultf61?.jsonBody ?? ''),
-                            r'''$.data._id''',
-                          ).toString();
-                        });
-                      }
-                      setState(() {});
+
+                       }
                     },
+                    startTrip: () async {},
                     stopTrip: () async {
                       _model.apiResult5x0 = await EndTripApiCall.call(
                         tripId: FFAppState().tripIdToBeCanceld,

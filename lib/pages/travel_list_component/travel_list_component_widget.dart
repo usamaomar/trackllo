@@ -254,6 +254,11 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                             FFAppState().travilLine = null;
                                           });
                                           setState(() {
+                                            FFAppState().tripIdToBeCanceld = getJsonField(
+                                              (_model.apiResulth6xCopy?.jsonBody ?? ''),
+                                              r'''$.data._id''',
+                                            ).toString();
+
                                             FFAppState().travilLine =
                                                 listLocsItem;
                                           });
