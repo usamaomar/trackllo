@@ -99,51 +99,76 @@ class _CounterInformationDialogWidgetState
                                   currentUserLocationValue =
                                       await getCurrentUserLocation(
                                           defaultLocation: LatLng(0.0, 0.0));
-                                  _model.apiResultdxj =
-                                      await DriverDailyImageSummaryApiCall.call(
-                                    token: FFAppState().UserModelAppState.token,
-                                    speedometer: int.tryParse(
-                                        _model.textController.text),
-                                    speedometerImg: _model.localImageBase46,
-                                    lat: FFAppState()
-                                        .locationAppState
-                                        .lat
-                                        .toString(),
-                                    lng: FFAppState()
-                                        .locationAppState
-                                        .lng
-                                        .toString(),
-                                  );
-                                  if ((_model.apiResultdxj?.succeeded ??
-                                      true)) {
-                                    setState(() {});
-                                    setState(() {
-                                      FFAppState().houseLocation =
-                                          functions.convertLocation(
-                                              currentUserLocationValue!);
-                                    });
+                                  if (_model.textController.text != null &&
+                                          _model.textController.text != ''
+                                      ? true
+                                      : false) {
+                                    _model.apiResultdxj =
+                                        await DriverDailyImageSummaryApiCall
+                                            .call(
+                                      token:
+                                          FFAppState().UserModelAppState.token,
+                                      speedometer: int.tryParse(
+                                          _model.textController.text),
+                                      speedometerImg: _model.localImageBase46,
+                                      lat: FFAppState()
+                                          .locationAppState
+                                          .lat
+                                          .toString(),
+                                      lng: FFAppState()
+                                          .locationAppState
+                                          .lng
+                                          .toString(),
+                                    );
+                                    if ((_model.apiResultdxj?.succeeded ??
+                                        true)) {
+                                      setState(() {});
+                                      setState(() {
+                                        FFAppState().houseLocation =
+                                            functions.convertLocation(
+                                                currentUserLocationValue!);
+                                      });
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('title'),
+                                            content: Text((_model
+                                                    .apiResultdxj?.bodyText ??
+                                                '')),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+
+                                    Navigator.pop(context);
                                   } else {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: Text('title'),
-                                          content: Text(
-                                              (_model.apiResultdxj?.bodyText ??
-                                                  '')),
+                                          title: Text('تنبيه'),
+                                          content:
+                                              Text('قم بتعبئة الخانه الفارغه'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('Ok'),
+                                              child: Text('حسنا'),
                                             ),
                                           ],
                                         );
                                       },
                                     );
                                   }
-
-                                  Navigator.pop(context);
 
                                   setState(() {});
                                 },
