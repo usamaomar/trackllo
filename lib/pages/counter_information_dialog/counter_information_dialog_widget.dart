@@ -90,7 +90,6 @@ class _CounterInformationDialogWidgetState
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-
                                   _model.apiResultdxj =
                                       await DriverDailyImageSummaryApiCall.call(
                                     token: FFAppState().UserModelAppState.token,
@@ -98,45 +97,16 @@ class _CounterInformationDialogWidgetState
                                         _model.textController.text),
                                     speedometerImg: _model.localImageBase46,
                                     lat: FFAppState()
-                                        .locationAppState
+                                        .houseLocation
                                         .lat
                                         .toString(),
                                     lng: FFAppState()
-                                        .locationAppState
+                                        .houseLocation
                                         .lng
                                         .toString(),
                                   );
                                   if ((_model.apiResultdxj?.succeeded ??
                                       true)) {
-                                    setState(() {});
-                                    setState(() {
-                                      FFAppState().houseLocation =
-                                          functions.convertLocation(
-                                              currentUserLocationValue!);
-                                    });
-                                  } else {
-    await showDialog(
-    context: context,
-    builder: (alertDialogContext) {
-    return AlertDialog(
-    title: Text('title'),
-    content: Text(functions
-        .convertJsonToString((_model
-        .apiResultdxj
-        ?.bodyText ??
-    ''))),
-    actions: [
-    TextButton(
-    onPressed: () => Navigator.pop(
-    alertDialogContext),
-    child: Text('Ok'),
-    ),
-    ],
-    );
-    },
-    );
-                                  }
-
                                     Navigator.pop(context);
                                   } else {
                                     await showDialog(
