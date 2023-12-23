@@ -202,13 +202,12 @@ class EndTripApiCall {
       callName: 'EndTripApi',
       apiUrl:
           'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/end-trip/${tripId}',
-      callType: ApiCallType.POST,
+      callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': '${token}',
       },
       params: {},
-      bodyType: BodyType.NONE,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
