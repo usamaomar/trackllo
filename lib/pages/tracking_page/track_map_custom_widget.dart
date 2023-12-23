@@ -55,11 +55,9 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
       longitude: 35.857670,
       latitude: 31.959345,
       timestamp: DateTime.now(),
-      // altitudeAccuracy: 100,
       accuracy: 100,
       altitude: 0,
       heading: 0,
-      // headingAccuracy: 100,
       speed: 100,
       speedAccuracy: 100);
 
@@ -110,6 +108,41 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
+  }
+
+  Future checkPermition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('تم تعطيل تحديد خدمات الموقع.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('تم رفض تحديد الموقع');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'تم رفض تحديد الموقع بشكل دائم، ولا يمكننا طلب اذن.');
+    }
+
+    return Future.error('');
   }
 
   double calculateDistance(double lat1, double lng1, double lat2, double lng2) {
@@ -328,15 +361,38 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                           size: 30.0,
                         ),
                         onTap: () async {
-                          if (!FFAppState().UseTrackToBiginApiAppState) {
-                            if (FFAppState().travilLine != null) {
-                              trackLocation();
-                            } else {
-                              widget.travilLise.call();
+                          checkPermition().catchError((onError) {
+                            if(onError.toString().isEmpty){
+                              if (FFAppState().travilLine != null) {
+                                trackLocation();
+                              } else {
+                                widget.travilLise.call();
+                              }
+                            }else{
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    FFLocalizations.of(context)
+                                        .getVariableText(
+                                      enText: onError,
+                                      arText: onError,
+                                    ),
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(
+                                          context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration:
+                                  Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                  FlutterFlowTheme.of(context)
+                                      .secondary,
+                                ),
+                              );
                             }
-                          } else {
-                            trackLocation();
-                          }
+                          });
                         },
                       ),
                     ),
