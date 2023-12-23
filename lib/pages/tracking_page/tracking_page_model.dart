@@ -24,6 +24,8 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
   ApiCallResponse? apiResultr6q;
   // Stores action output result for [Backend Call - API (LiveLocationApi)] action in MapCustomWidget widget.
   ApiCallResponse? apiResult0b0;
+  // Stores action output result for [Backend Call - API (EndTripApi)] action in MapCustomWidget widget.
+  ApiCallResponse? apiResult5x0;
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();

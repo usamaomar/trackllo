@@ -144,10 +144,9 @@ class BusServicesModelStruct extends BaseStruct {
         addedLiters: castToType<double>(data['added_liters']),
       );
 
-  static BusServicesModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? BusServicesModelStruct.fromMap(data)
-          : null;
+  static BusServicesModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? BusServicesModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'bus_number': _busNumber,
