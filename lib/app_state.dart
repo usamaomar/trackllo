@@ -71,6 +71,10 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _tripIdToBeCanceld =
+          prefs.getString('ff_tripIdToBeCanceld') ?? _tripIdToBeCanceld;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -136,6 +140,13 @@ class FFAppState extends ChangeNotifier {
   void updateHouseLocationStruct(Function(LocationModelStruct) updateFn) {
     updateFn(_houseLocation);
     prefs.setString('ff_houseLocation', _houseLocation.serialize());
+  }
+
+  String _tripIdToBeCanceld = '';
+  String get tripIdToBeCanceld => _tripIdToBeCanceld;
+  set tripIdToBeCanceld(String _value) {
+    _tripIdToBeCanceld = _value;
+    prefs.setString('ff_tripIdToBeCanceld', _value);
   }
 }
 
