@@ -123,6 +123,7 @@ class _GasChangereCordsPageWidgetState
                         targetAnchor: const AlignmentDirectional(0.0, 0.0)
                             .resolve(Directionality.of(context)),
                         followerAnchor: const AlignmentDirectional(0.0, 0.0)
+                        followerAnchor: AlignmentDirectional(0.0, -1.0)
                             .resolve(Directionality.of(context)),
                         builder: (dialogContext) {
                           return Material(
