@@ -257,7 +257,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                             FFAppState().travilLine =
                                                 listLocsItem;
                                           });
-                                          Navigator.pop(context);
+                                          Navigator.pop(context);///"_id" -> "6586b18287ae959a92f4bb62"
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -314,7 +314,6 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                           );
                                         }
                                       }
-
                                       setState(() {});
                                     },
                                     child: Material(
