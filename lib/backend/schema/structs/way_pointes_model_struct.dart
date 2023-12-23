@@ -50,8 +50,9 @@ class WayPointesModelStruct extends BaseStruct {
         lat: castToType<double>(data['lat']),
       );
 
-  static WayPointesModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? WayPointesModelStruct.fromMap(data) : null;
+  static WayPointesModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? WayPointesModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

@@ -182,8 +182,9 @@ class UserModelStruct extends BaseStruct {
         vvv: data['vvv'] as String?,
       );
 
-  static UserModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? UserModelStruct.fromMap(data) : null;
+  static UserModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? UserModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

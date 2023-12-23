@@ -32,8 +32,9 @@ class LocationModelStruct extends BaseStruct {
         lng: castToType<double>(data['lng']),
       );
 
-  static LocationModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? LocationModelStruct.fromMap(data) : null;
+  static LocationModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? LocationModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'lat': _lat,

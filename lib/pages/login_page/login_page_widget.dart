@@ -235,10 +235,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       if ((_model.apiResult2xu?.succeeded ?? true)) {
                         setState(() {
                           FFAppState().UserModelAppState =
-                              UserModelStruct.fromMap(getJsonField(
+                              UserModelStruct.maybeFromMap(getJsonField(
                             (_model.apiResult2xu?.jsonBody ?? ''),
                             r'''$.data''',
-                          ));
+                          ))!;
                         });
                         setState(() {
                           FFAppState().updateUserModelAppStateStruct(
