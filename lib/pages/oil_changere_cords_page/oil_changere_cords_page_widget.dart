@@ -121,11 +121,11 @@ class _OilChangereCordsPageWidgetState
                     onPressed: () async {
                       await showAlignedDialog(
                         context: context,
-                        isGlobal: false,
+                        isGlobal: true,
                         avoidOverflow: false,
                         targetAnchor: AlignmentDirectional(0.0, -1.0)
                             .resolve(Directionality.of(context)),
-                        followerAnchor: AlignmentDirectional(0.0, 0.0)
+                        followerAnchor: AlignmentDirectional(0.0, -1.0)
                             .resolve(Directionality.of(context)),
                         builder: (dialogContext) {
                           return Material(
