@@ -134,9 +134,11 @@ class _CounterInformationDialogWidgetState
                                         builder: (alertDialogContext) {
                                           return AlertDialog(
                                             title: Text('title'),
-                                            content: Text((_model
-                                                    .apiResultdxj?.bodyText ??
-                                                '')),
+                                            content: Text(functions
+                                                .convertJsonToString((_model
+                                                        .apiResultdxj
+                                                        ?.bodyText ??
+                                                    ''))),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(

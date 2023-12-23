@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -270,8 +271,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           builder: (alertDialogContext) {
                             return AlertDialog(
                               title: Text('title'),
-                              content:
-                                  Text((_model.apiResult2xu?.bodyText ?? '')),
+                              content: Text(functions.convertJsonToString(
+                                  (_model.apiResult2xu?.bodyText ?? ''))),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
