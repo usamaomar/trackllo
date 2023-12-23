@@ -55,11 +55,11 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
       longitude: 35.857670,
       latitude: 31.959345,
       timestamp: DateTime.now(),
-      altitudeAccuracy: 100,
+      // altitudeAccuracy: 100,
       accuracy: 100,
       altitude: 0,
       heading: 0,
-      headingAccuracy: 100,
+      // headingAccuracy: 100,
       speed: 100,
       speedAccuracy: 100);
 
@@ -214,18 +214,17 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
             .listen((Position? position) {
       setState(() {
         if (isWithinRadius(
-            markers.last.position.latitude,
-            markers.last.position.longitude,
+            31.994780, 35.884102,
             position?.latitude ?? 0.0,
             position?.longitude ?? 0.0,
-            2.0)) {
+            0.02)) {
           FFAppState().UseTrackToBiginApiAppState = true;
         } else if (isWithinRadius(
             markers.first.position.latitude,
             markers.first.position.longitude,
             position?.latitude ?? 0.0,
             position?.longitude ?? 0.0,
-            2.0)) {
+            0.02)) {
           FFAppState().UseTrackToBiginApiAppState = false;
         }
         // FFAppState().UseTrackToBiginApiAppState = false;
@@ -235,10 +234,10 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                 latitude: 31.959345,
                 timestamp: DateTime.now(),
                 accuracy: 100,
-                altitudeAccuracy: 1,
+                // altitudeAccuracy: 1,
                 altitude: 0,
                 heading: 0,
-                headingAccuracy: 100,
+                // headingAccuracy: 100,
                 speed: 100,
                 speedAccuracy: 100);
         mapController.moveCamera(CameraUpdate.newLatLng(lats.LatLng(

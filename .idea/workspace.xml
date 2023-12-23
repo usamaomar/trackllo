@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/android/app/release/app-release.aab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyoftracllo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/release/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/arm64-v8a/app.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/geolocator_android/intermediates/javac/release/classes/com/baseflow/geolocator/GeolocatorPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/geolocator_android/intermediates/javac/release/classes/com/baseflow/geolocator/GeolocatorPlugin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/geolocator_android/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationManagerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/geolocator_android/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationManagerClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/custom_code/widgets/map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/custom_code/widgets/map_custom_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702932779909</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="c">
+      <created>1703005111279</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703005111279</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,13 +187,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/travel_list_component/travel_list_component_widget.dart</url>
-          <line>238</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
         <breakpoint type="python-exception">

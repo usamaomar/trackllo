@@ -54,11 +54,11 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
       longitude: 35.857670,
       latitude: 31.959345,
       timestamp: DateTime.now(),
-      altitudeAccuracy: 100,
+      // altitudeAccuracy: 100,
       accuracy: 100,
       altitude: 0,
       heading: 0,
-      headingAccuracy: 100,
+      // headingAccuracy: 100,
       speed: 100,
       speedAccuracy: 100);
 
@@ -184,10 +184,10 @@ class _MapCustomWidgetState extends State<MapCustomWidget> {
                     latitude: 31.959345,
                     timestamp: DateTime.now(),
                     accuracy: 100,
-                    altitudeAccuracy: 1,
+                    // altitudeAccuracy: 1,
                     altitude: 0,
                     heading: 0,
-                    headingAccuracy: 100,
+                    // headingAccuracy: 100,
                     speed: 100,
                     speedAccuracy: 100);
             mapController.moveCamera(CameraUpdate.newLatLng(lats.LatLng(

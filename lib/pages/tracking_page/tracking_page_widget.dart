@@ -101,7 +101,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                     width: double.infinity,
                     height: double.infinity,
                     locationRequstedAction: () async {
-                      if (FFAppState().UseTrackToBiginApiAppState == true) {
+                      if (FFAppState().UseTrackToBiginApiAppState == false) {
                         _model.apiResultr6q =
                             await AddBusTrackToBeginLiveLocationApiCall.call(
                           token: FFAppState().UserModelAppState.token,
