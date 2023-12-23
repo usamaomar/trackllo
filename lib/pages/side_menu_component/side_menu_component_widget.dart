@@ -374,6 +374,11 @@ class _SideMenuComponentWidgetState extends State<SideMenuComponentWidget> {
                                 FFAppState().locationAppState =
                                     LocationModelStruct();
                                 FFAppState().travilLine = null;
+                                FFAppState().houseLocation =
+                                    LocationModelStruct.fromSerializableMap(
+                                        jsonDecode(
+                                            '{\"lat\":\"0\",\"lng\":\"0\"}'));
+                                FFAppState().tripIdToBeCanceld = '';
                               });
 
                               context.goNamed('SplashPage');

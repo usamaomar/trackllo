@@ -172,17 +172,19 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                         ).toString(),
                       );
                       if ((_model.apiResultf61?.succeeded ?? true)) {
-                        setState(() {});
+                        setState(() {
+                          FFAppState().tripIdToBeCanceld = getJsonField(
+                            (_model.apiResultf61?.jsonBody ?? ''),
+                            r'''$.data._id''',
+                          ).toString();
+                        });
                       }
 
                       setState(() {});
                     },
                     stopTrip: () async {
                       _model.apiResult5x0 = await EndTripApiCall.call(
-                        tripId: getJsonField(
-                          FFAppState().travilLine,
-                          r'''$._id''',
-                        ).toString(),
+                        tripId: FFAppState().tripIdToBeCanceld,
                         token: FFAppState().UserModelAppState.token,
                       );
                       if ((_model.apiResult5x0?.succeeded ?? true)) {
