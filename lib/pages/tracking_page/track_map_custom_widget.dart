@@ -20,7 +20,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-import '/flutter_flow/lat_lng.dart' as tras;
 
 class TrackMapCustomWidget extends StatefulWidget {
   const TrackMapCustomWidget({
