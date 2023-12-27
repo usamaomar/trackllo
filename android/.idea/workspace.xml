@@ -10,11 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3477fbe7-113b-4a6d-acab-1fb04bf0bbb2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/arm64-v8a/app.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/pages/tracking_page/track_map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/tracking_page/track_map_custom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/packaged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/packaged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/packaged_manifests/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/packaged_manifests/release/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/outputs/apk/debug/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/outputs/apk/debug/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/flutter_flow/internationalization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/pages/counter_information_dialog/counter_information_dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/counter_information_dialog/counter_information_dialog_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/pages/counter_information_page/counter_information_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/counter_information_page/counter_information_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,30 +90,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2Yz4oVw6NEP1FUVqdMyXRSu2DHy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "BundleExportedModule": "android.app",
-    "ExportBundle.BundlePathForandroid.app": "/Users/usamaomar/Downloads/Programming/trackllo/android/app",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "/Users/usamaomar/Downloads/Programming/trackllo/android",
-    "settings.editor.selected.configurable": "experimental",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;BundleExportedModule&quot;: &quot;android.app&quot;,
+    &quot;ExportBundle.BundlePathForandroid.app&quot;: &quot;/Users/usamaomar/Downloads/Programming/trackllo/android/app&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/usamaomar/Downloads/Programming/trackllo/android&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="android.template.-2138891671">
       <recent name="com.afkar.tracllodriversystem" />

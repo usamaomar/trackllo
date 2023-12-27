@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="" />
+    <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/release/app-release.aab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/release/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/arm64-v8a/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/packaged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/packaged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/packaged_manifests/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/packaged_manifests/release/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/counter_information_dialog/counter_information_dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/counter_information_dialog/counter_information_dialog_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/counter_information_page/counter_information_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/counter_information_page/counter_information_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +58,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/usamaomar/Downloads/Programming/trackllo&quot;,

@@ -205,7 +205,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'zcqdktyc': {
       'en': 'The traveled distance :',
-      'ar': 'العداد الحالي :',
+      'ar': 'العداد المتوقع:',
+    },
+    'zcqdktyc44': {
+      'en': 'The traveled distance :',
+      'ar': 'قراءة العداد:',
     },
     'ns2jmdtr': {
       'en': 'Last Trips',

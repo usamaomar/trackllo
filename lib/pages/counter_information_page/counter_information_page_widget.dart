@@ -111,42 +111,69 @@ class _CounterInformationPageWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      _determinePosition().then((value) async {
-                        FFAppState().houseLocation = LocationModelStruct(
-                            lat: value.latitude, lng: value.longitude);
-                        await showAlignedDialog(
-                          context: context,
-                          isGlobal: true,
-                          avoidOverflow: false,
-                          targetAnchor: AlignmentDirectional(0.0, 0.0)
-                              .resolve(Directionality.of(context)),
-                          followerAnchor: AlignmentDirectional(0.0, 0.0)
-                              .resolve(Directionality.of(context)),
-                          builder: (dialogContext) {
-                            return Material(
-                              color: Colors.transparent,
-                              child: GestureDetector(
-                                onTap: () => _model.unfocusNode.canRequestFocus
-                                    ? FocusScope.of(context)
+                      checkPermition().catchError((onError) {
+                        if(onError.toString().isEmpty){
+                          _determinePosition().then((value) async {
+                            FFAppState().houseLocation = LocationModelStruct(
+                                lat: value.latitude, lng: value.longitude);
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: GestureDetector(
+                                    onTap: () => _model.unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
                                         .requestFocus(_model.unfocusNode)
-                                    : FocusScope.of(context).unfocus(),
-                                child: CounterInformationDialogWidget(),
-                              ),
-                            );
-                          },
-                        ).then((value) async {
-                          _model.apiResult4qr =
+                                        : FocusScope.of(context).unfocus(),
+                                    child: CounterInformationDialogWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) async {
+                              _model.apiResult4qr =
                               await GetExpectedSpeedometerReadingApiCall.call(
-                            token: FFAppState().UserModelAppState.token,
-                          );
-                          if ((_model.apiResult4qr?.succeeded ?? true)) {
-                            setState(() {
-                              _model.jsonObject =
+                                token: FFAppState().UserModelAppState.token,
+                              );
+                              if ((_model.apiResult4qr?.succeeded ?? true)) {
+                                setState(() {
+                                  _model.jsonObject =
                                   (_model.apiResult4qr?.jsonBody ?? '');
+                                });
+                              }
                             });
-                          }
-                        });
-                        Navigator.pop(context);
+                            Navigator.pop(context);
+                          });
+                        }else{
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                FFLocalizations.of(context)
+                                    .getVariableText(
+                                  enText: onError,
+                                  arText: onError,
+                                ),
+                                style: TextStyle(
+                                  color: FlutterFlowTheme.of(
+                                      context)
+                                      .primaryText,
+                                ),
+                              ),
+                              duration:
+                              Duration(milliseconds: 4000),
+                              backgroundColor:
+                              FlutterFlowTheme.of(context)
+                                  .secondary,
+                            ),
+                          );
+                        }
                       });
                     },
                     text: FFLocalizations.of(context).getText(
@@ -219,42 +246,83 @@ class _CounterInformationPageWidgetState
                             topRight: Radius.circular(25.0),
                           ),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'zcqdktyc' /* The traveled distance : */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.bold,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'zcqdktyc44' /* The traveled distance : */,
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  Text(
+                                    _model.jsonObject != null
+                                        ? valueOrDefault<String>(
+                                            getJsonField(
+                                              _model.jsonObject,
+                                              r'''$.lastSpeedometerReading''',
+                                            ).toString(),
+                                            '0',
+                                          )
+                                        : '0',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 14.0,
+                                        ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                _model.jsonObject != null
-                                    ? valueOrDefault<String>(
-                                        getJsonField(
-                                          _model.jsonObject,
-                                          r'''$.result''',
-                                        ).toString(),
-                                        '0',
-                                      )
-                                    : '0',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 14.0,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'zcqdktyc' /* The traveled distance : */,
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  Text(
+                                    _model.jsonObject != null
+                                        ? valueOrDefault<String>(
+                                            getJsonField(
+                                              _model.jsonObject,
+                                              r'''$.expectedCurrentReading''',
+                                            ).toString(),
+                                            '0',
+                                          )
+                                        : '0',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 14.0,
+                                        ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -304,4 +372,40 @@ class _CounterInformationPageWidgetState
     // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
   }
+
+  Future checkPermition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('تم تعطيل تحديد خدمات الموقع.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('تم رفض تحديد الموقع');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'تم رفض تحديد الموقع بشكل دائم، ولا يمكننا طلب اذن.');
+    }
+
+    return Future.error('');
+  }
+
 }

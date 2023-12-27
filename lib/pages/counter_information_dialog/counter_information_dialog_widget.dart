@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_dialog_model.dart';
 export 'counter_information_dialog_model.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 class CounterInformationDialogWidget extends StatefulWidget {
   const CounterInformationDialogWidget({super.key});
@@ -90,24 +91,50 @@ class _CounterInformationDialogWidgetState
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  _model.apiResultdxj =
-                                      await DriverDailyImageSummaryApiCall.call(
-                                    token: FFAppState().UserModelAppState.token,
-                                    speedometer: int.tryParse(
-                                        _model.textController.text),
-                                    speedometerImg: _model.localImageBase46,
-                                    lat: FFAppState()
-                                        .houseLocation
-                                        .lat
-                                        .toString(),
-                                    lng: FFAppState()
-                                        .houseLocation
-                                        .lng
-                                        .toString(),
-                                  );
-                                  if ((_model.apiResultdxj?.succeeded ??
-                                      true)) {
-                                    Navigator.pop(context);
+                                  if (_model.textController.text != null &&
+                                      _model.textController.text != '') {
+                                    _model.apiResultdxj =
+                                        await DriverDailyImageSummaryApiCall
+                                            .call(
+                                      token:
+                                          FFAppState().UserModelAppState.token,
+                                      speedometer: int.tryParse(
+                                          _model.textController.text),
+                                      speedometerImg: 'image',
+                                      lat: FFAppState()
+                                          .houseLocation
+                                          .lat
+                                          .toString(),
+                                      lng: FFAppState()
+                                          .houseLocation
+                                          .lng
+                                          .toString(),
+                                    );
+                                    if ((_model.apiResultdxj?.succeeded ??
+                                        true)) {
+                                      Navigator.pop(context);
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('title'),
+                                            content: Text(functions
+                                                .convertJsonToString((_model
+                                                        .apiResultdxj
+                                                        ?.bodyText ??
+                                                    ''))),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
                                   } else {
                                     await showDialog(
                                       context: context,
@@ -127,7 +154,6 @@ class _CounterInformationDialogWidgetState
                                       },
                                     );
                                   }
-
                                   setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
