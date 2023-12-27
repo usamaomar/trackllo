@@ -172,13 +172,6 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
     return distance;
   }
 
-  bool isWithinRadius(
-      double myLat, double myLng, double lat, double lng, double radius) {
-    double distance = calculateDistance(myLat, myLng, lat, lng);
-
-    return distance <= radius;
-  }
-
   Future<Uint8List?> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
