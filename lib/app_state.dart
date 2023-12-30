@@ -76,14 +76,19 @@ class FFAppState extends ChangeNotifier {
           prefs.getString('ff_tripIdToBeCanceld') ?? _tripIdToBeCanceld;
     });
     _safeInit(() {
-      if (prefs.containsKey('ff_travilLineAppState')) {
-        try {
-          _travilLineAppState =
-              jsonDecode(prefs.getString('ff_travilLineAppState') ?? '');
-        } catch (e) {
-          print("Can't decode persisted json. Error: $e.");
-        }
-      }
+      _appStateOfflineModel = prefs
+              .getStringList('ff_appStateOfflineModel')
+              ?.map((x) {
+                try {
+                  return OfflineModelStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _appStateOfflineModel;
     });
   }
 
@@ -159,11 +164,46 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_tripIdToBeCanceld', _value);
   }
 
-  dynamic _travilLineAppState;
-  dynamic get travilLineAppState => _travilLineAppState;
-  set travilLineAppState(dynamic _value) {
-    _travilLineAppState = _value;
-    prefs.setString('ff_travilLineAppState', jsonEncode(_value));
+  List<OfflineModelStruct> _appStateOfflineModel = [];
+  List<OfflineModelStruct> get appStateOfflineModel => _appStateOfflineModel;
+  set appStateOfflineModel(List<OfflineModelStruct> _value) {
+    _appStateOfflineModel = _value;
+    prefs.setStringList(
+        'ff_appStateOfflineModel', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToAppStateOfflineModel(OfflineModelStruct _value) {
+    _appStateOfflineModel.add(_value);
+    prefs.setStringList('ff_appStateOfflineModel',
+        _appStateOfflineModel.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromAppStateOfflineModel(OfflineModelStruct _value) {
+    _appStateOfflineModel.remove(_value);
+    prefs.setStringList('ff_appStateOfflineModel',
+        _appStateOfflineModel.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromAppStateOfflineModel(int _index) {
+    _appStateOfflineModel.removeAt(_index);
+    prefs.setStringList('ff_appStateOfflineModel',
+        _appStateOfflineModel.map((x) => x.serialize()).toList());
+  }
+
+  void updateAppStateOfflineModelAtIndex(
+    int _index,
+    OfflineModelStruct Function(OfflineModelStruct) updateFn,
+  ) {
+    _appStateOfflineModel[_index] = updateFn(_appStateOfflineModel[_index]);
+    prefs.setStringList('ff_appStateOfflineModel',
+        _appStateOfflineModel.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInAppStateOfflineModel(
+      int _index, OfflineModelStruct _value) {
+    _appStateOfflineModel.insert(_index, _value);
+    prefs.setStringList('ff_appStateOfflineModel',
+        _appStateOfflineModel.map((x) => x.serialize()).toList());
   }
 }
 
