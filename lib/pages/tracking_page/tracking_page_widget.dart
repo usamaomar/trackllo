@@ -1,5 +1,6 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:tracllo_driver_system/backend/schema/structs/index.dart';
 import 'package:tracllo_driver_system/pages/tracking_page/track_map_custom_widget.dart';
 
 import '/backend/api_requests/api_calls.dart';
@@ -33,13 +34,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
 
   @override
   void initState() {
-    Connectivity().checkConnectivity().then((ConnectivityResult result) {
-      if(result.name == "none"){
-
-      }else{
-
-      }
-    });
     super.initState();
     _model = createModel(context, () => TrackingPageModel());
   }
@@ -108,54 +102,102 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                     width: double.infinity,
                     height: double.infinity,
                     locationRequstedAction: () async {
-                      _model.apiResult0b0 = await LiveLocationApiCall.call(
-                        token: FFAppState().UserModelAppState.token,
-                        busNumber: FFAppState().UserModelAppState.ssi,
-                        lat: FFAppState().locationAppState.lat,
-                        lng: FFAppState().locationAppState.lng,
-                        userName: FFAppState().UserModelAppState.name,
-                        user: FFAppState().UserModelAppState.id,
-                        status: 'e',
-                        confidence: 0,
-                        batteryLevel: 0,
-                        batteryCharging: true,
-                        accuracy: 0,
-                        altitude: 0,
-                        altitudeAccuracy: 0,
-                        isMoving: true,
-                        time: getCurrentTimestamp.millisecondsSinceEpoch,
-                        deviceId: '0',
-                        speed: 90,
-                        heading: 0,
-                        movingType: 'e',
-                        event: 'e',
-                        phonrModel: 'x7',
-                        platform: 'android',
-                        university: FFAppState().UserModelAppState.university,
-                        bus: getJsonField(
-                          functions.findBusByUserId(
-                              getJsonField(
-                                FFAppState().travilLine,
-                                r'''$.bus''',
-                                true,
-                              )!,
-                              FFAppState().UserModelAppState.id),
-                          r'''$._id''',
-                        ).toString(),
-                        busIdentity: getJsonField(
-                          functions.findBusByUserId(
-                              getJsonField(
-                                FFAppState().travilLine,
-                                r'''$.bus''',
-                                true,
-                              )!,
-                              FFAppState().UserModelAppState.id),
-                          r'''$.bus_identity''',
-                        ).toString(),
-                      );
-                      if ((_model.apiResult0b0?.succeeded ?? true)) {
-                        setState(() {});
-                       }
+                      Connectivity()
+                          .checkConnectivity()
+                          .then((ConnectivityResult result) async {
+                        if (result.name != "none") {
+                          _model.apiResult0b0 = await LiveLocationApiCall.call(
+                            token: FFAppState().UserModelAppState.token,
+                            busNumber: FFAppState().UserModelAppState.ssi,
+                            lat: FFAppState().locationAppState.lat,
+                            lng: FFAppState().locationAppState.lng,
+                            userName: FFAppState().UserModelAppState.name,
+                            user: FFAppState().UserModelAppState.id,
+                            status: 'e',
+                            confidence: 0,
+                            batteryLevel: 0,
+                            batteryCharging: true,
+                            accuracy: 0,
+                            altitude: 0,
+                            altitudeAccuracy: 0,
+                            isMoving: true,
+                            time: getCurrentTimestamp.millisecondsSinceEpoch,
+                            deviceId: '0',
+                            speed: 90,
+                            heading: 0,
+                            movingType: 'e',
+                            event: 'e',
+                            phonrModel: 'x7',
+                            platform: 'android',
+                            university:
+                                FFAppState().UserModelAppState.university,
+                            bus: getJsonField(
+                              functions.findBusByUserId(
+                                  getJsonField(
+                                    FFAppState().travilLine,
+                                    r'''$.bus''',
+                                    true,
+                                  )!,
+                                  FFAppState().UserModelAppState.id),
+                              r'''$._id''',
+                            ).toString(),
+                            busIdentity: getJsonField(
+                              functions.findBusByUserId(
+                                  getJsonField(
+                                    FFAppState().travilLine,
+                                    r'''$.bus''',
+                                    true,
+                                  )!,
+                                  FFAppState().UserModelAppState.id),
+                              r'''$.bus_identity''',
+                            ).toString(),
+                          );
+                          if ((_model.apiResult0b0?.succeeded ?? true)) {
+                            setState(() {});
+                          }
+                        } else {
+                          print("saving");
+                          FFAppState().appStateOfflineModel.add(
+                              OfflineModelStruct(
+                                  token: FFAppState().UserModelAppState.token,
+                                  busNumber: FFAppState().UserModelAppState.ssi,
+                                  lat: FFAppState()
+                                      .locationAppState
+                                      .lat
+                                      .toString(),
+                                  lng: FFAppState()
+                                      .locationAppState
+                                      .lng
+                                      .toString(),
+                                  userName: FFAppState().UserModelAppState.name,
+                                  user: FFAppState().UserModelAppState.id,
+                                  time: getCurrentTimestamp
+                                      .millisecondsSinceEpoch
+                                      .toString(),
+                                  university:
+                                      FFAppState().UserModelAppState.university,
+                                  bus: getJsonField(
+                                    functions.findBusByUserId(
+                                        getJsonField(
+                                          FFAppState().travilLine,
+                                          r'''$.bus''',
+                                          true,
+                                        )!,
+                                        FFAppState().UserModelAppState.id),
+                                    r'''$._id''',
+                                  ).toString(),
+                                  busIdentity: getJsonField(
+                                    functions.findBusByUserId(
+                                        getJsonField(
+                                          FFAppState().travilLine,
+                                          r'''$.bus''',
+                                          true,
+                                        )!,
+                                        FFAppState().UserModelAppState.id),
+                                    r'''$.bus_identity''',
+                                  ).toString()));
+                        }
+                      });
                     },
                     startTrip: () async {},
                     stopTrip: () async {
@@ -259,8 +301,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                     color: Color(0xAE2F19FC),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 15.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 0.0, 15.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -281,9 +324,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                         ),
                                         Builder(
                                           builder: (context) => Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 10.0, 0.0, 10.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 await showAlignedDialog(
@@ -399,6 +441,4 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
       ),
     );
   }
-
-
 }
