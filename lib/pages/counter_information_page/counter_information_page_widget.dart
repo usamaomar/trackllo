@@ -308,7 +308,7 @@ class _CounterInformationPageWidgetState
                                             getJsonField(
                                               _model.jsonObject,
                                               r'''$.expectedCurrentReading''',
-                                            ).toString(),
+                                            )?.toString(),
                                             '0',
                                           )
                                         : '0',
