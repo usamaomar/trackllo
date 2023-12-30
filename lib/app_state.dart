@@ -75,6 +75,16 @@ class FFAppState extends ChangeNotifier {
       _tripIdToBeCanceld =
           prefs.getString('ff_tripIdToBeCanceld') ?? _tripIdToBeCanceld;
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_travilLineAppState')) {
+        try {
+          _travilLineAppState =
+              jsonDecode(prefs.getString('ff_travilLineAppState') ?? '');
+        } catch (e) {
+          print("Can't decode persisted json. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -147,6 +157,13 @@ class FFAppState extends ChangeNotifier {
   set tripIdToBeCanceld(String _value) {
     _tripIdToBeCanceld = _value;
     prefs.setString('ff_tripIdToBeCanceld', _value);
+  }
+
+  dynamic _travilLineAppState;
+  dynamic get travilLineAppState => _travilLineAppState;
+  set travilLineAppState(dynamic _value) {
+    _travilLineAppState = _value;
+    prefs.setString('ff_travilLineAppState', jsonEncode(_value));
   }
 }
 

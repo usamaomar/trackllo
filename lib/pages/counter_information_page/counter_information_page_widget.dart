@@ -223,7 +223,7 @@ class _CounterInformationPageWidgetState
                                         getJsonField(
                                           _model.jsonObject,
                                           r'''$.result''',
-                                        ).toString(),
+                                        )?.toString(),
                                         '0',
                                       )
                                     : '0',
