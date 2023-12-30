@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:tracllo_driver_system/pages/tracking_page/track_map_custom_widget.dart';
 
@@ -32,6 +33,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
 
   @override
   void initState() {
+    Connectivity().checkConnectivity().then((ConnectivityResult result) {
+      if(result.name == "none"){
+
+      }else{
+
+      }
+    });
     super.initState();
     _model = createModel(context, () => TrackingPageModel());
   }
@@ -147,7 +155,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                       );
                       if ((_model.apiResult0b0?.succeeded ?? true)) {
                         setState(() {});
-
                        }
                     },
                     startTrip: () async {},
@@ -164,7 +171,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           FFAppState().tripIdToBeCanceld = '';
                         });
                       }
-
                       setState(() {});
                     },
                     travilLise: () async {
@@ -207,7 +213,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -216,7 +222,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                               Container(
                                 width: 45.0,
                                 height: 45.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFF347CE2),
                                   shape: BoxShape.circle,
                                 ),
@@ -249,11 +255,11 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                             children: [
                               Expanded(
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xAE2F19FC),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         15.0, 0.0, 15.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -276,7 +282,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                         Builder(
                                           builder: (context) => Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 10.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
@@ -285,13 +291,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                   isGlobal: true,
                                                   avoidOverflow: false,
                                                   targetAnchor:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                               0.0, 0.0)
                                                           .resolve(
                                                               Directionality.of(
                                                                   context)),
                                                   followerAnchor:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                               0.0, 0.0)
                                                           .resolve(
                                                               Directionality.of(
@@ -311,7 +317,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                     context)
                                                                 .unfocus(),
                                                         child:
-                                                            TravelListComponentWidget(),
+                                                            const TravelListComponentWidget(),
                                                       ),
                                                     );
                                                   },

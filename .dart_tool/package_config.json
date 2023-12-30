@@ -86,6 +86,30 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "connectivity",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/connectivity-3.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_for_web",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/connectivity_for_web-0.4.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_macos",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/connectivity_macos-0.2.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_platform_interface",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/connectivity_platform_interface-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "convert",
       "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/convert-3.1.1",
       "packageUri": "lib/",
@@ -848,7 +872,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-12-24T03:41:47.138307Z",
+  "generated": "2023-12-30T10:08:41.100875Z",
   "generator": "pub",
   "generatorVersion": "3.2.0-210.3.beta"
 }
