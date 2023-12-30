@@ -39,6 +39,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
         _model.textController2?.text = 'Abcd!234';
       });
       FFAppState().update(() {});
+      setState(() {
+        FFAppState().addToAppStateOfflineModel(OfflineModelStruct());
+      });
     });
 
     _model.textController1 ??= TextEditingController();
