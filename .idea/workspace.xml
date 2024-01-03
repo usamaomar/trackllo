@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/pages/connection_status_singleton.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/my_sender.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b8fbaebaf6df1f8253e51151697e5519/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/release/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/arm64-v8a/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/api_requests/api_calls.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/api_requests/api_calls.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703933936687</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="c">
+      <created>1703950690844</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703950690844</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

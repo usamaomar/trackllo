@@ -135,7 +135,7 @@ class LiveLocationApiCall {
   "bus": "${bus}",
   "driverID": "${user}",
   "bus_identity": "$busIdentity",
-   "isOfflineLocation": ${isOfflineLocation}
+   "isOffline": ${isOfflineLocation}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',
