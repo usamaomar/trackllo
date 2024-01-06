@@ -3,14 +3,15 @@ import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/favorite_list_component/favorite_list_component_widget.dart';
 import '/pages/side_menu_component/side_menu_component_widget.dart';
 import '/pages/travel_list_component/travel_list_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'tracking_page_widget.dart' show TrackingPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

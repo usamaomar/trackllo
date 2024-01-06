@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/counter_information_dialog/counter_information_dialog_widget.dart';
 import 'counter_information_page_widget.dart' show CounterInformationPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

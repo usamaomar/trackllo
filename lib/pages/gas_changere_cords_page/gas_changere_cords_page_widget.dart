@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/gas_component/gas_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -116,17 +115,14 @@ class _GasChangereCordsPageWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      await showAlignedDialog(
+                      await showDialog(
                         context: context,
-                        isGlobal: true,
-                        avoidOverflow: false,
-                        targetAnchor: AlignmentDirectional(0.0, 0.0)
-                            .resolve(Directionality.of(context)),
-                        followerAnchor: AlignmentDirectional(0.0, -1.0)
-                            .resolve(Directionality.of(context)),
                         builder: (dialogContext) {
-                          return Material(
-                            color: Colors.transparent,
+                          return Dialog(
+                            insetPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.transparent,
+                            alignment: AlignmentDirectional(0.0, -1.0)
+                                .resolve(Directionality.of(context)),
                             child: GestureDetector(
                               onTap: () => _model.unfocusNode.canRequestFocus
                                   ? FocusScope.of(context)

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/oile_component/oile_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'oil_changere_cords_page_widget.dart' show OilChangereCordsPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

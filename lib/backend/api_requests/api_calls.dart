@@ -373,6 +373,88 @@ class GetExpectedSpeedometerReadingApiCall {
   }
 }
 
+class UnAssignedCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'unAssigned',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/travels/unassigned/unfavorite',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '${token}',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FavoritesCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'favorites',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/travels/favorites',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '${token}',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AddRemovefavoritesCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    List<String>? favoriteTravelsList,
+  }) async {
+    final favoriteTravels = _serializeList(favoriteTravelsList);
+
+    final ffApiRequestBody = '''
+{
+  "favoriteTravels": ${favoriteTravels}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'AddRemovefavorites',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/travels/favorites',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

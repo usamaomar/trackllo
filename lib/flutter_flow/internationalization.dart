@@ -348,6 +348,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'لا توجد عناصر في القائمة',
     },
   },
+  // FavoriteListComponent
+  {
+    'qb932knp': {
+      'en': 'Favorite',
+      'ar': 'المفضلة',
+    },
+    '8vvolod7': {
+      'en': 'Start Trip ',
+      'ar': 'ابدأ الرحلة',
+    },
+  },
   // Miscellaneous
   {
     '7psyh9gs': {
