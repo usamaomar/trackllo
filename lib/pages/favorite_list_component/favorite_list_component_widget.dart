@@ -68,7 +68,7 @@ class _FavoriteListComponentWidgetState
           setState(() {
             _model.favjsonObjct = getJsonField(
               (_model.favs?.jsonBody ?? ''),
-              r'''$.data''',
+              r'''$.favoriteTravels''',
               true,
             )!
                 .toList()
@@ -555,7 +555,19 @@ class _FavoriteListComponentWidgetState
                                                       if ((_model.apiResultpl8
                                                               ?.succeeded ??
                                                           true)) {
-                                                        setState(() {});
+                                                        setState(() {
+                                                          _model.jsonObjct =
+                                                              getJsonField(
+                                                                (_model.apiResultpl8
+                                                                    ?.jsonBody ??
+                                                                    ''),
+                                                                r'''$.favoriteTravels''',
+                                                                true,
+                                                              )!
+                                                                  .toList()
+                                                                  .cast<
+                                                                  dynamic>();
+                                                        });
                                                       }
                                                       _model.apiResultmj1 =
                                                           await FavoritesCall
@@ -819,7 +831,7 @@ class _FavoriteListComponentWidgetState
                                                               (_model.apiResult3dpd
                                                                       ?.jsonBody ??
                                                                   ''),
-                                                              r'''$.data''',
+                                                              r'''$.favoriteTravels''',
                                                               true,
                                                             )!
                                                                     .toList()
