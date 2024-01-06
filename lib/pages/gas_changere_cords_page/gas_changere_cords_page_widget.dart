@@ -116,48 +116,38 @@ class _GasChangereCordsPageWidgetState
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showDialog(
-                        context: context,
-                        builder: (dialogContext) {
-                          return Dialog(
-                            insetPadding: EdgeInsets.zero,
-                            backgroundColor: Colors.transparent,
-                            alignment: AlignmentDirectional(0.0, -1.0)
-                                .resolve(Directionality.of(context)),
-                        isGlobal: true,
-                        avoidOverflow: false,
-                        targetAnchor: const AlignmentDirectional(0.0, 0.0)
-                            .resolve(Directionality.of(context)),
-                        followerAnchor: AlignmentDirectional(0.0, -1.0)
-                            .resolve(Directionality.of(context)),
-                        builder: (dialogContext) {
-                          return Material(
-                            color: Colors.transparent,
-                            child: GestureDetector(
-                              onTap: () => _model.unfocusNode.canRequestFocus
-                                  ? FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode)
-                                  : FocusScope.of(context).unfocus(),
-                              child: const GasComponentWidget(),
-                            ),
-                          );
-                        },
-                      ).then((value) async {
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, -1.0)
+                                  .resolve(Directionality.of(context)),
+                              child: GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                    .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: GasComponentWidget(),
+                              ),
+                            );
+                      }).then((value) async {
                         _model.apiResultyty =
-                            await RecordsBusServicesApiCall.call(
+                        await RecordsBusServicesApiCall.call(
                           token: FFAppState().UserModelAppState.token,
                         );
                         if ((_model.apiResultyty?.succeeded ?? true)) {
                           setState(() {
                             _model.listOfGas = functions
                                 .fromJsonToListRecords(getJsonField(
-                                  (_model.apiResultyty?.jsonBody ?? ''),
-                                  r'''$.data''',
-                                ))
+                              (_model.apiResultyty?.jsonBody ?? ''),
+                              r'''$.data''',
+                            ))
                                 .toList()
                                 .cast<BusServicesModelStruct>();
                           });
                         }
-                      });
+                      });;
                     },
                     text: FFLocalizations.of(context).getText(
                       '1py1ygsu' /* Add */,

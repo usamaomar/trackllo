@@ -2,12 +2,6 @@
   "configVersion": 2,
   "packages": [
     {
-      "name": "aligned_dialog",
-      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/aligned_dialog-0.0.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "archive",
       "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/archive-3.4.10",
       "packageUri": "lib/",
@@ -238,6 +232,12 @@
     {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "flutter_svg",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/flutter_svg-2.0.9",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -530,6 +530,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_parsing",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/path_parsing-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path_provider",
       "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/path_provider-2.0.14",
       "packageUri": "lib/",
@@ -800,6 +806,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "vector_graphics",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/vector_graphics-1.1.9+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "vector_graphics_codec",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.9+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "vector_graphics_compiler",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.9+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -872,7 +896,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-01-06T08:28:00.855372Z",
+  "generated": "2024-01-06T10:25:31.523306Z",
   "generator": "pub",
   "generatorVersion": "3.2.0-210.3.beta"
 }
