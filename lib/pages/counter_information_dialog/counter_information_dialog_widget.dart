@@ -1,19 +1,18 @@
+import 'dart:convert';
+
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_dialog_model.dart';
 export 'counter_information_dialog_model.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 class CounterInformationDialogWidget extends StatefulWidget {
-  const CounterInformationDialogWidget({Key? key}) : super(key: key);
+  const CounterInformationDialogWidget({super.key});
 
   @override
   _CounterInformationDialogWidgetState createState() =>
@@ -23,8 +22,6 @@ class CounterInformationDialogWidget extends StatefulWidget {
 class _CounterInformationDialogWidgetState
     extends State<CounterInformationDialogWidget> {
   late CounterInformationDialogModel _model;
-
-  LatLng? currentUserLocationValue;
 
   @override
   void setState(VoidCallback callback) {
@@ -36,7 +33,6 @@ class _CounterInformationDialogWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CounterInformationDialogModel());
-
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
   }
@@ -44,7 +40,6 @@ class _CounterInformationDialogWidgetState
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
@@ -58,7 +53,7 @@ class _CounterInformationDialogWidgetState
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           height: 400.0,
           decoration: BoxDecoration(
@@ -75,7 +70,7 @@ class _CounterInformationDialogWidgetState
                 children: [
                   Expanded(
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xAE2F19FC),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -85,24 +80,19 @@ class _CounterInformationDialogWidgetState
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  currentUserLocationValue =
-                                      await getCurrentUserLocation(
-                                          defaultLocation: LatLng(0.0, 0.0));
                                   if (_model.textController.text != null &&
-                                          _model.textController.text != ''
-                                      ? true
-                                      : false) {
+                                      _model.textController.text != '') {
                                     _model.apiResultdxj =
                                         await DriverDailyImageSummaryApiCall
                                             .call(
@@ -110,24 +100,19 @@ class _CounterInformationDialogWidgetState
                                           FFAppState().UserModelAppState.token,
                                       speedometer: int.tryParse(
                                           _model.textController.text),
-                                      speedometerImg: _model.localImageBase46,
+                                      speedometerImg: 'image',
                                       lat: FFAppState()
-                                          .locationAppState
+                                          .houseLocation
                                           .lat
                                           .toString(),
                                       lng: FFAppState()
-                                          .locationAppState
+                                          .houseLocation
                                           .lng
                                           .toString(),
                                     );
                                     if ((_model.apiResultdxj?.succeeded ??
                                         true)) {
-                                      setState(() {});
-                                      setState(() {
-                                        FFAppState().houseLocation =
-                                            functions.convertLocation(
-                                                currentUserLocationValue!);
-                                      });
+                                      Navigator.pop(context);
                                     } else {
                                       await showDialog(
                                         context: context,
@@ -150,8 +135,6 @@ class _CounterInformationDialogWidgetState
                                         },
                                       );
                                     }
-
-                                    Navigator.pop(context);
                                   } else {
                                     await showDialog(
                                       context: context,
@@ -171,7 +154,6 @@ class _CounterInformationDialogWidgetState
                                       },
                                     );
                                   }
-
                                   setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
@@ -179,19 +161,20 @@ class _CounterInformationDialogWidgetState
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       34.0, 0.0, 34.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).info,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: Color(0xAE2F19FC),
+                                        color: const Color(0xAE2F19FC),
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -242,9 +225,9 @@ class _CounterInformationDialogWidgetState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Padding(
-                            padding: EdgeInsets.all(15.0),
+                            padding: const EdgeInsets.all(15.0),
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
@@ -259,7 +242,7 @@ class _CounterInformationDialogWidgetState
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFF032734),
                                     width: 1.0,
                                   ),
@@ -298,8 +281,8 @@ class _CounterInformationDialogWidgetState
                       ],
                     ),
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          15.0, 0.0, 15.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -347,7 +330,7 @@ class _CounterInformationDialogWidgetState
                           });
                           setState(() {
                             _model.localImageBase46 =
-                                functions.convertFromImagePathToString(
+                                convertFromImagePathToString(
                                     _model.uploadedLocalFile);
                           });
                         },
@@ -357,17 +340,17 @@ class _CounterInformationDialogWidgetState
                                 .secondaryBackground,
                             borderRadius: BorderRadius.circular(8.0),
                             border: Border.all(
-                              color: Color(0xFF032734),
+                              color: const Color(0xFF032734),
                               width: 1.0,
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -388,8 +371,8 @@ class _CounterInformationDialogWidgetState
                                   children: [
                                     if (_model.isUploaded == false)
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 20.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 20.0, 0.0, 0.0),
                                         child: Icon(
                                           Icons.upload_file_sharp,
                                           color: FlutterFlowTheme.of(context)
@@ -398,7 +381,7 @@ class _CounterInformationDialogWidgetState
                                         ),
                                       ),
                                     if (_model.isUploaded == true)
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: Icon(
@@ -415,7 +398,7 @@ class _CounterInformationDialogWidgetState
                         ),
                       ),
                     ),
-                    Column(
+                    const Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [],
                     ),
@@ -427,5 +410,15 @@ class _CounterInformationDialogWidgetState
         ),
       ),
     );
+  }
+
+  String convertFromImagePathToString(FFUploadedFile imageFile) {
+    /// MODIFY CODE ONLY BELOW THIS LINE
+
+    String base64String = base64Encode(imageFile.bytes ?? []);
+    String header = "data:image/png;base64,";
+    return header + base64String;
+
+    /// MODIFY CODE ONLY ABOVE THIS LINE
   }
 }

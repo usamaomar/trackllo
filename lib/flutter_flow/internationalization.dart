@@ -205,11 +205,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'zcqdktyc': {
       'en': 'The traveled distance :',
-      'ar': 'المسافة المقطوعه :',
+      'ar': 'العداد المتوقع:',
+    },
+    'zcqdktyc44': {
+      'en': 'The traveled distance :',
+      'ar': 'قراءة العداد:',
     },
     'ns2jmdtr': {
       'en': 'Last Trips',
-      'ar': 'الرحلات الأخيرة',
+      'ar': 'عداد المبيت',
     },
     'ehh563z5': {
       'en': 'Add',
@@ -269,7 +273,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '2klo8yzx': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
     'o86y0yu0': {
       'en': 'Oil Change',
@@ -296,7 +300,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'mm0vrt49': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
     'oqicxa0j': {
       'en': 'Gas Change',

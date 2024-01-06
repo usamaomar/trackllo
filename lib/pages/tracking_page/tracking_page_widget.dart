@@ -1,3 +1,8 @@
+import 'package:connectivity/connectivity.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:tracllo_driver_system/backend/schema/structs/index.dart';
+import 'package:tracllo_driver_system/pages/tracking_page/track_map_custom_widget.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -51,9 +56,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
         ),
       );
     }
-
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -96,93 +99,108 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  child: custom_widgets.MapCustomWidget(
+                  child: TrackMapCustomWidget(
                     width: double.infinity,
                     height: double.infinity,
                     locationRequstedAction: () async {
-                      if (FFAppState().UseTrackToBiginApiAppState == true) {
-                        _model.apiResultr6q =
-                            await AddBusTrackToBeginLiveLocationApiCall.call(
-                          token: FFAppState().UserModelAppState.token,
-                          lat: FFAppState().locationAppState.lat.toString(),
-                          lng: FFAppState().locationAppState.lng.toString(),
-                          busId: getJsonField(
-                            FFAppState().travilLine,
-                            r'''$._id''',
-                          ).toString(),
-                        );
-                        if ((_model.apiResultr6q?.succeeded ?? true)) {
-                          setState(() {});
+                      Connectivity()
+                          .checkConnectivity()
+                          .then((ConnectivityResult result) async {
+                        if (result.name != "none") {
+                          _model.apiResult0b0 = await LiveLocationApiCall.call(
+                            token: FFAppState().UserModelAppState.token,
+                            busNumber: FFAppState().UserModelAppState.ssi,
+                            lat: FFAppState().locationAppState.lat,
+                            lng: FFAppState().locationAppState.lng,
+                            userName: FFAppState().UserModelAppState.name,
+                            user: FFAppState().UserModelAppState.id,
+                            status: 'e',
+                            confidence: 0,
+                            batteryLevel: 0,
+                            batteryCharging: true,
+                            accuracy: 0,
+                            altitude: 0,
+                            altitudeAccuracy: 0,
+                            isMoving: true,
+                            time: getCurrentTimestamp.millisecondsSinceEpoch,
+                            deviceId: '0',
+                            speed: 90,
+                            heading: 0,
+                            movingType: 'e',
+                            event: 'e',
+                            phonrModel: 'x7',
+                            platform: 'android',
+                            university:
+                                FFAppState().UserModelAppState.university,
+                            bus: getJsonField(
+                              functions.findBusByUserId(
+                                  getJsonField(
+                                    FFAppState().travilLine,
+                                    r'''$.bus''',
+                                    true,
+                                  )!,
+                                  FFAppState().UserModelAppState.id),
+                              r'''$._id''',
+                            ).toString(),
+                            busIdentity: getJsonField(
+                              functions.findBusByUserId(
+                                  getJsonField(
+                                    FFAppState().travilLine,
+                                    r'''$.bus''',
+                                    true,
+                                  )!,
+                                  FFAppState().UserModelAppState.id),
+                              r'''$.bus_identity''',
+                            ).toString(),
+                          );
+                          if ((_model.apiResult0b0?.succeeded ?? true)) {
+                            setState(() {});
+                          }
+                        } else {
+                          print("saving");
+                          FFAppState().appStateOfflineModel.add(
+                              OfflineModelStruct(
+                                  token: FFAppState().UserModelAppState.token,
+                                  busNumber: FFAppState().UserModelAppState.ssi,
+                                  lat: FFAppState()
+                                      .locationAppState
+                                      .lat
+                                      .toString(),
+                                  lng: FFAppState()
+                                      .locationAppState
+                                      .lng
+                                      .toString(),
+                                  userName: FFAppState().UserModelAppState.name,
+                                  user: FFAppState().UserModelAppState.id,
+                                  time: getCurrentTimestamp
+                                      .millisecondsSinceEpoch
+                                      .toString(),
+                                  university:
+                                      FFAppState().UserModelAppState.university,
+                                  bus: getJsonField(
+                                    functions.findBusByUserId(
+                                        getJsonField(
+                                          FFAppState().travilLine,
+                                          r'''$.bus''',
+                                          true,
+                                        )!,
+                                        FFAppState().UserModelAppState.id),
+                                    r'''$._id''',
+                                  ).toString(),
+                                  busIdentity: getJsonField(
+                                    functions.findBusByUserId(
+                                        getJsonField(
+                                          FFAppState().travilLine,
+                                          r'''$.bus''',
+                                          true,
+                                        )!,
+                                        FFAppState().UserModelAppState.id),
+                                    r'''$.bus_identity''',
+                                  ).toString()));
                         }
-                      } else {
-                        _model.apiResult0b0 = await LiveLocationApiCall.call(
-                          token: FFAppState().UserModelAppState.token,
-                          busNumber: FFAppState().UserModelAppState.ssi,
-                          lat: FFAppState().locationAppState.lat,
-                          lng: FFAppState().locationAppState.lng,
-                          userName: FFAppState().UserModelAppState.name,
-                          user: FFAppState().UserModelAppState.id,
-                          status: 'e',
-                          confidence: 0,
-                          batteryLevel: 0,
-                          batteryCharging: true,
-                          accuracy: 0,
-                          altitude: 0,
-                          altitudeAccuracy: 0,
-                          isMoving: true,
-                          time: getCurrentTimestamp.millisecondsSinceEpoch,
-                          deviceId: '0',
-                          speed: 90,
-                          heading: 0,
-                          movingType: 'e',
-                          event: 'e',
-                          phonrModel: 'x7',
-                          platform: 'android',
-                          university: FFAppState().UserModelAppState.university,
-                          bus: getJsonField(
-                            FFAppState().travilLine,
-                            r'''$._id''',
-                          ).toString(),
-                        );
-                        if ((_model.apiResult0b0?.succeeded ?? true)) {
-                          setState(() {});
-                        }
-                      }
-
-                      setState(() {});
+                      });
                     },
-                    startTrip: () async {
-                      _model.apiResultf61 = await StartTripApiCall.call(
-                        token: FFAppState().UserModelAppState.token,
-                        travelId: getJsonField(
-                          FFAppState().travilLine,
-                          r'''$.data._id''',
-                        ).toString(),
-                        driverId: FFAppState().UserModelAppState.id,
-                        day: functions.dateFromat(),
-                        isFinished: false,
-                        busId: getJsonField(
-                          functions.findBusByUserId(
-                              getJsonField(
-                                FFAppState().travilLine,
-                                r'''$.bus''',
-                                true,
-                              )!,
-                              FFAppState().UserModelAppState.id),
-                          r'''$._id''',
-                        ).toString(),
-                      );
-                      if ((_model.apiResultf61?.succeeded ?? true)) {
-                        setState(() {
-                          FFAppState().tripIdToBeCanceld = getJsonField(
-                            (_model.apiResultf61?.jsonBody ?? ''),
-                            r'''$.data._id''',
-                          ).toString();
-                        });
-                      }
-
-                      setState(() {});
-                    },
+                    startTrip: () async {},
                     stopTrip: () async {
                       _model.apiResult5x0 = await EndTripApiCall.call(
                         tripId: FFAppState().tripIdToBeCanceld,
@@ -196,7 +214,6 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           FFAppState().tripIdToBeCanceld = '';
                         });
                       }
-
                       setState(() {});
                     },
                     travilLise: () async {
@@ -239,7 +256,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -248,7 +265,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                               Container(
                                 width: 45.0,
                                 height: 45.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFF347CE2),
                                   shape: BoxShape.circle,
                                 ),
@@ -332,12 +349,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                             children: [
                               Expanded(
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xAE2F19FC),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 15.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 0.0, 15.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -358,9 +376,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                         ),
                                         Builder(
                                           builder: (context) => Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 10.0, 0.0, 10.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 await showDialog(
@@ -377,6 +394,23 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),
+                                                  isGlobal: true,
+                                                  avoidOverflow: false,
+                                                  targetAnchor:
+                                                      const AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  followerAnchor:
+                                                      const AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  builder: (dialogContext) {
+                                                    return Material(
+                                                      color: Colors.transparent,
                                                       child: GestureDetector(
                                                         onTap: () => _model
                                                                 .unfocusNode
@@ -389,7 +423,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                     context)
                                                                 .unfocus(),
                                                         child:
-                                                            TravelListComponentWidget(),
+                                                            const TravelListComponentWidget(),
                                                       ),
                                                     );
                                                   },

@@ -53,7 +53,6 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Visibility(
       visible: responsiveVisibility(
         context: context,
@@ -62,15 +61,12 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
       child: Padding(
         padding: EdgeInsets.all(30.0),
         child: Container(
-          height: 400.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).info,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+            child: Wrap(
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.max,
@@ -254,165 +250,163 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                           padding: EdgeInsets.all(15.0),
                           child: TextFormField(
                             controller: _model.textController1,
-                            focusNode: _model.textFieldFocusNode1,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                '6yzldoto' /* Meter reading while filling */,
-                              ),
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFF032734),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                            textInputAction: TextInputAction.next,
+                        focusNode: _model.textFieldFocusNode1,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: FFLocalizations.of(context).getText(
+                            '6yzldoto' /* Meter reading while filling */,
+                          ),
+                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF032734),
+                              width: 1.0,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            textAlign: TextAlign.start,
-                            keyboardType: const TextInputType.numberWithOptions(
-                                decimal: true),
-                            validator: _model.textController1Validator
-                                .asValidator(context),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        validator: _model.textController1Validator
+                            .asValidator(context),
                       ),
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsets.all(15.0),
-                          child: TextFormField(
-                            controller: _model.textController2,
-                            focusNode: _model.textFieldFocusNode2,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'f8ophfab' /* Quantity packed in litres */,
-                              ),
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFF032734),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(),
+                    child: Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: TextFormField(
+                        controller: _model.textController2,
+                        textInputAction: TextInputAction.next,
+                        focusNode: _model.textFieldFocusNode2,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: FFLocalizations.of(context).getText(
+                            'f8ophfab' /* Quantity packed in litres */,
+                          ),
+                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF032734),
+                              width: 1.0,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            textAlign: TextAlign.start,
-                            keyboardType: const TextInputType.numberWithOptions(
-                                decimal: true),
-                            validator: _model.textController2Validator
-                                .asValidator(context),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        textAlign: TextAlign.start,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        validator: _model.textController2Validator
+                            .asValidator(context),
                       ),
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsets.all(15.0),
-                          child: TextFormField(
-                            controller: _model.textController3,
-                            focusNode: _model.textFieldFocusNode3,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'iiguwfzu' /* Oil quality */,
-                              ),
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFF032734),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(),
+                    child: Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: TextFormField(
+                        controller: _model.textController3,
+                        focusNode: _model.textFieldFocusNode3,
+                        obscureText: false,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          labelText: FFLocalizations.of(context).getText(
+                            'iiguwfzu' /* Oil quality */,
+                          ),
+                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF032734),
+                              width: 1.0,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            textAlign: TextAlign.start,
-                            validator: _model.textController3Validator
-                                .asValidator(context),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        textAlign: TextAlign.start,
+                        validator: _model.textController3Validator
+                            .asValidator(context),
                       ),
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsets.all(15.0),
-                          child: TextFormField(
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(),
+                    child: Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: TextFormField(
+                        textInputAction: TextInputAction.done,
                             controller: _model.textController4,
                             focusNode: _model.textFieldFocusNode4,
                             obscureText: false,

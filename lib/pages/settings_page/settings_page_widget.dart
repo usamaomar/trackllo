@@ -129,8 +129,8 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                       )
                                     : FFLocalizations.of(context)
                                         .getVariableText(
-                                        enText: 'Change To English',
-                                        arText: 'التحويل للعربية',
+                                        enText: 'التحويل للعربية',
+                                        arText: 'Change To English',
                                       ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

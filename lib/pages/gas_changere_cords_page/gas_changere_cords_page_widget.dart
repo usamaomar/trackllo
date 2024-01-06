@@ -9,13 +9,12 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'gas_changere_cords_page_model.dart';
 export 'gas_changere_cords_page_model.dart';
 
 class GasChangereCordsPageWidget extends StatefulWidget {
-  const GasChangereCordsPageWidget({Key? key}) : super(key: key);
+  const GasChangereCordsPageWidget({super.key});
 
   @override
   _GasChangereCordsPageWidgetState createState() =>
@@ -91,7 +90,7 @@ class _GasChangereCordsPageWidgetState
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_rounded,
                   color: Colors.white,
                   size: 30.0,
@@ -112,7 +111,8 @@ class _GasChangereCordsPageWidgetState
               ),
               Builder(
                 builder: (context) => Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      10.0, 0.0, 10.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showDialog(
@@ -123,34 +123,59 @@ class _GasChangereCordsPageWidgetState
                             backgroundColor: Colors.transparent,
                             alignment: AlignmentDirectional(0.0, -1.0)
                                 .resolve(Directionality.of(context)),
+                        isGlobal: true,
+                        avoidOverflow: false,
+                        targetAnchor: const AlignmentDirectional(0.0, 0.0)
+                            .resolve(Directionality.of(context)),
+                        followerAnchor: AlignmentDirectional(0.0, -1.0)
+                            .resolve(Directionality.of(context)),
+                        builder: (dialogContext) {
+                          return Material(
+                            color: Colors.transparent,
                             child: GestureDetector(
                               onTap: () => _model.unfocusNode.canRequestFocus
                                   ? FocusScope.of(context)
                                       .requestFocus(_model.unfocusNode)
                                   : FocusScope.of(context).unfocus(),
-                              child: GasComponentWidget(),
+                              child: const GasComponentWidget(),
                             ),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) async {
+                        _model.apiResultyty =
+                            await RecordsBusServicesApiCall.call(
+                          token: FFAppState().UserModelAppState.token,
+                        );
+                        if ((_model.apiResultyty?.succeeded ?? true)) {
+                          setState(() {
+                            _model.listOfGas = functions
+                                .fromJsonToListRecords(getJsonField(
+                                  (_model.apiResultyty?.jsonBody ?? ''),
+                                  r'''$.data''',
+                                ))
+                                .toList()
+                                .cast<BusServicesModelStruct>();
+                          });
+                        }
+                      });
                     },
                     text: FFLocalizations.of(context).getText(
                       '1py1ygsu' /* Add */,
                     ),
                     options: FFButtonOptions(
                       height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          24.0, 0.0, 24.0, 0.0),
+                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).info,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
-                                color: Color(0xAE2F19FC),
+                                color: const Color(0xAE2F19FC),
                               ),
                       elevation: 3.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -161,7 +186,7 @@ class _GasChangereCordsPageWidgetState
               ),
             ],
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -191,7 +216,7 @@ class _GasChangereCordsPageWidgetState
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 15.0, 10.0, 15.0, 10.0),
                             child: Container(
                               decoration: BoxDecoration(
@@ -200,7 +225,7 @@ class _GasChangereCordsPageWidgetState
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(15.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,9 +244,8 @@ class _GasChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 5.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 5.0, 0.0, 5.0),
                                           child: Text(
                                             listOfGasslocalItem.currentCounter
                                                 .toString(),
@@ -230,7 +254,7 @@ class _GasChangereCordsPageWidgetState
                                                 .bodyMedium,
                                           ),
                                         ),
-                                        Divider(
+                                        const Divider(
                                           thickness: 1.0,
                                           color: Color(0x63000000),
                                         ),
@@ -250,9 +274,8 @@ class _GasChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 5.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 5.0, 0.0, 5.0),
                                           child: Text(
                                             listOfGasslocalItem.addedLiters
                                                 .toString(),
@@ -261,7 +284,7 @@ class _GasChangereCordsPageWidgetState
                                                 .bodyMedium,
                                           ),
                                         ),
-                                        Divider(
+                                        const Divider(
                                           thickness: 1.0,
                                           color: Color(0x63000000),
                                         ),
@@ -281,9 +304,8 @@ class _GasChangereCordsPageWidgetState
                                               .bodyMedium,
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 5.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 5.0, 0.0, 5.0),
                                           child: Text(
                                             listOfGasslocalItem.price
                                                 .toString(),

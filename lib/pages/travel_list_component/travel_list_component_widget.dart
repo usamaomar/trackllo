@@ -5,16 +5,14 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'travel_list_component_model.dart';
 export 'travel_list_component_model.dart';
 
 class TravelListComponentWidget extends StatefulWidget {
-  const TravelListComponentWidget({Key? key}) : super(key: key);
+  const TravelListComponentWidget({super.key});
 
   @override
   _TravelListComponentWidgetState createState() =>
@@ -97,12 +95,12 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
         tabletLandscape: false,
       ),
       child: Padding(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           height: 360.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).info,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(8.0),
@@ -119,7 +117,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                 children: [
                   Expanded(
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xAE2F19FC),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -129,14 +127,14 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 20.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -173,7 +171,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                 ],
               ),
               Stack(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -224,19 +222,31 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                             r'''$._id''',
                                           )) {
                                         _model.apiResulth6xCopy =
-                                            await StartTripApiCall.call(
-                                          token: FFAppState()
-                                              .UserModelAppState
-                                              .token,
-                                          travelId: getJsonField(
-                                            listLocsItem,
-                                            r'''$._id''',
-                                          ).toString(),
-                                          driverId:
-                                              FFAppState().UserModelAppState.id,
-                                          day: functions.dateFromat(),
-                                          isFinished: false,
-                                        );
+                                        await StartTripApiCall.call(
+                                            token: FFAppState()
+                                                .UserModelAppState
+                                                .token,
+                                            travelId: getJsonField(
+                                              listLocsItem,
+                                              r'''$._id''',
+                                            ).toString(),
+                                            driverId: FFAppState()
+                                                .UserModelAppState
+                                                .id,
+                                            day: functions.dateFromat(),
+                                            isFinished: false,
+                                            busId: getJsonField(
+                                              functions.findBusByUserId(
+                                                  getJsonField(
+                                                    listLocsItem,
+                                                    r'''$.bus''',
+                                                    true,
+                                                  )!,
+                                                  FFAppState()
+                                                      .UserModelAppState
+                                                      .id),
+                                              r'''$._id''',
+                                            ).toString());
                                         if ((_model
                                                 .apiResulth6xCopy?.succeeded ??
                                             true)) {
@@ -244,10 +254,15 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                             FFAppState().travilLine = null;
                                           });
                                           setState(() {
+                                            FFAppState().tripIdToBeCanceld = getJsonField(
+                                              (_model.apiResulth6xCopy?.jsonBody ?? ''),
+                                              r'''$.data._id''',
+                                            ).toString();
+
                                             FFAppState().travilLine =
                                                 listLocsItem;
                                           });
-                                          Navigator.pop(context);
+                                          Navigator.pop(context);///"_id" -> "6586b18287ae959a92f4bb62"
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -304,7 +319,6 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                           );
                                         }
                                       }
-
                                       setState(() {});
                                     },
                                     child: Material(
@@ -434,9 +448,9 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                   ),
                   if (_model.isLoading == true)
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 0.0, 20.0),
                         child: CircularPercentIndicator(
                           percent: 0.5,

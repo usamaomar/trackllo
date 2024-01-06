@@ -135,7 +135,22 @@ class _OilChangereCordsPageWidgetState
                             ),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) async{
+                        _model.apiResultyty4 = await RecordsBusServicesApiCall.call(
+                          token: FFAppState().UserModelAppState.token,
+                        );
+                        if ((_model.apiResultyty4?.succeeded ?? true) == true) {
+                          setState(() {
+                            _model.listOfOile = functions
+                                .fromJsonToListRecords(getJsonField(
+                              (_model.apiResultyty4?.jsonBody ?? ''),
+                              r'''$.data''',
+                            ))
+                                .toList()
+                                .cast<BusServicesModelStruct>();
+                          });
+                        }
+                      });
                     },
                     text: FFLocalizations.of(context).getText(
                       'x75363b7' /* Add */,

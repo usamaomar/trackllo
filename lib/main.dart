@@ -1,19 +1,29 @@
+import 'dart:async';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:tracllo_driver_system/pages/connection_status_singleton.dart';
+import 'package:tracllo_driver_system/pages/my_sender.dart';
+import 'backend/api_requests/api_calls.dart';
+import 'backend/api_requests/api_manager.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
-
+  ConnectionStatusSingleton connectionStatus =
+      ConnectionStatusSingleton.getInstance();
+  connectionStatus.initialize();
   await FlutterFlowTheme.initialize();
 
   final appState = FFAppState(); // Initialize FFAppState
@@ -37,20 +47,35 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
-
+  late MySender mySender;
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
-
   bool displaySplashImage = true;
+
+  void connectionChanged(dynamic hasConnection) {
+    Connectivity().checkConnectivity().then((ConnectivityResult result) async {
+      if (result.name != 'none') {
+        mySender.startSending(2000);
+      } else {
+        mySender.stopSending();
+      }
+    });
+  }
 
   @override
   void initState() {
+    FFAppState().appStateOfflineModel;
+    ConnectionStatusSingleton connectionStatus =
+        ConnectionStatusSingleton.getInstance();
+    mySender = MySender.getInstance();
+    connectionStatus.connectionChange.listen(connectionChanged);
+
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
 
-    Future.delayed(Duration(milliseconds: 1000),
+    Future.delayed(const Duration(milliseconds: 1000),
         () => setState(() => _appStateNotifier.stopShowingSplashImage()));
   }
 
