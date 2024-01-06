@@ -47,14 +47,14 @@ class FavoriteListComponentModel
   ApiCallResponse? apiResult3dp;
   // Stores action output result for [Backend Call - API (favorites)] action in FavoriteListComponent widget.
   ApiCallResponse? favs;
-  // Stores action output result for [Backend Call - API (StartTripApi)] action in Container widget.
-  ApiCallResponse? apiResulth6xCopy;
   // Stores action output result for [Backend Call - API (AddRemovefavorites)] action in ToggleIcon widget.
   ApiCallResponse? smm;
   // Stores action output result for [Backend Call - API (unAssigned)] action in ToggleIcon widget.
   ApiCallResponse? apiResultpl8;
   // Stores action output result for [Backend Call - API (favorites)] action in ToggleIcon widget.
   ApiCallResponse? apiResultmj1;
+  // Stores action output result for [Backend Call - API (StartTripApi)] action in Container widget.
+  ApiCallResponse? apiResulth6xCopy;
   // Stores action output result for [Backend Call - API (AddRemovefavorites)] action in ToggleIcon widget.
   ApiCallResponse? apiResultv8o;
   // Stores action output result for [Backend Call - API (unAssigned)] action in ToggleIcon widget.

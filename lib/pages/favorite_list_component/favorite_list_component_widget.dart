@@ -190,68 +190,50 @@ class _FavoriteListComponentWidgetState
               Stack(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Visibility(
-                          visible: responsiveVisibility(
-                            context: context,
-                            tabletLandscape: false,
+                  SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
-                          child: Builder(
-                            builder: (context) {
-                              final listLocsFavs =
-                                  _model.favjsonObjct.map((e) => e).toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: listLocsFavs.length,
-                                itemBuilder: (context, listLocsFavsIndex) {
-                                  final listLocsFavsItem =
-                                      listLocsFavs[listLocsFavsIndex];
-                                  return Opacity(
-                                    opacity: getJsonField(
-                                              listLocsFavsItem,
-                                              r'''$._id''',
-                                            ) ==
-                                            getJsonField(
-                                              FFAppState().travilLine,
-                                              r'''$._id''',
-                                            )
-                                        ? 0.5
-                                        : 1.0,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 10.0, 24.0, 10.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 2.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(5.0),
-                                            bottomRight: Radius.circular(5.0),
-                                            topLeft: Radius.circular(5.0),
-                                            topRight: Radius.circular(5.0),
-                                          ),
-                                        ),
-                                        child: Container(
-                                          height: 40.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4.0,
-                                                color: Color(0x33000000),
-                                                offset: Offset(0.0, 2.0),
+                          child: Visibility(
+                            visible: responsiveVisibility(
+                              context: context,
+                              tabletLandscape: false,
+                            ),
+                            child: Builder(
+                              builder: (context) {
+                                final listLocsFavs =
+                                    _model.favjsonObjct.map((e) => e).toList();
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: listLocsFavs.length,
+                                  itemBuilder: (context, listLocsFavsIndex) {
+                                    final listLocsFavsItem =
+                                        listLocsFavs[listLocsFavsIndex];
+                                    return Opacity(
+                                      opacity: getJsonField(
+                                                listLocsFavsItem,
+                                                r'''$._id''',
+                                              ) ==
+                                              getJsonField(
+                                                FFAppState().travilLine,
+                                                r'''$._id''',
                                               )
-                                            ],
+                                          ? 0.5
+                                          : 1.0,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 10.0, 24.0, 10.0),
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(5.0),
                                               bottomRight: Radius.circular(5.0),
@@ -259,576 +241,90 @@ class _FavoriteListComponentWidgetState
                                               topRight: Radius.circular(5.0),
                                             ),
                                           ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      _model.apiResulth6xCopy =
-                                                          await StartTripApiCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .UserModelAppState
-                                                            .token,
-                                                        travelId: getJsonField(
-                                                          listLocsFavsItem,
-                                                          r'''$._id''',
-                                                        ).toString(),
-                                                        driverId: FFAppState()
-                                                            .UserModelAppState
-                                                            .id,
-                                                        day: functions
-                                                            .dateFromat(),
-                                                        isFinished: false,
-                                                      );
-                                                      if ((_model
-                                                              .apiResulth6xCopy
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        FFAppState().update(() {
-                                                          FFAppState()
-                                                                  .travilLine =
-                                                              null;
-                                                        });
-                                                        setState(() {
-                                                          FFAppState()
-                                                                  .travilLine =
-                                                              listLocsFavsItem;
-                                                        });
-                                                        Navigator.pop(context);
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                                enText:
-                                                                    'Trip is selected',
-                                                                arText:
-                                                                    'تم تحديد الرحلة',
-                                                              ),
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                          ),
-                                                        );
-                                                      } else {
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getVariableText(
-                                                                enText: 'Alert',
-                                                                arText: 'تنبيه',
-                                                              )),
-                                                              content: Text((_model
-                                                                      .apiResulth6xCopy
-                                                                      ?.bodyText ??
-                                                                  '')),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(FFLocalizations.of(
-                                                                          context)
-                                                                      .getVariableText(
-                                                                    enText:
-                                                                        'Ok',
-                                                                    arText:
-                                                                        'حسنا',
-                                                                  )),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      }
-
-                                                      setState(() {});
-                                                    },
-                                                    child: Container(
-                                                      height: 40.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFF527ED2),
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  5.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  5.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                        ),
-                                                      ),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        5.0,
-                                                                        5.0,
-                                                                        5.0),
-                                                            child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '8vvolod7' /* Start Trip  */,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
+                                          child: Container(
+                                            height: 40.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 4.0,
+                                                  color: Color(0x33000000),
+                                                  offset: Offset(0.0, 2.0),
+                                                )
+                                              ],
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft:
+                                                    Radius.circular(5.0),
+                                                bottomRight:
+                                                    Radius.circular(5.0),
+                                                topLeft: Radius.circular(5.0),
+                                                topRight: Radius.circular(5.0),
                                               ),
-                                              Expanded(
-                                                child: Row(
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                      MainAxisSize.max,
                                                   children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.house_sharp,
-                                                          color:
-                                                              Color(0xFF527ED2),
-                                                          size: 30.0,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            '${getJsonField(
-                                                              listLocsFavsItem,
-                                                              r'''$.travel_start_name''',
-                                                            ).toString()}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: Color(
-                                                                      0xFF527ED2),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.location_on,
-                                                          color:
-                                                              Color(0xFFD29B52),
-                                                          size: 30.0,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            '${getJsonField(
-                                                              listLocsFavsItem,
-                                                              r'''$.travel_end_name''',
-                                                            ).toString()}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: Color(
-                                                                      0xFFD29B52),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  ToggleIcon(
-                                                    onPressed: () async {
-                                                      setState(() => _model
-                                                              .inSelected =
-                                                          !_model.inSelected);
-                                                      _model.smm =
-                                                          await AddRemovefavoritesCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .UserModelAppState
-                                                            .token,
-                                                        favoriteTravelsList:
-                                                            (getJsonField(
-                                                          listLocsFavsItem,
-                                                          r'''$._id''',
-                                                          true,
-                                                        ) as List)
-                                                                .map<String>((s) =>
-                                                                    s.toString())
-                                                                .toList(),
-                                                      );
-                                                      if ((_model
-                                                              .smm?.succeeded ??
-                                                          true)) {
-                                                        setState(() {});
-                                                      }
-                                                      _model.apiResultpl8 =
-                                                          await UnAssignedCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .UserModelAppState
-                                                            .token,
-                                                      );
-                                                      if ((_model.apiResultpl8
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        setState(() {
-                                                          _model.jsonObjct =
-                                                              getJsonField(
-                                                                (_model.apiResultpl8
-                                                                    ?.jsonBody ??
-                                                                    ''),
-                                                                r'''$.favoriteTravels''',
-                                                                true,
-                                                              )!
-                                                                  .toList()
-                                                                  .cast<
-                                                                  dynamic>();
-                                                        });
-                                                      }
-                                                      _model.apiResultmj1 =
-                                                          await FavoritesCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .UserModelAppState
-                                                            .token,
-                                                      );
-                                                      if ((_model.apiResultmj1
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        setState(() {
-                                                          _model.favjsonObjct =
-                                                              getJsonField(
-                                                            (_model.apiResultmj1
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.data''',
+                                                    ToggleIcon(
+                                                      onPressed: () async {
+                                                        setState(() => _model
+                                                                .inSelected =
+                                                            !_model.inSelected);
+                                                        _model.smm =
+                                                            await AddRemovefavoritesCall
+                                                                .call(
+                                                          token: FFAppState()
+                                                              .UserModelAppState
+                                                              .token,
+                                                          favoriteTravelsList:
+                                                              (getJsonField(
+                                                            listLocsFavsItem,
+                                                            r'''$._id''',
                                                             true,
-                                                          )!
-                                                                  .toList()
-                                                                  .cast<
-                                                                      dynamic>();
-                                                        });
-                                                      }
-
-                                                      setState(() {});
-                                                    },
-                                                    value: _model.inSelected,
-                                                    onIcon: Icon(
-                                                      Icons.star_sharp,
-                                                      color: Color(0xFFFF9900),
-                                                      size: 25.0,
-                                                    ),
-                                                    offIcon: Icon(
-                                                      Icons
-                                                          .star_border_outlined,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      size: 25.0,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Visibility(
-                          visible: responsiveVisibility(
-                            context: context,
-                            tabletLandscape: false,
-                          ),
-                          child: Builder(
-                            builder: (context) {
-                              final listLocs =
-                                  _model.jsonObjct.map((e) => e).toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: listLocs.length,
-                                itemBuilder: (context, listLocsIndex) {
-                                  final listLocsItem = listLocs[listLocsIndex];
-                                  return Opacity(
-                                    opacity: getJsonField(
-                                              listLocsItem,
-                                              r'''$._id''',
-                                            ) ==
-                                            getJsonField(
-                                              FFAppState().travilLine,
-                                              r'''$._id''',
-                                            )
-                                        ? 0.5
-                                        : 1.0,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 10.0, 24.0, 10.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 2.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(5.0),
-                                            bottomRight: Radius.circular(5.0),
-                                            topLeft: Radius.circular(5.0),
-                                            topRight: Radius.circular(5.0),
-                                          ),
-                                        ),
-                                        child: Container(
-                                          height: 40.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4.0,
-                                                color: Color(0x33000000),
-                                                offset: Offset(0.0, 2.0),
-                                              )
-                                            ],
-                                            borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(5.0),
-                                              bottomRight: Radius.circular(5.0),
-                                              topLeft: Radius.circular(5.0),
-                                              topRight: Radius.circular(5.0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Expanded(
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.house_sharp,
-                                                          color:
-                                                              Color(0xFF527ED2),
-                                                          size: 30.0,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            '${getJsonField(
-                                                              listLocsItem,
-                                                              r'''$.travel_start_name''',
-                                                            ).toString()}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: Color(
-                                                                      0xFF527ED2),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.location_on,
-                                                          color:
-                                                              Color(0xFFD29B52),
-                                                          size: 30.0,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            '${getJsonField(
-                                                              listLocsItem,
-                                                              r'''$.travel_end_name''',
-                                                            ).toString()}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: Color(
-                                                                      0xFFD29B52),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  ToggleIcon(
-                                                    onPressed: () async {
-                                                      setState(() => _model
-                                                              .inSelected =
-                                                          !_model.inSelected);
-                                                      _model.apiResultv8o =
-                                                          await AddRemovefavoritesCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .UserModelAppState
-                                                            .token,
-                                                        favoriteTravelsList:
-                                                            (getJsonField(
-                                                          listLocsItem,
-                                                          r'''$._id''',
-                                                          true,
-                                                        ) as List)
-                                                                .map<String>((s) =>
-                                                                    s.toString())
-                                                                .toList(),
-                                                      );
-                                                      if ((_model.apiResultv8o
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        setState(() {
-                                                          _model.isLoading =
-                                                              true;
-                                                        });
-                                                        _model.apiResult3dpd =
+                                                          ) as List)
+                                                                  .map<String>(
+                                                                      (s) => s
+                                                                          .toString())
+                                                                  .toList(),
+                                                        );
+                                                        if ((_model.smm
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          setState(() {});
+                                                        }
+                                                        _model.apiResultpl8 =
                                                             await UnAssignedCall
                                                                 .call(
                                                           token: FFAppState()
                                                               .UserModelAppState
                                                               .token,
                                                         );
-                                                        if ((_model
-                                                                .apiResult3dpd
+                                                        if ((_model.apiResultpl8
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          setState(() {});
+                                                        }
+                                                        _model.apiResultmj1 =
+                                                            await FavoritesCall
+                                                                .call(
+                                                          token: FFAppState()
+                                                              .UserModelAppState
+                                                              .token,
+                                                        );
+                                                        if ((_model.apiResultmj1
                                                                 ?.succeeded ??
                                                             true)) {
                                                           setState(() {
-                                                            _model.isLoading =
-                                                                false;
-                                                          });
-                                                          setState(() {
-                                                            _model.jsonObjct =
+                                                            _model.favjsonObjct =
                                                                 getJsonField(
-                                                              (_model.apiResult3dpd
+                                                              (_model.apiResultmj1
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.favoriteTravels''',
@@ -838,71 +334,603 @@ class _FavoriteListComponentWidgetState
                                                                     .cast<
                                                                         dynamic>();
                                                           });
-                                                        } else {
-                                                          setState(() {
-                                                            _model.isLoading =
-                                                                false;
-                                                          });
                                                         }
 
-                                                        _model.apiResultq0z =
-                                                            await FavoritesCall
+                                                        setState(() {});
+                                                      },
+                                                      value: _model.inSelected,
+                                                      onIcon: Icon(
+                                                        Icons.star_sharp,
+                                                        color:
+                                                            Color(0xFFFF9900),
+                                                        size: 25.0,
+                                                      ),
+                                                      offIcon: Icon(
+                                                        Icons
+                                                            .star_border_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        size: 25.0,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Expanded(
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Icon(
+                                                            Icons.house_sharp,
+                                                            color: Color(
+                                                                0xFF527ED2),
+                                                            size: 30.0,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        5.0,
+                                                                        0.0,
+                                                                        5.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              '${getJsonField(
+                                                                listLocsFavsItem,
+                                                                r'''$.travel_start_name''',
+                                                              ).toString()}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    color: Color(
+                                                                        0xFF527ED2),
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Icon(
+                                                            Icons.location_on,
+                                                            color: Color(
+                                                                0xFFD29B52),
+                                                            size: 30.0,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        5.0,
+                                                                        0.0,
+                                                                        5.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              '${getJsonField(
+                                                                listLocsFavsItem,
+                                                                r'''$.travel_end_name''',
+                                                              ).toString()}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    color: Color(
+                                                                        0xFFD29B52),
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        _model.apiResulth6xCopy =
+                                                            await StartTripApiCall
                                                                 .call(
                                                           token: FFAppState()
                                                               .UserModelAppState
                                                               .token,
+                                                          travelId:
+                                                              getJsonField(
+                                                            listLocsFavsItem,
+                                                            r'''$._id''',
+                                                          ).toString(),
+                                                          driverId: FFAppState()
+                                                              .UserModelAppState
+                                                              .id,
+                                                          day: functions
+                                                              .dateFromat(),
+                                                          isFinished: false,
                                                         );
-                                                        if ((_model.apiResultq0z
+                                                        if ((_model
+                                                                .apiResulth6xCopy
                                                                 ?.succeeded ??
                                                             true)) {
-                                                          setState(() {
-                                                            _model.favjsonObjct =
-                                                                getJsonField(
-                                                              (_model.apiResultq0z
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.data''',
-                                                              true,
-                                                            )!
-                                                                    .toList()
-                                                                    .cast<
-                                                                        dynamic>();
+                                                          FFAppState()
+                                                              .update(() {
+                                                            FFAppState()
+                                                                    .travilLine =
+                                                                null;
                                                           });
-                                                        }
-                                                      }
-
-                                                      setState(() {});
-                                                    },
-                                                    value: _model.inSelected,
-                                                    onIcon: Icon(
-                                                      Icons.star_rate,
-                                                      color: Color(0xFFFF9900),
-                                                      size: 25.0,
-                                                    ),
-                                                    offIcon: Icon(
-                                                      Icons.star_border,
-                                                      color:
-                                                          FlutterFlowTheme.of(
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .travilLine =
+                                                                listLocsFavsItem;
+                                                          });
+                                                          Navigator.pop(
+                                                              context);
+                                                          ScaffoldMessenger.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      size: 25.0,
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText:
+                                                                      'Trip is selected',
+                                                                  arText:
+                                                                      'تم تحديد الرحلة',
+                                                                ),
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                            ),
+                                                          );
+                                                        } else {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText:
+                                                                      'Alert',
+                                                                  arText:
+                                                                      'تنبيه',
+                                                                )),
+                                                                content: Text((_model
+                                                                        .apiResulth6xCopy
+                                                                        ?.bodyText ??
+                                                                    '')),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        FFLocalizations.of(context)
+                                                                            .getVariableText(
+                                                                      enText:
+                                                                          'Ok',
+                                                                      arText:
+                                                                          'حسنا',
+                                                                    )),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                        }
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Container(
+                                                        height: 40.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFF527ED2),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    5.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    5.0),
+                                                          ),
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          5.0,
+                                                                          5.0,
+                                                                          5.0),
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '8vvolod7' /* Start Trip  */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      fontSize:
+                                                                          12.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 0.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Visibility(
+                              visible: responsiveVisibility(
+                                context: context,
+                                tabletLandscape: false,
+                              ),
+                              child: Builder(
+                                builder: (context) {
+                                  final listLocs =
+                                      _model.jsonObjct.map((e) => e).toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: listLocs.length,
+                                    itemBuilder: (context, listLocsIndex) {
+                                      final listLocsItem =
+                                          listLocs[listLocsIndex];
+                                      return Opacity(
+                                        opacity: getJsonField(
+                                                  listLocsItem,
+                                                  r'''$._id''',
+                                                ) ==
+                                                getJsonField(
+                                                  FFAppState().travilLine,
+                                                  r'''$._id''',
+                                                )
+                                            ? 0.5
+                                            : 1.0,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 10.0, 24.0, 10.0),
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            elevation: 2.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft:
+                                                    Radius.circular(5.0),
+                                                bottomRight:
+                                                    Radius.circular(5.0),
+                                                topLeft: Radius.circular(5.0),
+                                                topRight: Radius.circular(5.0),
+                                              ),
+                                            ),
+                                            child: Container(
+                                              height: 40.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 4.0,
+                                                    color: Color(0x33000000),
+                                                    offset: Offset(0.0, 2.0),
+                                                  )
+                                                ],
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(5.0),
+                                                  bottomRight:
+                                                      Radius.circular(5.0),
+                                                  topLeft: Radius.circular(5.0),
+                                                  topRight:
+                                                      Radius.circular(5.0),
+                                                ),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  Expanded(
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.house_sharp,
+                                                              color: Color(
+                                                                  0xFF527ED2),
+                                                              size: 30.0,
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                '${getJsonField(
+                                                                  listLocsItem,
+                                                                  r'''$.travel_start_name''',
+                                                                ).toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: Color(
+                                                                          0xFF527ED2),
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.location_on,
+                                                              color: Color(
+                                                                  0xFFD29B52),
+                                                              size: 30.0,
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                '${getJsonField(
+                                                                  listLocsItem,
+                                                                  r'''$.travel_end_name''',
+                                                                ).toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: Color(
+                                                                          0xFFD29B52),
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      ToggleIcon(
+                                                        onPressed: () async {
+                                                          setState(() => _model
+                                                                  .inSelected =
+                                                              !_model
+                                                                  .inSelected);
+                                                          _model.apiResultv8o =
+                                                              await AddRemovefavoritesCall
+                                                                  .call(
+                                                            token: FFAppState()
+                                                                .UserModelAppState
+                                                                .token,
+                                                            favoriteTravelsList:
+                                                                (getJsonField(
+                                                              listLocsItem,
+                                                              r'''$._id''',
+                                                              true,
+                                                            ) as List)
+                                                                    .map<String>(
+                                                                        (s) => s
+                                                                            .toString())
+                                                                    .toList(),
+                                                          );
+                                                          if ((_model
+                                                                  .apiResultv8o
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            setState(() {
+                                                              _model.isLoading =
+                                                                  true;
+                                                            });
+                                                            _model.apiResult3dpd =
+                                                                await UnAssignedCall
+                                                                    .call(
+                                                              token: FFAppState()
+                                                                  .UserModelAppState
+                                                                  .token,
+                                                            );
+                                                            if ((_model
+                                                                    .apiResult3dpd
+                                                                    ?.succeeded ??
+                                                                true)) {
+                                                              setState(() {
+                                                                _model.isLoading =
+                                                                    false;
+                                                              });
+                                                              setState(() {
+                                                                _model.jsonObjct =
+                                                                    getJsonField(
+                                                                  (_model.apiResult3dpd
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.data''',
+                                                                  true,
+                                                                )!
+                                                                        .toList()
+                                                                        .cast<
+                                                                            dynamic>();
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.isLoading =
+                                                                    false;
+                                                              });
+                                                            }
+
+                                                            _model.apiResultq0z =
+                                                                await FavoritesCall
+                                                                    .call(
+                                                              token: FFAppState()
+                                                                  .UserModelAppState
+                                                                  .token,
+                                                            );
+                                                            if ((_model
+                                                                    .apiResultq0z
+                                                                    ?.succeeded ??
+                                                                true)) {
+                                                              setState(() {
+                                                                _model.favjsonObjct =
+                                                                    getJsonField(
+                                                                  (_model.apiResultq0z
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.favoriteTravels''',
+                                                                  true,
+                                                                )!
+                                                                        .toList()
+                                                                        .cast<
+                                                                            dynamic>();
+                                                              });
+                                                            }
+                                                          }
+
+                                                          setState(() {});
+                                                        },
+                                                        value:
+                                                            _model.inSelected,
+                                                        onIcon: Icon(
+                                                          Icons.star_rate,
+                                                          color:
+                                                              Color(0xFFFF9900),
+                                                          size: 25.0,
+                                                        ),
+                                                        offIcon: Icon(
+                                                          Icons.star_border,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 25.0,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   if (_model.isLoading == true)
                     Align(
