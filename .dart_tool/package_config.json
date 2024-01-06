@@ -9,7 +9,7 @@
     },
     {
       "name": "archive",
-      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/archive-3.4.9",
+      "rootUri": "file:///Users/usamaomar/.pub-cache/hosted/pub.dev/archive-3.4.10",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -872,7 +872,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-12-30T11:01:51.664371Z",
+  "generated": "2024-01-06T08:28:00.855372Z",
   "generator": "pub",
   "generatorVersion": "3.2.0-210.3.beta"
 }
