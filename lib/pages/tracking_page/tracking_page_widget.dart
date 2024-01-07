@@ -130,6 +130,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                             event: 'e',
                             phonrModel: 'x7',
                             platform: 'android',
+                            isOfflineLocation: false,
                             university:
                                 FFAppState().UserModelAppState.university,
                             bus: getJsonField(
@@ -214,6 +215,12 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                           FFAppState().tripIdToBeCanceld = '';
                         });
                       }
+                      FFAppState().update(() {
+                        FFAppState().travilLine = null;
+                      });
+                      FFAppState().update(() {
+                        FFAppState().tripIdToBeCanceld = '';
+                      });
                       setState(() {});
                     },
                     travilLise: () async {

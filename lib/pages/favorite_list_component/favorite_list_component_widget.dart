@@ -278,6 +278,14 @@ class _FavoriteListComponentWidgetState
                                                                         r'''$._id''',
                                                                         true,
                                                                       )[0],
+                                                                      getJsonField(
+                                                                        _model
+                                                                            .favjsonObjct
+                                                                            .map((e) => e)
+                                                                            .toList(),
+                                                                        r'''$[:]._id''',
+                                                                        true,
+                                                                      ) == null ? [] :
 
                                                                       getJsonField(
                                                                         _model
@@ -456,6 +464,9 @@ class _FavoriteListComponentWidgetState
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
+                                                    setState(() {
+                                                      _model.isLoading = true;
+                                                    });
                                                     _model.apiResulth6xCopy =
                                                         await StartTripApiCall
                                                             .call(
@@ -481,9 +492,16 @@ class _FavoriteListComponentWidgetState
                                                             .travilLine = null;
                                                       });
                                                       setState(() {
-                                                        FFAppState()
-                                                                .travilLine =
+                                                        FFAppState().tripIdToBeCanceld = getJsonField(
+                                                          (_model.apiResulth6xCopy?.jsonBody ?? ''),
+                                                          r'''$.data._id''',
+                                                        ).toString();
+
+                                                        FFAppState().travilLine =
                                                             listLocsFavsItem;
+                                                      });
+                                                      setState(() {
+                                                        _model.isLoading = false;
                                                       });
                                                       Navigator.pop(context);
                                                       ScaffoldMessenger.of(
@@ -796,6 +814,17 @@ class _FavoriteListComponentWidgetState
                                                                           r'''$._id''',
                                                                           true,
                                                                         )[0],
+
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .favjsonObjct
+                                                                              .map((e) => e)
+                                                                              .toList(),
+                                                                          r'''$[:]._id''',
+                                                                          true,
+                                                                        ) == null ? [] :
+
+
                                                                         getJsonField(
                                                                           _model
                                                                               .favjsonObjct
