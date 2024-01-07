@@ -359,6 +359,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'ابدأ الرحلة',
     },
   },
+  // AddStudentMapViewComponent
+  {
+    'ddajcuv8': {
+      'en': 'اضف عدد الركاب',
+      'ar': 'اضف عددا محدودا',
+    },
+  },
+  // AddPassengersNumberDialogComponent
+  {
+    'bhh6eyyg': {
+      'en': 'Add Passengers',
+      'ar': 'إضافة عدد الركاب',
+    },
+    'hwpdb1ud': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
+  // AddStudentCounterComponent
+  {
+    'eohkt2hh': {
+      'en': 'Passengers',
+      'ar': ' عدد ركاب',
+    },
+  },
   // Miscellaneous
   {
     '7psyh9gs': {

@@ -90,6 +90,10 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _appStateOfflineModel;
     });
+    _safeInit(() {
+      _numberOfStudents =
+          prefs.getInt('ff_numberOfStudents') ?? _numberOfStudents;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -204,6 +208,13 @@ class FFAppState extends ChangeNotifier {
     _appStateOfflineModel.insert(_index, _value);
     prefs.setStringList('ff_appStateOfflineModel',
         _appStateOfflineModel.map((x) => x.serialize()).toList());
+  }
+
+  int _numberOfStudents = 0;
+  int get numberOfStudents => _numberOfStudents;
+  set numberOfStudents(int _value) {
+    _numberOfStudents = _value;
+    prefs.setInt('ff_numberOfStudents', _value);
   }
 }
 
