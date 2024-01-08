@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:tracllo_driver_system/app_state.dart';
+
 import '../schema/structs/index.dart';
 
 import 'api_manager.dart';
@@ -135,7 +137,8 @@ class LiveLocationApiCall {
   "bus": "${bus}",
   "driverID": "${user}",
   "bus_identity": "$busIdentity",
-   "isOffline": ${isOfflineLocation}
+   "isOffline": ${isOfflineLocation},
+   "no_of_students_on_bus": ${FFAppState().numberOfStudents}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LiveLocationApi',

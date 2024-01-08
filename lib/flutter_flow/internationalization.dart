@@ -277,7 +277,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'o86y0yu0': {
       'en': 'Oil Change',
-      'ar': 'تغيير زيت',
+      'ar': 'تغيير الزيت',
     },
     '6yzldoto': {
       'en': 'Meter reading while filling',
@@ -295,6 +295,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'The cash value',
       'ar': 'القيمة النقدية',
     },
+    'wcobc97mmmn': {
+      'en': 'Date : ',
+      'ar': 'التاريخ : ',
+    },
   },
   // GasComponent
   {
@@ -304,7 +308,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'oqicxa0j': {
       'en': 'Gas Change',
-      'ar': 'تغيير الغاز',
+      'ar': 'تغيير الوقود',
     },
     '52se8dtd': {
       'en': 'Meter reading while filling',
@@ -367,7 +371,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ddajcuv8': {
       'en': 'اضف عدد الركاب',
-      'ar': 'اضف عددا محدودا',
+      'ar': 'اضف عدد الركاب',
     },
   },
   // AddPassengersNumberDialogComponent
@@ -378,14 +382,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hwpdb1ud': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
   },
   // AddStudentCounterComponent
   {
     'eohkt2hh': {
       'en': 'Passengers',
-      'ar': ' عدد ركاب',
+      'ar': ' عدد الركاب',
     },
   },
   // Miscellaneous

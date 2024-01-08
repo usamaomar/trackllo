@@ -56,6 +56,9 @@ class _AddPassengersNumberDialogComponentWidgetState
     context.watch<FFAppState>();
 
     return Container(
+      height: 400,
+      width: 390,
+      margin: EdgeInsets.fromLTRB(15, 15, 15, 15),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.only(

@@ -487,18 +487,15 @@ class _FavoriteListComponentWidgetState
                                                     if ((_model.apiResulth6xCopy
                                                             ?.succeeded ??
                                                         true)) {
-                                                      FFAppState().update(() {
-                                                        FFAppState()
-                                                            .travilLine = null;
-                                                      });
                                                       setState(() {
                                                         FFAppState().tripIdToBeCanceld = getJsonField(
                                                           (_model.apiResulth6xCopy?.jsonBody ?? ''),
                                                           r'''$.data._id''',
                                                         ).toString();
-
-                                                        FFAppState().travilLine =
-                                                            listLocsFavsItem;
+                                                        FFAppState().update(() {
+                                                          FFAppState().travilLine =
+                                                              listLocsFavsItem;
+                                                        });
                                                       });
                                                       setState(() {
                                                         _model.isLoading = false;
