@@ -21,6 +21,7 @@ class BusServicesModelStruct extends BaseStruct {
     double? price,
     double? currentCounter,
     double? addedLiters,
+    String? createdAt,
   })  : _busNumber = busNumber,
         _driverId = driverId,
         _driverName = driverName,
@@ -34,7 +35,8 @@ class BusServicesModelStruct extends BaseStruct {
         _vv = vv,
         _price = price,
         _currentCounter = currentCounter,
-        _addedLiters = addedLiters;
+        _addedLiters = addedLiters,
+        _createdAt = createdAt;
 
   // "bus_number" field.
   String? _busNumber;
@@ -126,6 +128,12 @@ class BusServicesModelStruct extends BaseStruct {
       _addedLiters = addedLiters + amount;
   bool hasAddedLiters() => _addedLiters != null;
 
+  // "createdAt" field.
+  String? _createdAt;
+  String get createdAt => _createdAt ?? '';
+  set createdAt(String? val) => _createdAt = val;
+  bool hasCreatedAt() => _createdAt != null;
+
   static BusServicesModelStruct fromMap(Map<String, dynamic> data) =>
       BusServicesModelStruct(
         busNumber: data['bus_number'] as String?,
@@ -142,6 +150,7 @@ class BusServicesModelStruct extends BaseStruct {
         price: castToType<double>(data['price']),
         currentCounter: castToType<double>(data['current_counter']),
         addedLiters: castToType<double>(data['added_liters']),
+        createdAt: data['createdAt'] as String?,
       );
 
   static BusServicesModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -163,6 +172,7 @@ class BusServicesModelStruct extends BaseStruct {
         'price': _price,
         'current_counter': _currentCounter,
         'added_liters': _addedLiters,
+        'createdAt': _createdAt,
       }.withoutNulls;
 
   @override
@@ -222,6 +232,10 @@ class BusServicesModelStruct extends BaseStruct {
         'added_liters': serializeParam(
           _addedLiters,
           ParamType.double,
+        ),
+        'createdAt': serializeParam(
+          _createdAt,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -298,6 +312,11 @@ class BusServicesModelStruct extends BaseStruct {
           ParamType.double,
           false,
         ),
+        createdAt: deserializeParam(
+          data['createdAt'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -319,7 +338,8 @@ class BusServicesModelStruct extends BaseStruct {
         vv == other.vv &&
         price == other.price &&
         currentCounter == other.currentCounter &&
-        addedLiters == other.addedLiters;
+        addedLiters == other.addedLiters &&
+        createdAt == other.createdAt;
   }
 
   @override
@@ -337,7 +357,8 @@ class BusServicesModelStruct extends BaseStruct {
         vv,
         price,
         currentCounter,
-        addedLiters
+        addedLiters,
+        createdAt
       ]);
 }
 
@@ -356,6 +377,7 @@ BusServicesModelStruct createBusServicesModelStruct({
   double? price,
   double? currentCounter,
   double? addedLiters,
+  String? createdAt,
 }) =>
     BusServicesModelStruct(
       busNumber: busNumber,
@@ -372,4 +394,5 @@ BusServicesModelStruct createBusServicesModelStruct({
       price: price,
       currentCounter: currentCounter,
       addedLiters: addedLiters,
+      createdAt: createdAt,
     );
