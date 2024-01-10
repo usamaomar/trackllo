@@ -30,6 +30,7 @@ class TrackMapCustomWidget extends StatefulWidget {
     required this.startTrip,
     required this.stopTrip,
     required this.travilLise,
+    required this.isLocationEnabledAction,
   }) : super(key: key);
 
   final double? width;
@@ -38,6 +39,7 @@ class TrackMapCustomWidget extends StatefulWidget {
   final Future<dynamic> Function() startTrip;
   final Future<dynamic> Function() stopTrip;
   final Future<dynamic> Function() travilLise;
+  final Future<dynamic> Function(bool isLocationEnabled) isLocationEnabledAction;
 
   @override
   _MapCustomWidgetState createState() => _MapCustomWidgetState();
@@ -415,6 +417,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
             actions: [
               TextButton(
                 onPressed: () {
+                  widget.isLocationEnabledAction(true);
                   Navigator.pop(alertDialogContext);
                   clickAction();
                   positionStream.resume();
@@ -482,6 +485,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
             actions: [
               TextButton(
                 onPressed: () {
+                  widget.isLocationEnabledAction(false);
                   Navigator.pop(alertDialogContext);
                   positionStream.cancel();
                   isLocationEnabled = false;

@@ -137,6 +137,29 @@ class _OileComponentWidgetState extends State<OileComponentWidget> {
                                       );
                                       if ((_model.apiResultix8?.succeeded ??
                                           true)) {
+
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Done',
+                                                arText: 'تمت الاضافه بنجاح',
+                                              ),
+                                              style: TextStyle(
+                                                color: FlutterFlowTheme.of(
+                                                    context)
+                                                    .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                            Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                          ),
+                                        );
                                         setState(() {});
                                         Navigator.pop(context);
                                       } else {

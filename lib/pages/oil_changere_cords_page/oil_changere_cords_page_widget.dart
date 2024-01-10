@@ -341,7 +341,7 @@ class _OilChangereCordsPageWidgetState
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'wcobc97mmmn' /* The cash value :  */,
+                                          'wcobc97mmmn' /* The Date value :  */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -351,7 +351,7 @@ class _OilChangereCordsPageWidgetState
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 5.0),
                                         child: Text(
-                                          listOfGassItem.date.toString(),
+                                          convertDateTime(listOfGassItem.createdAt.toString()),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
@@ -368,11 +368,29 @@ class _OilChangereCordsPageWidgetState
                     ],
                   );
                 },
+
+
+
               );
             },
           ),
         ),
       ),
     );
+
+
+  }
+
+  String convertDateTime(String inputDateTimeString) {
+    // Parse input string to DateTime object
+    DateTime inputDateTime = DateTime.parse(inputDateTimeString);
+
+    // Convert to the desired time zone (e.g., UTC to your local time zone)
+    inputDateTime = inputDateTime.toLocal();
+
+    // Format DateTime to the desired output format
+    String formattedDateTime = DateFormat('yyyy/MM/dd HH:mm').format(inputDateTime);
+
+    return formattedDateTime;
   }
 }

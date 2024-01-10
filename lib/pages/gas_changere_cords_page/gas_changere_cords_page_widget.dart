@@ -306,6 +306,35 @@ class _GasChangereCordsPageWidgetState
                                         ),
                                       ],
                                     ),
+                                    Divider(
+                                      thickness: 1.0,
+                                      color: Color(0x63000000),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'wcobc97mmmn' /* The Date value :  */,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 5.0, 0.0, 5.0),
+                                          child: Text(
+                                            convertDateTime(listOfGasslocalItem.createdAt.toString()),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
@@ -322,5 +351,17 @@ class _GasChangereCordsPageWidgetState
         ),
       ),
     );
+  }
+  String convertDateTime(String inputDateTimeString) {
+    // Parse input string to DateTime object
+    DateTime inputDateTime = DateTime.parse(inputDateTimeString);
+
+    // Convert to the desired time zone (e.g., UTC to your local time zone)
+    inputDateTime = inputDateTime.toLocal();
+
+    // Format DateTime to the desired output format
+    String formattedDateTime = DateFormat('yyyy/MM/dd HH:mm').format(inputDateTime);
+
+    return formattedDateTime;
   }
 }

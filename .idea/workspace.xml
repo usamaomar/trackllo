@@ -7,11 +7,13 @@
     <list default="true" id="36c3437e-e12c-4a18-9136-fb9ca453bda9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/backend/api_requests/api_calls.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/api_requests/api_calls.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/add_student/add_passengers_number_dialog_component/add_passengers_number_dialog_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/add_student/add_passengers_number_dialog_component/add_passengers_number_dialog_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/favorite_list_component/favorite_list_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/favorite_list_component/favorite_list_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/add_student/add_student_map_view_component/add_student_map_view_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/add_student/add_student_map_view_component/add_student_map_view_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/counter_information_dialog/counter_information_dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/counter_information_dialog/counter_information_dialog_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/gas_changere_cords_page/gas_changere_cords_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/gas_component/gas_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/gas_component/gas_component_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/oil_changere_cords_page/oil_changere_cords_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/oil_changere_cords_page/oil_changere_cords_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/oile_component/oile_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/oile_component/oile_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -282,14 +284,24 @@
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart</url>
-          <line>110</line>
-          <option name="timeStamp" value="131" />
+          <url>file://$PROJECT_DIR$/lib/pages/oil_changere_cords_page/oil_changere_cords_page_widget.dart</url>
+          <line>40</line>
+          <option name="timeStamp" value="133" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart</url>
-          <line>111</line>
-          <option name="timeStamp" value="132" />
+          <line>107</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/tracking_page/tracking_page_widget.dart</url>
+          <line>106</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/tracking_page/track_map_custom_widget.dart</url>
+          <line>360</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

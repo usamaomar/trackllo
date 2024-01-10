@@ -31,7 +31,7 @@ class TrackingPageWidget extends StatefulWidget {
 
 class _TrackingPageWidgetState extends State<TrackingPageWidget> {
   late TrackingPageModel _model;
-
+  bool startTracking = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -103,6 +103,11 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                   child: TrackMapCustomWidget(
                     width: double.infinity,
                     height: double.infinity,
+                    isLocationEnabledAction: (value) async {
+                      setState(() {
+                        startTracking = value;
+                      });
+                    },
                     locationRequstedAction: () async {
                       Connectivity()
                           .checkConnectivity()
@@ -491,7 +496,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                         Visibility(
                             visible:
                                 FFAppState().travilLine == null ? false : true,
-                            child: AddStudentMapViewComponentWidget())
+                            child: AddStudentMapViewComponentWidget(
+                              trackingState: startTracking,
+                            ))
                       ],
                     ),
                   ],

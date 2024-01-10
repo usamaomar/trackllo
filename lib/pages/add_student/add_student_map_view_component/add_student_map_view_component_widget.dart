@@ -11,7 +11,10 @@ import 'add_student_map_view_component_model.dart';
 export 'add_student_map_view_component_model.dart';
 
 class AddStudentMapViewComponentWidget extends StatefulWidget {
-  const AddStudentMapViewComponentWidget({Key? key}) : super(key: key);
+  bool trackingState = false;
+
+  AddStudentMapViewComponentWidget({Key? key, required this.trackingState})
+      : super(key: key);
 
   @override
   _AddStudentMapViewComponentWidgetState createState() =>
@@ -60,18 +63,62 @@ class _AddStudentMapViewComponentWidgetState
               Builder(
                 builder: (context) => FFButtonWidget(
                   onPressed: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (dialogContext) {
-                        return Dialog(
-                          insetPadding: EdgeInsets.zero,
-                          backgroundColor: Colors.transparent,
-                          alignment: AlignmentDirectional(0.0, -1.0)
-                              .resolve(Directionality.of(context)),
-                          child: AddPassengersNumberDialogComponentWidget(),
-                        );
-                      },
-                    ).then((value) => setState(() {}));
+                    if (widget.trackingState) {
+                      await showDialog(
+                        context: context,
+                        builder: (dialogContext) {
+                          return Dialog(
+                            insetPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.transparent,
+                            alignment: AlignmentDirectional(0.0, -1.0)
+                                .resolve(Directionality.of(context)),
+                            child: AddPassengersNumberDialogComponentWidget(),
+                          );
+                        },
+                      ).then((value) => setState(() {}));
+                    } else {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text(
+                                FFLocalizations.of(context).getVariableText(
+                              enText: 'Alert',
+                              arText: 'تنبيه',
+                            )),
+                            content: Text(
+                                FFLocalizations.of(context).getVariableText(
+                              enText: 'You must start the tracking',
+                              arText: 'يجب أن تبدأ التتبع',
+                            )),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(alertDialogContext);
+                                },
+                                child: Text(
+                                    FFLocalizations.of(context).getVariableText(
+                                  enText: 'Ok',
+                                  arText: 'حسنا',
+                                )),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(alertDialogContext);
+                                },
+                                child: Text(
+                                  FFLocalizations.of(context).getVariableText(
+                                    enText: 'Cancel',
+                                    arText: 'الغاء',
+                                  ),
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                   },
                   text: FFLocalizations.of(context).getText(
                     'ddajcuv8' /* اضف عدد الركاب */,

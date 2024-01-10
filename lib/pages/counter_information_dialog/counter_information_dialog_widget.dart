@@ -112,6 +112,28 @@ class _CounterInformationDialogWidgetState
                                     );
                                     if ((_model.apiResultdxj?.succeeded ??
                                         true)) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText: 'Done',
+                                              arText: 'تمت الاضافه بناح',
+                                            ),
+                                            style: TextStyle(
+                                              color: FlutterFlowTheme.of(
+                                                  context)
+                                                  .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                          Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                        ),
+                                      );
                                       Navigator.pop(context);
                                     } else {
                                       await showDialog(
