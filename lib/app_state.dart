@@ -94,6 +94,17 @@ class FFAppState extends ChangeNotifier {
       _numberOfStudents =
           prefs.getInt('ff_numberOfStudents') ?? _numberOfStudents;
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_assighnedModel')) {
+        try {
+          final serializedData = prefs.getString('ff_assighnedModel') ?? '{}';
+          _assighnedModel = AsighnedMeModelStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -215,6 +226,18 @@ class FFAppState extends ChangeNotifier {
   set numberOfStudents(int _value) {
     _numberOfStudents = _value;
     prefs.setInt('ff_numberOfStudents', _value);
+  }
+
+  AsighnedMeModelStruct _assighnedModel = AsighnedMeModelStruct();
+  AsighnedMeModelStruct get assighnedModel => _assighnedModel;
+  set assighnedModel(AsighnedMeModelStruct _value) {
+    _assighnedModel = _value;
+    prefs.setString('ff_assighnedModel', _value.serialize());
+  }
+
+  void updateAssighnedModelStruct(Function(AsighnedMeModelStruct) updateFn) {
+    updateFn(_assighnedModel);
+    prefs.setString('ff_assighnedModel', _assighnedModel.serialize());
   }
 }
 

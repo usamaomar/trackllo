@@ -1,5 +1,6 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'asighned_me_model_struct.dart';
 export 'bus_services_model_struct.dart';
 export 'location_model_struct.dart';
 export 'offline_model_struct.dart';
