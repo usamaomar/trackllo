@@ -423,6 +423,31 @@ class FavoritesCall {
   }
 }
 
+class AssignedMeApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'AssignedMeApi',
+      apiUrl:
+          'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/buses/assigned/me',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '${token}',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class AddRemovefavoritesCall {
   static Future<ApiCallResponse> call({
     String? token = '',

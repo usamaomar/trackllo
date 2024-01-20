@@ -1,7 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -38,6 +41,18 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
             : 'ar';
       });
       setAppLanguage(context, FFAppState().currentLanguge);
+      _model.apiResult2eb = await AssignedMeApiCall.call(
+        token: FFAppState().UserModelAppState.token,
+      );
+      if ((_model.apiResult2eb?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().assighnedModel =
+              AsighnedMeModelStruct.maybeFromMap(getJsonField(
+            (_model.apiResult2eb?.jsonBody ?? ''),
+            r'''$''',
+          ))!;
+        });
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
