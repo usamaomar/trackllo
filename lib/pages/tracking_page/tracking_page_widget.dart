@@ -1,9 +1,12 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:tracllo_driver_system/backend/schema/structs/index.dart';
 import 'package:tracllo_driver_system/pages/add_student/add_student_map_view_component/add_student_map_view_component_widget.dart';
 import 'package:tracllo_driver_system/pages/tracking_page/track_map_custom_widget.dart';
 
+import '../../flutter_flow/flutter_flow_timer.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,6 +41,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TrackingPageModel());
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.timerController.onStartTimer();
+    });
   }
 
   @override
@@ -97,6 +103,41 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
             ),
             child: Stack(
               children: [
+                FlutterFlowTimer(
+                  initialTime: _model.timerMilliseconds,
+                  getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
+                    value,
+                    hours: false,
+                    milliSecond: false,
+                  ),
+                  controller: _model.timerController,
+                  updateStateInterval: Duration(milliseconds: 1000),
+                  onChanged: (value, displayTime, shouldUpdate) {
+                    _model.timerMilliseconds = value;
+                    _model.timerValue = displayTime;
+                    if (shouldUpdate) setState(() {});
+                  },
+                  onEnded: () async {
+                    _model.apiResult2eb = await AssignedMeApiCall.call(
+                      token: FFAppState().UserModelAppState.token,
+                    );
+                    if ((_model.apiResult2eb?.succeeded ?? true)) {
+                      setState(() {
+                        FFAppState().assighnedModel =
+                        AsighnedMeModelStruct.maybeFromMap(getJsonField(
+                          (_model.apiResult2eb?.jsonBody ?? ''),
+                          r'''$''',
+                        ))!;
+                        _model.timerController.onStartTimer();
+                      });
+                    }
+                  },
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.of(context).headlineSmall.override(
+                    fontFamily: 'Outfit',
+                    color: Color(0x00FFFFFF),
+                  ),
+                ),
                 Container(
                   width: double.infinity,
                   height: double.infinity,
@@ -137,28 +178,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                             phonrModel: 'x7',
                             platform: 'android',
                             isOfflineLocation: false,
-                            university:
-                                FFAppState().UserModelAppState.university,
-                            bus: getJsonField(
-                              functions.findBusByUserId(
-                                  getJsonField(
-                                    FFAppState().travilLine,
-                                    r'''$.bus''',
-                                    true,
-                                  )!,
-                                  FFAppState().UserModelAppState.id),
-                              r'''$._id''',
-                            ).toString(),
-                            busIdentity: getJsonField(
-                              functions.findBusByUserId(
-                                  getJsonField(
-                                    FFAppState().travilLine,
-                                    r'''$.bus''',
-                                    true,
-                                  )!,
-                                  FFAppState().UserModelAppState.id),
-                              r'''$.bus_identity''',
-                            ).toString(),
+                            university: FFAppState().UserModelAppState.university,
+                            bus: FFAppState().assighnedModel.busID,
+                            busIdentity: FFAppState().assighnedModel.busIdentity,
                           );
                           if ((_model.apiResult0b0?.succeeded ?? true)) {
                             setState(() {});
@@ -184,26 +206,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                       .toString(),
                                   university:
                                       FFAppState().UserModelAppState.university,
-                                  bus: getJsonField(
-                                    functions.findBusByUserId(
-                                        getJsonField(
-                                          FFAppState().travilLine,
-                                          r'''$.bus''',
-                                          true,
-                                        )!,
-                                        FFAppState().UserModelAppState.id),
-                                    r'''$._id''',
-                                  ).toString(),
-                                  busIdentity: getJsonField(
-                                    functions.findBusByUserId(
-                                        getJsonField(
-                                          FFAppState().travilLine,
-                                          r'''$.bus''',
-                                          true,
-                                        )!,
-                                        FFAppState().UserModelAppState.id),
-                                    r'''$.bus_identity''',
-                                  ).toString()));
+                                  bus: FFAppState().assighnedModel.busID,
+                                  busIdentity: FFAppState().assighnedModel.busIdentity));
                         }
                       });
                     },
@@ -327,32 +331,63 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child:
-                                                      FavoriteListComponentWidget(),
-                                                ),
-                                              );
-                                            },
-                                          ).then((value) => setState(() {}));
+                                          if(startTracking){
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                  Colors.transparent,
+                                                  alignment: AlignmentDirectional(
+                                                      0.0, 0.0)
+                                                      .resolve(Directionality.of(
+                                                      context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                        .unfocusNode
+                                                        .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                        .requestFocus(_model
+                                                        .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                        .unfocus(),
+                                                    child:
+                                                    FavoriteListComponentWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          }else{
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      FFLocalizations.of(context).getVariableText(
+                                                        enText: 'Alert',
+                                                        arText: 'تنبيه',
+                                                      )),
+                                                  content: Text(
+                                                      FFLocalizations.of(context).getVariableText(
+                                                        enText: 'You must start track',
+                                                        arText: 'يتعين عليك بدء التتبع',
+                                                      )),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(alertDialogContext),
+                                                      child: Text(
+                                                          FFLocalizations.of(context).getVariableText(
+                                                            enText: 'Ok',
+                                                            arText: 'حسنا',
+                                                          )),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
                                         },
                                         child: ClipRRect(
                                           borderRadius:
@@ -406,43 +441,73 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                         0.0, 10.0, 0.0, 10.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
-                                                    await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (dialogContext) {
-                                                              return Dialog(
-                                                                insetPadding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                alignment: AlignmentDirectional(
-                                                                        0.0,
-                                                                        -1.0)
-                                                                    .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
+                                                    if(startTracking){
+                                                      await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              insetPadding:
+                                                              EdgeInsets
+                                                                  .zero,
+                                                              backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                  0.0,
+                                                                  -1.0)
+                                                                  .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                              child:
+                                                              GestureDetector(
+                                                                onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                    context)
+                                                                    .requestFocus(_model
+                                                                    .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                    context)
+                                                                    .unfocus(),
                                                                 child:
-                                                                    GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
-                                                                          .requestFocus(_model
-                                                                              .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      TravelListComponentWidget(),
-                                                                ),
-                                                              );
-                                                            })
-                                                        .then((value) =>
-                                                            setState(() {}));
-                                                    ;
+                                                                TravelListComponentWidget(),
+                                                              ),
+                                                            );
+                                                          })
+                                                          .then((value) =>
+                                                          setState(() {}));
+                                                    }else{
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder: (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                FFLocalizations.of(context).getVariableText(
+                                                                  enText: 'Alert',
+                                                                  arText: 'تنبيه',
+                                                                )),
+                                                            content: Text(
+                                                                FFLocalizations.of(context).getVariableText(
+                                                                  enText: 'You must start track',
+                                                                  arText: 'يتعين عليك بدء التتبع',
+                                                                )),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(alertDialogContext),
+                                                                child: Text(
+                                                                    FFLocalizations.of(context).getVariableText(
+                                                                      enText: 'Ok',
+                                                                      arText: 'حسنا',
+                                                                    )),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    }
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)

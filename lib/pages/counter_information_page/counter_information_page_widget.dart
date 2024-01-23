@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:tracllo_driver_system/backend/schema/structs/index.dart';
 
@@ -10,7 +13,6 @@ import '/pages/counter_information_dialog/counter_information_dialog_widget.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'counter_information_page_model.dart';
 export 'counter_information_page_model.dart';
@@ -36,7 +38,21 @@ class _CounterInformationPageWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResult4qr = await GetExpectedSpeedometerReadingApiCall.call(
+      // _model.apigetDriverDailyImageSummaryApiCall =
+      //     await getDriverDailyImageSummaryApiCall.call(
+      //   token: FFAppState().UserModelAppState.token,
+      // );
+      // if ((_model.apigetDriverDailyImageSummaryApiCall?.succeeded ?? true)) {
+      //   setState(() {
+      //     _model.base64Image = getJsonField(
+      //       (_model.apigetDriverDailyImageSummaryApiCall?.jsonBody ?? ''),
+      //       r'''$.data[0].speedometerImg''',
+      //     );
+      //   });
+      // }
+      _model.apiResult4qr =
+      await GetExpectedSpeedometerReadingApiCall
+          .call(
         token: FFAppState().UserModelAppState.token,
       );
       if ((_model.apiResult4qr?.succeeded ?? true)) {
@@ -111,22 +127,23 @@ class _CounterInformationPageWidgetState
                   child: FFButtonWidget(
                     onPressed: () async {
                       checkPermition().catchError((onError) {
-                        if(onError.toString().isEmpty){
+                        if (onError.toString().isEmpty) {
                           _determinePosition().then((value) async {
                             FFAppState().houseLocation = LocationModelStruct(
                                 lat: value.latitude, lng: value.longitude);
                             await showDialog(
                               context: context,
                               builder: (dialogContext) {
-                          return Dialog(
-                            insetPadding: EdgeInsets.zero,
+                                return Dialog(
+                                  insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                            alignment: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child: GestureDetector(
-                                    onTap: () => _model.unfocusNode.canRequestFocus
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
                                         ? FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode)
+                                            .requestFocus(_model.unfocusNode)
                                         : FocusScope.of(context).unfocus(),
                                     child: CounterInformationDialogWidget(),
                                   ),
@@ -134,39 +151,35 @@ class _CounterInformationPageWidgetState
                               },
                             ).then((value) async {
                               _model.apiResult4qr =
-                              await GetExpectedSpeedometerReadingApiCall.call(
+                                  await GetExpectedSpeedometerReadingApiCall
+                                      .call(
                                 token: FFAppState().UserModelAppState.token,
                               );
                               if ((_model.apiResult4qr?.succeeded ?? true)) {
                                 setState(() {
                                   _model.jsonObject =
-                                  (_model.apiResult4qr?.jsonBody ?? '');
+                                      (_model.apiResult4qr?.jsonBody ?? '');
                                 });
                               }
                             });
                             Navigator.pop(context);
                           });
-                        }else{
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                FFLocalizations.of(context)
-                                    .getVariableText(
+                                FFLocalizations.of(context).getVariableText(
                                   enText: onError,
                                   arText: onError,
                                 ),
                                 style: TextStyle(
-                                  color: FlutterFlowTheme.of(
-                                      context)
-                                      .primaryText,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                 ),
                               ),
-                              duration:
-                              Duration(milliseconds: 4000),
+                              duration: Duration(milliseconds: 4000),
                               backgroundColor:
-                              FlutterFlowTheme.of(context)
-                                  .secondary,
+                                  FlutterFlowTheme.of(context).secondary,
                             ),
                           );
                         }
@@ -315,6 +328,19 @@ class _CounterInformationPageWidgetState
                                           fontSize: 14.0,
                                         ),
                                   ),
+                                  // Visibility(
+                                  //   visible: _model.base64Image != null,
+                                  //   child: Container(
+                                  //     margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                  //     child: Image.memory(
+                                  //       width: 55,
+                                  //       height: 55,
+                                  //       base64StringToUint8List(
+                                  //           _model.base64Image ?? ''),
+                                  //       fit: BoxFit.cover,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
@@ -330,6 +356,11 @@ class _CounterInformationPageWidgetState
         ),
       ),
     );
+  }
+
+  Uint8List base64StringToUint8List(String base64String) {
+    List<int> byteList = base64.decode(base64String.split(',').last);
+    return Uint8List.fromList(byteList);
   }
 
   Future<Position> _determinePosition() async {
@@ -397,11 +428,9 @@ class _CounterInformationPageWidgetState
 
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'تم رفض تحديد الموقع بشكل دائم، ولا يمكننا طلب اذن.');
+      return Future.error('تم رفض تحديد الموقع بشكل دائم، ولا يمكننا طلب اذن.');
     }
 
     return Future.error('');
   }
-
 }

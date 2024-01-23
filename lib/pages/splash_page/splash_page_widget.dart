@@ -41,18 +41,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
             : 'ar';
       });
       setAppLanguage(context, FFAppState().currentLanguge);
-      _model.apiResult2eb = await AssignedMeApiCall.call(
-        token: FFAppState().UserModelAppState.token,
-      );
-      if ((_model.apiResult2eb?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().assighnedModel =
-              AsighnedMeModelStruct.maybeFromMap(getJsonField(
-            (_model.apiResult2eb?.jsonBody ?? ''),
-            r'''$''',
-          ))!;
-        });
-      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

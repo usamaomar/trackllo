@@ -100,7 +100,10 @@ class _CounterInformationDialogWidgetState
                                           FFAppState().UserModelAppState.token,
                                       speedometer: int.tryParse(
                                           _model.textController.text),
-                                      speedometerImg: 'image',
+                                      speedometerImg: _model.localImageBase46,
+                                      university: FFAppState()
+                                          .UserModelAppState
+                                          .university,
                                       lat: FFAppState()
                                           .houseLocation
                                           .lat
@@ -122,16 +125,16 @@ class _CounterInformationDialogWidgetState
                                               arText: 'تمت الاضافه بناح',
                                             ),
                                             style: TextStyle(
-                                              color: FlutterFlowTheme.of(
-                                                  context)
-                                                  .primaryText,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                           ),
                                           duration:
-                                          Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 4000),
                                           backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
                                         ),
                                       );
                                       Navigator.pop(context);

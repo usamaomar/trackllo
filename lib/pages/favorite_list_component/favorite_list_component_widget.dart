@@ -480,6 +480,7 @@ class _FavoriteListComponentWidgetState
                                                       driverId: FFAppState()
                                                           .UserModelAppState
                                                           .id,
+                                                     busId: FFAppState().assighnedModel.busID,
                                                       day: functions
                                                           .dateFromat(),
                                                       isFinished: false,

@@ -263,6 +263,7 @@ class DriverDailyImageSummaryApiCall {
     String? speedometerImg = '',
     String? lat = '',
     String? lng = '',
+    String?  university = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -281,9 +282,36 @@ class DriverDailyImageSummaryApiCall {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': '$token',
+        'university': '$university',
       },
       params: {},
       body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+
+class getDriverDailyImageSummaryApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'DriverDailyImageSummaryApi',
+      apiUrl:
+      'https://tracllo-node-178a480f7a89.herokuapp.com/api/v1/driverdailysummary',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
+      params: {},
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,

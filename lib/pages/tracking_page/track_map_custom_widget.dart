@@ -357,11 +357,12 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                         onTap: () async {
                           checkPermition().catchError((onError) {
                             if(onError.toString().isEmpty){
-                              if (FFAppState().travilLine != null) {
-                                trackLocation();
-                              } else {
-                                widget.travilLise.call();
-                              }
+                              trackLocation();
+                              // if (FFAppState().travilLine != null) {
+                              //   trackLocation();
+                              // } else {
+                              //   widget.travilLise.call();
+                              // }
                             }else{
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(
@@ -422,7 +423,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                   clickAction();
                   positionStream.resume();
                   isLocationEnabled = true;
-                  widget.startTrip.call();
+                  // widget.startTrip.call();
                 },
                 child: Text(FFLocalizations.of(context).getVariableText(
                   enText: 'Ok',

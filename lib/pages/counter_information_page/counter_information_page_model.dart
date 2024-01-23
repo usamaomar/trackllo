@@ -16,12 +16,16 @@ class CounterInformationPageModel
   ///  Local state fields for this page.
 
   dynamic jsonObject;
+  String? base64Image;
+  bool? loading = false;
 
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+
   // Stores action output result for [Backend Call - API (getExpectedSpeedometerReadingApi)] action in CounterInformationPage widget.
   ApiCallResponse? apiResult4qr;
+  ApiCallResponse? apigetDriverDailyImageSummaryApiCall;
 
   /// Initialization and disposal methods.
 

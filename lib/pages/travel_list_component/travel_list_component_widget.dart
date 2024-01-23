@@ -235,18 +235,7 @@ class _TravelListComponentWidgetState extends State<TravelListComponentWidget>
                                                 .id,
                                             day: functions.dateFromat(),
                                             isFinished: false,
-                                            busId: getJsonField(
-                                              functions.findBusByUserId(
-                                                  getJsonField(
-                                                    listLocsItem,
-                                                    r'''$.bus''',
-                                                    true,
-                                                  )!,
-                                                  FFAppState()
-                                                      .UserModelAppState
-                                                      .id),
-                                              r'''$._id''',
-                                            ).toString());
+                                            busId: FFAppState().assighnedModel.busID);
                                         if ((_model
                                                 .apiResulth6xCopy?.succeeded ??
                                             true)) {

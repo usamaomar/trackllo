@@ -1,3 +1,6 @@
+import 'package:stop_watch_timer/stop_watch_timer.dart';
+
+import '../../flutter_flow/flutter_flow_timer.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -25,9 +28,22 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
   ApiCallResponse? apiResult0b0;
   // Stores action output result for [Backend Call - API (EndTripApi)] action in MapCustomWidget widget.
   ApiCallResponse? apiResult5x0;
+
+  ApiCallResponse? apiResult2eb;
+
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
+
+  String timerValue = StopWatchTimer.getDisplayTime(
+    3000,
+    hours: false,
+    milliSecond: false,
+  );
+  FlutterFlowTimerController timerController =
+  FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
+
+  int timerMilliseconds = 3000;
   // Model for SideMenuComponent component.
   late SideMenuComponentModel sideMenuComponentModel1;
   // Model for SideMenuComponent component.
@@ -46,7 +62,14 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
     unfocusNode.dispose();
     sideMenuComponentModel1.dispose();
     sideMenuComponentModel2.dispose();
+    timerController.dispose();
   }
+
+
+
+
+
+
 
   /// Action blocks are added here.
 
