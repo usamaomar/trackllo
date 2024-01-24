@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:io' show Platform;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +28,16 @@ void main() async {
   connectionStatus.initialize();
   await FlutterFlowTheme.initialize();
 
+  if (Platform.isIOS) {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyAnxO8vpdYpZMM-qzFGI6kaYxqWtx_hU_k",
+            appId: "1:165279456167:ios:f26e63d5d4e7aa2ddef482",
+            messagingSenderId: "165279456167",
+            projectId: "com.tracllo.driver"));
+  } else {
+    await Firebase.initializeApp();
+  }
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
