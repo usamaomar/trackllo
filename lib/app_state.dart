@@ -105,6 +105,10 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _isliveLocationEnabled =
+          prefs.getBool('ff_isliveLocationEnabled') ?? _isliveLocationEnabled;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -238,6 +242,13 @@ class FFAppState extends ChangeNotifier {
   void updateAssighnedModelStruct(Function(AsighnedMeModelStruct) updateFn) {
     updateFn(_assighnedModel);
     prefs.setString('ff_assighnedModel', _assighnedModel.serialize());
+  }
+
+  bool _isliveLocationEnabled = false;
+  bool get isliveLocationEnabled => _isliveLocationEnabled;
+  set isliveLocationEnabled(bool _value) {
+    _isliveLocationEnabled = _value;
+    prefs.setBool('ff_isliveLocationEnabled', _value);
   }
 }
 
