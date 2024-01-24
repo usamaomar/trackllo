@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -31,18 +33,21 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     _model = createModel(context, () => LoginPageModel());
 
     // On page load action.
-    // SchedulerBinding.instance.addPostFrameCallback((_) async {
-    //   setState(() {
-    //     _model.textController1?.text = '9999999999';
-    //   });
-    //   setState(() {
-    //     _model.textController2?.text = 'Password';
-    //   });
-    //   FFAppState().update(() {});
-    //   setState(() {
-    //     FFAppState().addToAppStateOfflineModel(OfflineModelStruct());
-    //   });
-    // });
+
+    if(kDebugMode) {
+      SchedulerBinding.instance.addPostFrameCallback((_) async {
+        setState(() {
+          _model.textController1?.text = '9999999999';
+        });
+        setState(() {
+          _model.textController2?.text = 'Password';
+        });
+        FFAppState().update(() {});
+        setState(() {
+          FFAppState().addToAppStateOfflineModel(OfflineModelStruct());
+        });
+      });
+    }
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();

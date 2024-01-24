@@ -39,7 +39,8 @@ class TrackMapCustomWidget extends StatefulWidget {
   final Future<dynamic> Function() startTrip;
   final Future<dynamic> Function() stopTrip;
   final Future<dynamic> Function() travilLise;
-  final Future<dynamic> Function(bool isLocationEnabled) isLocationEnabledAction;
+  final Future<dynamic> Function(bool isLocationEnabled)
+      isLocationEnabledAction;
 
   @override
   _MapCustomWidgetState createState() => _MapCustomWidgetState();
@@ -47,8 +48,9 @@ class TrackMapCustomWidget extends StatefulWidget {
 
 class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
   late GoogleMapController mapController;
-  bool isLocationEnabled = false;
-  bool isTrackToBeginEnabled = false;
+
+  // bool isLocationEnabled = false;
+  // bool isTrackToBeginEnabled = false;
   late StreamSubscription<Position> positionStream;
   late Set<Marker> markers;
 
@@ -70,7 +72,22 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
     super.initState();
     markers = <Marker>{};
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _determinePosition();
+      _determinePosition().then((value) => {
+            if (FFAppState().isliveLocationEnabled)
+              {
+                widget.isLocationEnabledAction(true),
+                clickAction(),
+                positionStream.resume(),
+                FFAppState().isliveLocationEnabled = true
+              }
+            else
+              {
+                widget.isLocationEnabledAction(false),
+                positionStream.cancel(),
+                FFAppState().isliveLocationEnabled = false,
+                widget.stopTrip.call(),
+              }
+          });
     });
   }
 
@@ -139,8 +156,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
 
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'تم رفض تحديد الموقع بشكل دائم، ولا يمكننا طلب اذن.');
+      return Future.error('تم رفض تحديد الموقع بشكل دائم، ولا يمكننا طلب اذن.');
     }
 
     return Future.error('');
@@ -195,16 +211,20 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
       setState(() {
         markerIcon = icon;
         dynamic line = FFAppState().travilLine;
-        for (var setting in line['way_points']) {
-          markers.add(Marker(
-            markerId: MarkerId(setting['label']),
-            position: lats.LatLng(
-                setting['lat'].toDouble(), setting['lng'].toDouble()),
-            draggable: false,
-            icon: BitmapDescriptor.defaultMarkerWithHue(
-                BitmapDescriptor.hueGreen),
-          ));
+
+        if(line!=null) {
+          for (var setting in line['way_points']) {
+            markers.add(Marker(
+              markerId: MarkerId(setting['label']),
+              position: lats.LatLng(
+                  setting['lat'].toDouble(), setting['lng'].toDouble()),
+              draggable: false,
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueGreen),
+            ));
+          }
         }
+
       });
     });
   }
@@ -240,7 +260,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
         Geolocator.getPositionStream(locationSettings: locationSettings)
             .listen((Position? position) {
       setState(() {
-        this.position = position ??
+        this.position =position ??
             Position(
                 longitude: 35.857670,
                 latitude: 31.959345,
@@ -337,7 +357,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                       width: 45.0,
                       height: 45.0,
                       decoration: BoxDecoration(
-                        color: isLocationEnabled
+                        color: FFAppState().isliveLocationEnabled
                             ? FlutterFlowTheme.of(context).error
                             : FlutterFlowTheme.of(context).alternate,
                         shape: BoxShape.circle,
@@ -349,41 +369,36 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                         highlightColor: Colors.transparent,
                         child: Icon(
                           Icons.power_settings_new,
-                          color: isLocationEnabled
+                          color: FFAppState().isliveLocationEnabled
                               ? FlutterFlowTheme.of(context).info
                               : FlutterFlowTheme.of(context).primaryText,
                           size: 30.0,
                         ),
                         onTap: () async {
                           checkPermition().catchError((onError) {
-                            if(onError.toString().isEmpty){
+                            if (onError.toString().isEmpty) {
                               trackLocation();
                               // if (FFAppState().travilLine != null) {
                               //   trackLocation();
                               // } else {
                               //   widget.travilLise.call();
                               // }
-                            }else{
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    FFLocalizations.of(context)
-                                        .getVariableText(
+                                    FFLocalizations.of(context).getVariableText(
                                       enText: onError,
                                       arText: onError,
                                     ),
                                     style: TextStyle(
-                                      color: FlutterFlowTheme.of(
-                                          context)
+                                      color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                     ),
                                   ),
-                                  duration:
-                                  Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
-                                  FlutterFlowTheme.of(context)
-                                      .secondary,
+                                      FlutterFlowTheme.of(context).secondary,
                                 ),
                               );
                             }
@@ -402,7 +417,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
   }
 
   void trackLocation() async {
-    if (!isLocationEnabled) {
+    if (!FFAppState().isliveLocationEnabled) {
       await showDialog(
         context: context,
         builder: (alertDialogContext) {
@@ -422,7 +437,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                   Navigator.pop(alertDialogContext);
                   clickAction();
                   positionStream.resume();
-                  isLocationEnabled = true;
+                  FFAppState().isliveLocationEnabled = true;
                   // widget.startTrip.call();
                 },
                 child: Text(FFLocalizations.of(context).getVariableText(
@@ -489,7 +504,7 @@ class _MapCustomWidgetState extends State<TrackMapCustomWidget> {
                   widget.isLocationEnabledAction(false);
                   Navigator.pop(alertDialogContext);
                   positionStream.cancel();
-                  isLocationEnabled = false;
+                  FFAppState().isliveLocationEnabled = false;
                   widget.stopTrip.call();
                 },
                 child: Text(FFLocalizations.of(context).getVariableText(
