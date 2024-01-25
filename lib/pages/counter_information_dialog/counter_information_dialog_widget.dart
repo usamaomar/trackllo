@@ -92,7 +92,7 @@ class _CounterInformationDialogWidgetState
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   if (_model.textController.text != null &&
-                                      _model.textController.text != '') {
+                                      _model.textController.text != '' && _model.localImageBase46.isNotEmpty) {
                                     _model.apiResultdxj =
                                         await DriverDailyImageSummaryApiCall
                                             .call(
@@ -122,7 +122,7 @@ class _CounterInformationDialogWidgetState
                                             FFLocalizations.of(context)
                                                 .getVariableText(
                                               enText: 'Done',
-                                              arText: 'تمت الاضافه بناح',
+                                              arText: 'تمت الاضافه بنجاح',
                                             ),
                                             style: TextStyle(
                                               color:

@@ -43,16 +43,17 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
     _model = createModel(context, () => TrackingPageModel());
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.timerController.onStartTimer();
-
-
-
-      // _model.apiResultkib = await CurrentStartedTravelApiCall.call(
-      //   token: FFAppState().UserModelAppState.token,
-      // );
-      // if ((_model.apiResultkib?.succeeded ?? true)) {
-      //   setState(() {});
-      // }
-
+      _model.apiResultkib = await CurrentStartedTravelApiCall.call(
+        token: FFAppState().UserModelAppState.token,
+      );
+      if ((_model.apiResultkib?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().tripIdToBeCanceld =  getJsonField(
+            (_model.apiResultkib?.jsonBody ?? ''),
+            r'''$.travelStatusId''',
+          ).toString();
+        });
+      }
     });
   }
 

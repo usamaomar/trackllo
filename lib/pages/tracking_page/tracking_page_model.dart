@@ -31,6 +31,8 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
 
   ApiCallResponse? apiResult2eb;
 
+  ApiCallResponse? apiResultkib;
+
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();

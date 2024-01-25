@@ -34,7 +34,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     // On page load action.
 
-    if(kDebugMode) {
+    if (kDebugMode) {
       SchedulerBinding.instance.addPostFrameCallback((_) async {
         setState(() {
           _model.textController1?.text = '9999999999';
@@ -237,6 +237,44 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      if (_model.textController2.text.isEmpty) {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('تنبيه'),
+                              content: Text('قم بتعبئة كلمة المرور'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('حسنا'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        return;
+                      } else if (_model.textController1.text.isEmpty) {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('تنبيه'),
+                              content: Text('قم بتعبئة رفم الهاتف'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('حسنا'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        return;
+                      }
+
                       _model.apiResult2xu = await LoginApiCall.call(
                         password: _model.textController2.text,
                         phone: '+962${_model.textController1.text}',
